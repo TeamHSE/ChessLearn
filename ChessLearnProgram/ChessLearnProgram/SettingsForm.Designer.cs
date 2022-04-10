@@ -1,6 +1,6 @@
 ﻿namespace ChessLearnProgram
 {
-    internal sealed partial class Form1
+    partial class SettingsForm
     {
         /// <summary>
         /// Required designer variable.
@@ -17,7 +17,6 @@
             {
                 components.Dispose();
             }
-
             base.Dispose(disposing);
         }
 
@@ -31,14 +30,15 @@
         {
             this.SuspendLayout();
             // 
-            // Form1
+            // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode       = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize          = new System.Drawing.Size(542, 339);
-            this.Name                = "Form1";
-            this.Text                = "Form1";
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Name = "Form2";
+            this.Text = "Form2";
             this.ResumeLayout(false);
+
         }
 
         #endregion
