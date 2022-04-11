@@ -36,43 +36,56 @@
             // 
             // MainMenuLabel
             // 
+            this.MainMenuLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.MainMenuLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.MainMenuLabel.Location = new System.Drawing.Point(209, 24);
+            this.MainMenuLabel.Location = new System.Drawing.Point(225, 73);
             this.MainMenuLabel.Name = "MainMenuLabel";
-            this.MainMenuLabel.Size = new System.Drawing.Size(434, 104);
+            this.MainMenuLabel.Size = new System.Drawing.Size(359, 95);
             this.MainMenuLabel.TabIndex = 0;
             this.MainMenuLabel.Text = "Главное меню";
             this.MainMenuLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // SettingsButton
             // 
+            this.SettingsButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.SettingsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 21F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.SettingsButton.Location = new System.Drawing.Point(66, 189);
+            this.SettingsButton.Location = new System.Drawing.Point(483, 252);
+            this.SettingsButton.MaximumSize = new System.Drawing.Size(500, 100);
+            this.SettingsButton.MinimumSize = new System.Drawing.Size(100, 20);
             this.SettingsButton.Name = "SettingsButton";
-            this.SettingsButton.Size = new System.Drawing.Size(250, 95);
+            this.SettingsButton.Size = new System.Drawing.Size(250, 100);
             this.SettingsButton.TabIndex = 1;
             this.SettingsButton.Text = "Настройки";
             this.SettingsButton.UseVisualStyleBackColor = true;
+            this.SettingsButton.Click += new System.EventHandler(this.SettingsButton_Click);
             // 
             // LessonsButton
             // 
+            this.LessonsButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.LessonsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 21F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.LessonsButton.Location = new System.Drawing.Point(511, 189);
+            this.LessonsButton.Location = new System.Drawing.Point(66, 252);
+            this.LessonsButton.MaximumSize = new System.Drawing.Size(500, 100);
+            this.LessonsButton.MinimumSize = new System.Drawing.Size(100, 20);
             this.LessonsButton.Name = "LessonsButton";
-            this.LessonsButton.Size = new System.Drawing.Size(250, 95);
+            this.LessonsButton.Size = new System.Drawing.Size(250, 100);
             this.LessonsButton.TabIndex = 2;
             this.LessonsButton.Text = "Уроки";
             this.LessonsButton.UseVisualStyleBackColor = true;
             // 
-            // Form1
+            // MainMenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(862, 510);
+            this.ClientSize = new System.Drawing.Size(825, 515);
             this.Controls.Add(this.LessonsButton);
             this.Controls.Add(this.SettingsButton);
             this.Controls.Add(this.MainMenuLabel);
-            this.Name = "Form1";
+            this.MinimumSize = new System.Drawing.Size(700, 500);
+            this.Name = "MainMenuForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.ResumeLayout(false);
 

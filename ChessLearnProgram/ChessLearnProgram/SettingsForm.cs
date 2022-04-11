@@ -1,20 +1,33 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ChessLearnProgram
 {
-    public partial class SettingsForm : Form
+    internal sealed partial class SettingsForm : Form
     {
-        public SettingsForm()
+        public SettingsForm() => this.InitializeComponent();
+
+        private void SettingsForm_Load(object sender, System.EventArgs e) { }
+
+        private void FullScreenСheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            InitializeComponent();
+            if (ActiveForm == null)
+                return;
+
+            if (!this.FullScreenСheckBox.Checked)
+            {
+                ActiveForm.TopMost              = false;
+                ActiveForm.FormBorderStyle      = FormBorderStyle.Sizable;
+                ActiveForm.WindowState          = FormWindowState.Normal;
+                this.FullScreenСheckBox.Checked = true;
+                return;
+            }
+
+            this.Dispose();
+            ActiveForm.TopMost              = true;
+            ActiveForm.FormBorderStyle      = FormBorderStyle.None;
+            ActiveForm.WindowState          = FormWindowState.Maximized;
+            this.FullScreenСheckBox.Checked = false;
         }
     }
 }

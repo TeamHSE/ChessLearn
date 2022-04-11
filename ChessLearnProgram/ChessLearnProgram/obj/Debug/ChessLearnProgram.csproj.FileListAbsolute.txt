@@ -13,9 +13,10 @@ C:\Users\aleks\RiderProjects\ChessLearn\ChessLearnProgram\ChessLearnProgram\bin\
 C:\Users\aleks\RiderProjects\ChessLearn\ChessLearnProgram\ChessLearnProgram\bin\Debug\ChessLearnProgram.pdb
 C:\Users\aleks\RiderProjects\ChessLearn\ChessLearnProgram\ChessLearnProgram\obj\Debug\ChessLearnProgram.csproj.AssemblyReference.cache
 C:\Users\aleks\RiderProjects\ChessLearn\ChessLearnProgram\ChessLearnProgram\obj\Debug\ChessLearnProgram.csproj.SuggestedBindingRedirects.cache
-C:\Users\aleks\RiderProjects\ChessLearn\ChessLearnProgram\ChessLearnProgram\obj\Debug\ChessLearnProgram.Form1.resources
 C:\Users\aleks\RiderProjects\ChessLearn\ChessLearnProgram\ChessLearnProgram\obj\Debug\ChessLearnProgram.Properties.Resources.resources
 C:\Users\aleks\RiderProjects\ChessLearn\ChessLearnProgram\ChessLearnProgram\obj\Debug\ChessLearnProgram.csproj.GenerateResource.cache
 C:\Users\aleks\RiderProjects\ChessLearn\ChessLearnProgram\ChessLearnProgram\obj\Debug\ChessLearnProgram.csproj.CoreCompileInputs.cache
 C:\Users\aleks\RiderProjects\ChessLearn\ChessLearnProgram\ChessLearnProgram\obj\Debug\ChessLearnProgram.exe
 C:\Users\aleks\RiderProjects\ChessLearn\ChessLearnProgram\ChessLearnProgram\obj\Debug\ChessLearnProgram.pdb
+C:\Users\aleks\RiderProjects\ChessLearn\ChessLearnProgram\ChessLearnProgram\obj\Debug\ChessLearnProgram.MainMenuForm.resources
+C:\Users\aleks\RiderProjects\ChessLearn\ChessLearnProgram\ChessLearnProgram\obj\Debug\ChessLearnProgram.SettingsForm.resources

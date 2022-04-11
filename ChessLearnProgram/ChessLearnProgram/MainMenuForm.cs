@@ -7,10 +7,10 @@ namespace ChessLearnProgram
     {
         public MainMenuForm() => this.InitializeComponent();
 
-        private void ToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void SettingsButton_Click(object sender, EventArgs e)
         {
-            var form2 = new SettingsForm();
-            form2.Show();
+            var settingsForm = new SettingsForm();
+            settingsForm.Show();
         }
     }
 }
