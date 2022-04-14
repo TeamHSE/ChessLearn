@@ -56,10 +56,12 @@ namespace ChessLearnProgram
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ItemHeight        = 32;
             this.listBox1.Items.AddRange(new object[] { "Фигуры", "Начало игры", "Постановка мата" });
-            this.listBox1.Location = new System.Drawing.Point(226, 136);
-            this.listBox1.Name     = "listBox1";
-            this.listBox1.Size     = new System.Drawing.Size(351, 356);
-            this.listBox1.TabIndex = 1;
+            this.listBox1.Location             =  new System.Drawing.Point(226, 136);
+            this.listBox1.Name                 =  "listBox1";
+            this.listBox1.Size                 =  new System.Drawing.Size(351, 356);
+            this.listBox1.TabIndex             =  1;
+            this.listBox1.Click                += new System.EventHandler(this.listBox1_Click);
+            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // LessonsForm
             // 
