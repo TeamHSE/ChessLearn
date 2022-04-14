@@ -10,7 +10,13 @@ namespace ChessLearnProgram
         private void SettingsButton_Click(object sender, EventArgs e)
         {
             var settingsForm = new SettingsForm();
-            settingsForm.Show();
+            settingsForm.ShowDialog();
+        }
+
+        private void LessonsButton_Click(object sender, EventArgs e)
+        {
+            var lessonsForm = new LessonsForm();
+            lessonsForm.ShowDialog();
         }
     }
 }

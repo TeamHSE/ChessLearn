@@ -20,3 +20,4 @@ C:\Users\aleks\RiderProjects\ChessLearn\ChessLearnProgram\ChessLearnProgram\obj\
 C:\Users\aleks\RiderProjects\ChessLearn\ChessLearnProgram\ChessLearnProgram\obj\Debug\ChessLearnProgram.pdb
 C:\Users\aleks\RiderProjects\ChessLearn\ChessLearnProgram\ChessLearnProgram\obj\Debug\ChessLearnProgram.MainMenuForm.resources
 C:\Users\aleks\RiderProjects\ChessLearn\ChessLearnProgram\ChessLearnProgram\obj\Debug\ChessLearnProgram.SettingsForm.resources
+C:\Users\aleks\RiderProjects\ChessLearn\ChessLearnProgram\ChessLearnProgram\obj\Debug\ChessLearnProgram.LessonsForm.resources
