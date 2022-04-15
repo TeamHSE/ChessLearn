@@ -13,12 +13,12 @@ namespace Chess
         public abstract bool IsPlayable { get; set; }
 
 
-        public abstract class Coordinate
+        public abstract class Coordinate : ICoordinate
         {
             public int Column { get; set; }
             public int Row    { get; set; }
 
-            public Coordinate(int column, int row)
+            internal Coordinate(int column, int row)
             {
                 Column = column;
                 Row    = row;
