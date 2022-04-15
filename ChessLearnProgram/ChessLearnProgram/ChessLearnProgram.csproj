@@ -48,10 +48,8 @@
   <ItemGroup>
     <Compile Include="BoardForm.cs" />
     <Compile Include="BoardForm.Designer.cs" />
-    <Compile Include="ChessBoard.cs" />
     <Compile Include="ChessBoardForm.cs" />
     <Compile Include="ChessBoardForm.Designer.cs" />
-    <Compile Include="ChessPart.cs" />
     <Compile Include="Enumerator.cs" />
     <Compile Include="LessonsForm.cs">
       <SubType>Form</SubType>
@@ -65,7 +63,6 @@
     <Compile Include="MainMenuForm.Designer.cs">
       <DependentUpon>MainMenuForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Pawn.cs" />
     <Compile Include="SettingsForm.cs">
       <SubType>Form</SubType>
     </Compile>

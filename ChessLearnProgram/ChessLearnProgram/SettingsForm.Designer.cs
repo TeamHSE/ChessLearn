@@ -1,11 +1,14 @@
-﻿namespace ChessLearnProgram
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+
+namespace ChessLearnProgram
 {
     internal sealed partial class SettingsForm
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -304,23 +307,23 @@
 
         #endregion
 
-        private System.Windows.Forms.Label        SettingsLabel;
-        private System.Windows.Forms.RichTextBox  EmptyBox1;
-        private System.Windows.Forms.RichTextBox  EmptyBox2;
-        private System.Windows.Forms.RichTextBox  EmptyBox3;
-        private System.Windows.Forms.Label        GraphicsSettingsLabel;
-        private System.Windows.Forms.CheckBox     FullScreenСheckBox;
-        private System.Windows.Forms.Label        AudioSettingsLabel;
-        private System.Windows.Forms.Label        DeskSettingsLabel;
-        private System.Windows.Forms.TrackBar     MoveVolumeTrackBar;
-        private System.Windows.Forms.Label        MoveVolumeSliderLabel;
-        private System.Windows.Forms.Label        VoiceVolumeSliderLabel;
-        private System.Windows.Forms.TrackBar     VoiceVolumeTrackBar;
-        private System.Windows.Forms.Label        MoveSpeedSettingsLabel;
-        private System.Windows.Forms.DomainUpDown MoveSpeedDomainUpDown;
-        private System.Windows.Forms.DomainUpDown WayToMoveDomainUpDown;
-        private System.Windows.Forms.Label        WayToMoveSettingsLabel;
-        private System.Windows.Forms.CheckBox     checkBox1;
-        private System.Windows.Forms.CheckBox     checkBox2;
+        private Label        SettingsLabel;
+        private RichTextBox  EmptyBox1;
+        private RichTextBox  EmptyBox2;
+        private RichTextBox  EmptyBox3;
+        private Label        GraphicsSettingsLabel;
+        private CheckBox     FullScreenСheckBox;
+        private Label        AudioSettingsLabel;
+        private Label        DeskSettingsLabel;
+        private TrackBar     MoveVolumeTrackBar;
+        private Label        MoveVolumeSliderLabel;
+        private Label        VoiceVolumeSliderLabel;
+        private TrackBar     VoiceVolumeTrackBar;
+        private Label        MoveSpeedSettingsLabel;
+        private DomainUpDown MoveSpeedDomainUpDown;
+        private DomainUpDown WayToMoveDomainUpDown;
+        private Label        WayToMoveSettingsLabel;
+        private CheckBox     checkBox1;
+        private CheckBox     checkBox2;
     }
 }

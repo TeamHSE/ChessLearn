@@ -7,7 +7,7 @@ namespace ChessLearnProgram
     {
         public SettingsForm() => this.InitializeComponent();
 
-        private void SettingsForm_Load(object sender, System.EventArgs e) { }
+        private void SettingsForm_Load(object sender, EventArgs e) { }
 
         private void FullScreenСheckBox_CheckedChanged(object sender, EventArgs e)
         {

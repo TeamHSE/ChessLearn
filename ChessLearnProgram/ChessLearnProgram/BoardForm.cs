@@ -6,10 +6,7 @@ namespace ChessLearnProgram
 {
     internal sealed partial class BoardForm : Form
     {
-        public BoardForm()
-        {
-            InitializeComponent();
-        }
+        public BoardForm() => this.InitializeComponent();
 
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
@@ -20,36 +17,30 @@ namespace ChessLearnProgram
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            tableLayoutPanel1.Size += new Size(20, 20);
-        }
+        private void button2_Click(object sender, EventArgs e) => this.tableLayoutPanel1.Size += new Size(20, 20);
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            tableLayoutPanel1.Size -= new Size(20, 20);
-        }
+        private void button3_Click(object sender, EventArgs e) => this.tableLayoutPanel1.Size -= new Size(20, 20);
 
         private void button5_Click(object sender, EventArgs e)
         {
 
         }
 
-        private static int clickCount = 0;
+        private static int clickCount;
 
         private void button9_Click(object sender, EventArgs e)
         {
-            var coords = tableLayoutPanel1.GetCellPosition(button9);
+            var coords = this.tableLayoutPanel1.GetCellPosition(this.button9);
 
             if (clickCount % 2 == 0)
             {
                 var possibleMove = new Button();
-                tableLayoutPanel1.Controls.Add(new Button(), coords.Column, coords.Row - 1);
-                possibleMove.Click += moveButtonClick;
+                this.tableLayoutPanel1.Controls.Add(new Button(), coords.Column, coords.Row - 1);
+                possibleMove.Click += this.moveButtonClick;
             }
             else
             {
-                tableLayoutPanel1.Controls.Remove(tableLayoutPanel1.GetControlFromPosition(coords.Column, coords.Row - 1));
+                this.tableLayoutPanel1.Controls.Remove(this.tableLayoutPanel1.GetControlFromPosition(coords.Column, coords.Row - 1));
             }
             ++clickCount;
 
@@ -57,8 +48,8 @@ namespace ChessLearnProgram
 
         private void moveButtonClick(object sender, EventArgs e)
         {
-            TableLayoutPanelCellPosition coords = tableLayoutPanel1.GetCellPosition(button9);
-            tableLayoutPanel1.Controls.Add(button9, coords.Column, coords.Row - 1);
+            TableLayoutPanelCellPosition coords = this.tableLayoutPanel1.GetCellPosition(this.button9);
+            this.tableLayoutPanel1.Controls.Add(this.button9, coords.Column, coords.Row - 1);
         }
 
         private void TableLayoutPanel1OnCellPaint(object sender, TableLayoutCellPaintEventArgs e)
@@ -70,8 +61,8 @@ namespace ChessLearnProgram
 
         private void button15_Click(object sender, EventArgs e)
         {
-            TableLayoutPanelCellPosition coords = tableLayoutPanel1.GetCellPosition(button9);
-            tableLayoutPanel1.Controls.Add(button9, coords.Column, coords.Row - 1);
+            TableLayoutPanelCellPosition coords = this.tableLayoutPanel1.GetCellPosition(this.button9);
+            this.tableLayoutPanel1.Controls.Add(this.button9, coords.Column, coords.Row - 1);
         }
 
         private void button7_Click(object sender, EventArgs e)

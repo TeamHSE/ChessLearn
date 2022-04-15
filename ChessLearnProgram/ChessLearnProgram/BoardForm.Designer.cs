@@ -1,11 +1,14 @@
-﻿namespace ChessLearnProgram
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+
+namespace ChessLearnProgram
 {
     internal sealed partial class BoardForm
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -333,24 +336,24 @@
         }
 
         #endregion
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem главноеМенюToolStripMenuItem;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.PrintDialog printDialog1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Button button11;
-        private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.Button button12;
-        private System.Windows.Forms.Button button13;
-        private System.Windows.Forms.Button button14;
-        private System.Windows.Forms.Button button15;
+        private MenuStrip menuStrip1;
+        private ToolStripMenuItem главноеМенюToolStripMenuItem;
+        private TableLayoutPanel tableLayoutPanel1;
+        private PrintDialog printDialog1;
+        private Button button1;
+        private Button button2;
+        private Button button3;
+        private Button button4;
+        private Button button5;
+        private Button button8;
+        private Button button7;
+        private Button button6;
+        private Button button9;
+        private Button button11;
+        private Button button10;
+        private Button button12;
+        private Button button13;
+        private Button button14;
+        private Button button15;
     }
 }
