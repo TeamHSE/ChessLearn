@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="ChessBoard.cs" />
     <Compile Include="ChessPiece.cs" />
+    <Compile Include="Coordinate.cs" />
     <Compile Include="ICoordinate.cs" />
     <Compile Include="Pawn.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

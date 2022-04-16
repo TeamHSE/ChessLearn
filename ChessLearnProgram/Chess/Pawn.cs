@@ -8,18 +8,18 @@ namespace Chess
         /// <summary>
         /// Текущая координата пешки.
         /// </summary>
-        protected override ChessBoard.Coordinate       CurrentCoordinate { get; set; }
+        protected override Coordinate CurrentCoordinate { get; set; }
 
         /// <inheritdoc />
         /// <summary>
         /// Список корректных возможных ходов пешки.
         /// </summary>
-        public override    List<ChessBoard.Coordinate> ValidMoves        { get; set; }
+        public override List<Coordinate> ValidMoves { get; set; }
 
         /// <inheritdoc />
         /// <summary>
         /// Статус пешки. True – не срублена, False – срублена.
         /// </summary>
-        public override    bool                        IsPlayable        { get; set; }
+        public override bool IsPlayable { get; set; }
     }
 }

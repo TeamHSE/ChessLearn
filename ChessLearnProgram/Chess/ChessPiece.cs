@@ -9,18 +9,18 @@ namespace Chess
         /// <summary>
         /// Текущая координата фигуры.
         /// </summary>
-        protected abstract ChessBoard.Coordinate CurrentCoordinate { get; set; }
+        protected abstract Coordinate CurrentCoordinate { get; set; }
 
         /// <summary>
         /// Переход на другую клетку.
         /// </summary>
         /// <param name="coordinate">Координата другой клетки.</param>
-        public void MoveTo(ChessBoard.Coordinate coordinate) => CurrentCoordinate = coordinate;
+        public void MoveTo(Coordinate coordinate) => CurrentCoordinate = coordinate;
 
         /// <summary>
         /// Список корректных возможных ходов.
         /// </summary>
-        public abstract List<ChessBoard.Coordinate> ValidMoves { get; set; }
+        public abstract List<Coordinate> ValidMoves { get; set; }
 
         /// <summary>
         /// Статус фигуры. True – не срублена, False – срублена.
