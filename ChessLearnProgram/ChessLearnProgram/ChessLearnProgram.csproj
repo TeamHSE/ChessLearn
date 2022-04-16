@@ -46,7 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BoardForm.cs" />
+    <Compile Include="BoardForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="BoardForm.Designer.cs" />
     <Compile Include="ChessBoardForm.cs" />
     <Compile Include="ChessBoardForm.Designer.cs" />

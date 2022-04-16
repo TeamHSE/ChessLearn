@@ -1,16 +1,59 @@
-﻿using Chess;
+﻿using System;
+using System.Windows.Forms;
 
-namespace ChessLearnProgram
+namespace Chess
 {
     public class ChessBoard
     {
-        private const    int           Columns = 8;
-        private          ChessPiece[,] boardArray;
-        private readonly int           Rows = 8;
+        private ChessPiece[,] _chessBoardMatrix;
 
-        public ChessPiece this[int x, int y] => this.boardArray[x, y];
-        public int GetLength(int  l) => this.boardArray.GetLength(l);
+        public ChessBoard() => this._chessBoardMatrix = new ChessPiece[8, 8];
 
 
+        /// <inheritdoc />
+        /// <summary>
+        /// Координата шахматной фигуры.
+        /// </summary>
+        public class Coordinate : ICoordinate
+        {
+            private int _column;
+            private int _row;
+
+            public int Column
+            {
+                get => this._column;
+                set
+                {
+                    if ((value < 0) || (value > 7))
+                    {
+                        throw new ArgumentException("Диапазон индекса столбца координаты фигуры: от 0 до 7,"
+                                                  + $" поступил на вход: {value}");
+                    }
+
+                    this._column = value;
+                }
+            }
+
+            public int Row
+            {
+                get => this._row;
+                set
+                {
+                    if ((value < 0) || (value > 7))
+                    {
+                        throw new ArgumentException("Диапазон индекса строки координаты фигуры: от 0 до 7,"
+                                                  + $" поступил на вход: {value}");
+                    }
+
+                    this._row = value;
+                }
+            }
+
+            internal Coordinate(int column, int row)
+            {
+                Column = column;
+                Row    = row;
+            }
+        }
     }
 }

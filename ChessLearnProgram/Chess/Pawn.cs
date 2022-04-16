@@ -1,14 +1,25 @@
 ﻿using System.Collections.Generic;
-using Chess;
 
-namespace ChessLearnProgram
+namespace Chess
 {
     public class Pawn : ChessPiece
     {
-        public override (int, int) Coordinate() => (0, 0);
+        /// <inheritdoc />
+        /// <summary>
+        /// Текущая координата пешки.
+        /// </summary>
+        protected override ChessBoard.Coordinate       CurrentCoordinate { get; set; }
 
-        public override List<(int, int)> ValidMovesCoordinates() => null;
+        /// <inheritdoc />
+        /// <summary>
+        /// Список корректных возможных ходов пешки.
+        /// </summary>
+        public override    List<ChessBoard.Coordinate> ValidMoves        { get; set; }
 
-        public override bool IsPlayable() => false;
+        /// <inheritdoc />
+        /// <summary>
+        /// Статус пешки. True – не срублена, False – срублена.
+        /// </summary>
+        public override    bool                        IsPlayable        { get; set; }
     }
 }

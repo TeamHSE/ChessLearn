@@ -32,7 +32,7 @@ namespace ChessLearnProgram
         {
             var coords = this.tableLayoutPanel1.GetCellPosition(this.button9);
 
-            if (clickCount % 2 == 0)
+            if ((clickCount % 2) == 0)
             {
                 var possibleMove = new Button();
                 this.tableLayoutPanel1.Controls.Add(new Button(), coords.Column, coords.Row - 1);
