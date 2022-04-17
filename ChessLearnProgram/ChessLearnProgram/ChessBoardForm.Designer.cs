@@ -36,8 +36,6 @@ namespace ChessLearnProgram
             this.miniToolStrip                = new System.Windows.Forms.MenuStrip();
             this.главноеМенюToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1            = new System.Windows.Forms.TableLayoutPanel();
-            this.BlackPawn                    = new System.Windows.Forms.Button();
-            this.button4                      = new System.Windows.Forms.Button();
             this.button1                      = new System.Windows.Forms.Button();
             this.printDialog1                 = new System.Windows.Forms.PrintDialog();
             this.button2                      = new System.Windows.Forms.Button();
@@ -71,17 +69,15 @@ namespace ChessLearnProgram
             this.tableLayoutPanel1.BackgroundImage       = ((System.Drawing.Image)(resources.GetObject("tableLayoutPanel1.BackgroundImage")));
             this.tableLayoutPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.tableLayoutPanel1.ColumnCount           = 8;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.52723F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.52723F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.52723F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.52723F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.52723F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 13.0719F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.76471F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.52723F));
-            this.tableLayoutPanel1.Controls.Add(this.BlackPawn, 3, 6);
-            this.tableLayoutPanel1.Controls.Add(this.button4,   4, 0);
-            this.tableLayoutPanel1.Controls.Add(this.button1,   5, 3);
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tableLayoutPanel1.Controls.Add(this.button1, 3, 6);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(76, 32);
             this.tableLayoutPanel1.Margin   = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel1.Name     = "tableLayoutPanel1";
@@ -89,46 +85,14 @@ namespace ChessLearnProgram
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.12121F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.55411F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.33766F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.tableLayoutPanel1.Size     =  new System.Drawing.Size(460, 475);
+            this.tableLayoutPanel1.Size     =  new System.Drawing.Size(460, 462);
             this.tableLayoutPanel1.TabIndex =  3;
             this.tableLayoutPanel1.Paint    += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
-            //
-            // BlackPawn
-            //
-            this.BlackPawn.AllowDrop = true;
-            this.BlackPawn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                                                                         | System.Windows.Forms.AnchorStyles.Left)
-                                                                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.BlackPawn.BackgroundImage         =  ((System.Drawing.Image)(resources.GetObject("BlackPawn.BackgroundImage")));
-            this.BlackPawn.BackgroundImageLayout   =  System.Windows.Forms.ImageLayout.Zoom;
-            this.BlackPawn.Location                =  new System.Drawing.Point(173, 356);
-            this.BlackPawn.Margin                  =  new System.Windows.Forms.Padding(2);
-            this.BlackPawn.Name                    =  "BlackPawn";
-            this.BlackPawn.Size                    =  new System.Drawing.Size(53, 55);
-            this.BlackPawn.TabIndex                =  6;
-            this.BlackPawn.UseVisualStyleBackColor =  true;
-            this.BlackPawn.Click                   += new System.EventHandler(this.BlackPawn_Click);
-            //
-            // button4
-            //
-            this.button4.AllowDrop = true;
-            this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                                                                       | System.Windows.Forms.AnchorStyles.Left)
-                                                                      | System.Windows.Forms.AnchorStyles.Right)));
-            this.button4.BackgroundImage         =  ((System.Drawing.Image)(resources.GetObject("button4.BackgroundImage")));
-            this.button4.BackgroundImageLayout   =  System.Windows.Forms.ImageLayout.Zoom;
-            this.button4.Location                =  new System.Drawing.Point(230, 2);
-            this.button4.Margin                  =  new System.Windows.Forms.Padding(2);
-            this.button4.Name                    =  "button4";
-            this.button4.Size                    =  new System.Drawing.Size(53, 55);
-            this.button4.TabIndex                =  8;
-            this.button4.UseVisualStyleBackColor =  true;
-            this.button4.Click                   += new System.EventHandler(this.BlackPawn_Click);
             //
             // button1
             //
@@ -144,10 +108,10 @@ namespace ChessLearnProgram
             this.button1.FlatAppearance.BorderSize  =  0;
             this.button1.FlatStyle                  =  System.Windows.Forms.FlatStyle.Flat;
             this.button1.ForeColor                  =  System.Drawing.Color.DarkRed;
-            this.button1.Location                   =  new System.Drawing.Point(287, 179);
+            this.button1.Location                   =  new System.Drawing.Point(173, 347);
             this.button1.Margin                     =  new System.Windows.Forms.Padding(2);
             this.button1.Name                       =  "button1";
-            this.button1.Size                       =  new System.Drawing.Size(56, 55);
+            this.button1.Size                       =  new System.Drawing.Size(53, 54);
             this.button1.TabIndex                   =  7;
             this.button1.UseVisualStyleBackColor    =  true;
             this.button1.Click                      += new System.EventHandler(this.BlackPawn_Click);
@@ -158,6 +122,8 @@ namespace ChessLearnProgram
             //
             // button2
             //
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                                                                      | System.Windows.Forms.AnchorStyles.Right)));
             this.button2.Location                =  new System.Drawing.Point(571, 76);
             this.button2.Margin                  =  new System.Windows.Forms.Padding(2);
             this.button2.Name                    =  "button2";
@@ -169,6 +135,8 @@ namespace ChessLearnProgram
             //
             // button3
             //
+            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                                                                      | System.Windows.Forms.AnchorStyles.Right)));
             this.button3.Location                =  new System.Drawing.Point(571, 149);
             this.button3.Margin                  =  new System.Windows.Forms.Padding(2);
             this.button3.Name                    =  "button3";
@@ -215,16 +183,14 @@ namespace ChessLearnProgram
         }
 
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button4;
 
         #endregion
         private MenuStrip                              miniToolStrip;
         private System.Windows.Forms.ToolStripMenuItem главноеМенюToolStripMenuItem;
         private System.Windows.Forms.TableLayoutPanel  tableLayoutPanel1;
         private System.Windows.Forms.PrintDialog       printDialog1;
-        private Button                                 button2;
-        private Button                                 button3;
-        private System.Windows.Forms.Button            BlackPawn;
+        private System.Windows.Forms.Button            button2;
+        private System.Windows.Forms.Button            button3;
         private System.Windows.Forms.Button            button15;
     }
 }

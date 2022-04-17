@@ -17,11 +17,7 @@ namespace ChessLearnProgram
 
         private void BlackPawn_Click(object sender, EventArgs e)
         {
-            List<(int, int)> possiblePawnMoves = this.GetPossiblePawnMoves(this.BlackPawn);
-            foreach ((int column, int row) in possiblePawnMoves)
-            {
-                this.tableLayoutPanel1.Controls.Add(new RadioButton(), column, row);
-            }
+
         }
 
         private List<(int, int)> GetPossiblePawnMoves(Control piece)
@@ -51,8 +47,6 @@ namespace ChessLearnProgram
 
         private void button15_Click(object sender, EventArgs e)
         {
-            TableLayoutPanelCellPosition coords = this.tableLayoutPanel1.GetCellPosition(this.BlackPawn);
-            this.tableLayoutPanel1.Controls.Add(this.BlackPawn, coords.Column, coords.Row - 1);
         }
     }
 }

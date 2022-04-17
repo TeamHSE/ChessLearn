@@ -4,6 +4,10 @@ using System.Windows.Forms;
 
 namespace Chess
 {
+    /// <inheritdoc />
+    /// <summary>
+    /// Класс шахматной фигуры.
+    /// </summary>
     public abstract class ChessPiece : Button
     {
         /// <summary>
@@ -14,13 +18,23 @@ namespace Chess
         /// <summary>
         /// Переход на другую клетку.
         /// </summary>
-        /// <param name="coordinate">Координата другой клетки.</param>
-        public void MoveTo(Coordinate coordinate) => CurrentCoordinate = coordinate;
+        /// <param name="newCoordinate">Координата другой клетки.</param>
+        /// <exception cref="ArgumentException">Фигура не может переместиться на новую клетку.</exception>
+        public void MoveTo(Coordinate newCoordinate)
+        {
+            if (!ValidMoves.Contains(newCoordinate))
+            {
+                throw new ArgumentException($"Фигура не может переместиться с {CurrentCoordinate}"
+                                          + $" на {newCoordinate}!");
+            }
+
+            CurrentCoordinate = newCoordinate;
+        }
 
         /// <summary>
         /// Список корректных возможных ходов.
         /// </summary>
-        public abstract List<Coordinate> ValidMoves { get; set; }
+        protected abstract List<Coordinate> ValidMoves { get; set; }
 
         /// <summary>
         /// Статус фигуры. True – не срублена, False – срублена.

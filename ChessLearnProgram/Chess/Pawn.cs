@@ -14,7 +14,7 @@ namespace Chess
         /// <summary>
         /// Список корректных возможных ходов пешки.
         /// </summary>
-        public override List<Coordinate> ValidMoves { get; set; }
+        protected override List<Coordinate> ValidMoves { get; set; }
 
         /// <inheritdoc />
         /// <summary>
