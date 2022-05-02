@@ -1,17 +1,17 @@
 ﻿namespace Chess
 {
     /// <summary>
-    /// Интерфейс, описывающий координату.
+    ///     Интерфейс, описывающий координату.
     /// </summary>
     internal interface ICoordinate
     {
         /// <summary>
-        /// Координата столбца.
+        ///     Координата столбца.
         /// </summary>
         public int Column { get; set; }
 
         /// <summary>
-        /// Координата строки.
+        ///     Координата строки.
         /// </summary>
         public int Row { get; set; }
     }

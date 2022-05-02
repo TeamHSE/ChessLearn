@@ -1,0 +1,6 @@
+C:\Users\aleks\RiderProjects\ChessLearn\ChessLearnProgram\Chess\obj\Debug\Chess.csproj.AssemblyReference.cache
+C:\Users\aleks\RiderProjects\ChessLearn\ChessLearnProgram\Chess\obj\Debug\Chess.csproj.CoreCompileInputs.cache
+C:\Users\aleks\RiderProjects\ChessLearn\ChessLearnProgram\Chess\bin\Debug\Chess.dll
+C:\Users\aleks\RiderProjects\ChessLearn\ChessLearnProgram\Chess\bin\Debug\Chess.pdb
+C:\Users\aleks\RiderProjects\ChessLearn\ChessLearnProgram\Chess\obj\Debug\Chess.dll
+C:\Users\aleks\RiderProjects\ChessLearn\ChessLearnProgram\Chess\obj\Debug\Chess.pdb

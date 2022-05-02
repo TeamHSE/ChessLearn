@@ -4,22 +4,32 @@ namespace Chess
 {
     /// <inheritdoc />
     /// <summary>
-    /// Координата шахматной фигуры.
+    ///     Координата шахматной фигуры.
     /// </summary>
-    public class Coordinate : ICoordinate
+    public sealed class Coordinate : ICoordinate
     {
-        private        int  _column;
-        private        int  _row;
-        private static bool IsCoordinateInDiapason(int coordinatePart) => (coordinatePart >= 0) && (coordinatePart < 8);
+        private int _row;
+        private int _column;
+
+        /// <summary>
+        ///     Координата фигуры.
+        /// </summary>
+        /// <param name="row">Строка координаты.</param>
+        /// <param name="column">Столбец координаты.</param>
+        internal Coordinate(int row, int column)
+        {
+            Row    = row;
+            Column = column;
+        }
 
         /// <inheritdoc />
         /// <summary>
-        /// Столбец координаты фигуры.
+        ///     Столбец координаты фигуры.
         /// </summary>
         /// <exception cref="T:System.ArgumentException">Индекс столбца не входит в допустимый диапазон.</exception>
         public int Column
         {
-            get => this._column;
+            get { return this._column; }
             set
             {
                 if (!IsCoordinateInDiapason(value))
@@ -34,12 +44,12 @@ namespace Chess
 
         /// <inheritdoc />
         /// <summary>
-        /// Строка координаты фигуры.
+        ///     Строка координаты фигуры.
         /// </summary>
         /// <exception cref="T:System.ArgumentException">Индекс строки не входит в допустимый диапазон.</exception>
         public int Row
         {
-            get => this._row;
+            get { return this._row; }
             set
             {
                 if (!IsCoordinateInDiapason(value))
@@ -52,15 +62,9 @@ namespace Chess
             }
         }
 
-        /// <summary>
-        /// Координата фигуры.
-        /// </summary>
-        /// <param name="column">Столбец координаты.</param>
-        /// <param name="row">Строка координаты.</param>
-        internal Coordinate(int column, int row)
+        private static bool IsCoordinateInDiapason(int coordinatePart)
         {
-            Column = column;
-            Row    = row;
+            return (coordinatePart >= 0) && (coordinatePart < 8);
         }
     }
 }

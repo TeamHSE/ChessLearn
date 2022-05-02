@@ -1,9 +1,14 @@
-﻿namespace Chess
-{
-    public class ChessBoard
-    {
-        private ChessPiece[,] _chessBoardMatrix;
+﻿using Chess.Pieces;
 
-        public ChessBoard() => this._chessBoardMatrix = new ChessPiece[8, 8];
+namespace Chess
+{
+    public static class ChessBoard
+    {
+        private static ChessPiece[,] _chessBoardMatrix = new ChessPiece[8, 8];
+
+        internal static ChessPiece GetPiece(int currentRow, int currentColumn)
+        {
+            return _chessBoardMatrix[currentRow, currentColumn];
+        }
     }
 }

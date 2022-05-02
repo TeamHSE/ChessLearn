@@ -92,7 +92,6 @@ namespace ChessLearnProgram
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
             this.tableLayoutPanel1.Size     =  new System.Drawing.Size(460, 462);
             this.tableLayoutPanel1.TabIndex =  3;
-            this.tableLayoutPanel1.Paint    += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             //
             // button1
             //
@@ -114,7 +113,6 @@ namespace ChessLearnProgram
             this.button1.Size                       =  new System.Drawing.Size(53, 54);
             this.button1.TabIndex                   =  7;
             this.button1.UseVisualStyleBackColor    =  true;
-            this.button1.Click                      += new System.EventHandler(this.BlackPawn_Click);
             //
             // printDialog1
             //
@@ -131,7 +129,6 @@ namespace ChessLearnProgram
             this.button2.TabIndex                =  4;
             this.button2.Text                    =  "button2";
             this.button2.UseVisualStyleBackColor =  true;
-            this.button2.Click                   += new System.EventHandler(this.button2_Click);
             //
             // button3
             //
@@ -144,7 +141,6 @@ namespace ChessLearnProgram
             this.button3.TabIndex                =  5;
             this.button3.Text                    =  "button3";
             this.button3.UseVisualStyleBackColor =  true;
-            this.button3.Click                   += new System.EventHandler(this.button3_Click);
             //
             // button15
             //
@@ -157,7 +153,6 @@ namespace ChessLearnProgram
             this.button15.TabIndex                =  6;
             this.button15.Text                    =  "button15";
             this.button15.UseVisualStyleBackColor =  true;
-            this.button15.Click                   += new System.EventHandler(this.button15_Click);
             //
             // ChessBoardForm
             //

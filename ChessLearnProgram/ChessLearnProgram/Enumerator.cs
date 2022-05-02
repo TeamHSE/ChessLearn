@@ -11,22 +11,25 @@
             this.y = y;
         }
 
-        public override string ToString() => ($"{this.x},{this.y}");
-
-        
+        public override string ToString()
+        {
+            return $"{this.x},{this.y}";
+        }
     }
+
     public enum Direction
     {
         Forward,
         Backward,
         Left,
-        Right,
+        Right
     }
+
     public enum DiagonalDirection
     {
         ForwardLeft,
         ForwardRight,
         BackwardLeft,
-        BackwardRight,
+        BackwardRight
     }
 }
