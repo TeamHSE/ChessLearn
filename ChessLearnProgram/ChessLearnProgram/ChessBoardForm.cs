@@ -7,6 +7,7 @@ namespace ChessLearnProgram
 {
     internal sealed partial class ChessBoardForm : Form
     {
+        private Pawn _pawn;
         public ChessBoardForm()
         {
             this.InitializeComponent();
@@ -15,8 +16,14 @@ namespace ChessLearnProgram
         private void button15_Click(object sender, EventArgs e)
         {
             // Добавить Pawn на поле.
-            var pawn = new Pawn(new Coordinate(0, 0), "White");
-            ChessBoard.ChessBoardMatrix[pawn.CurrentCoordinate.Column, pawn.CurrentCoordinate.Row] = pawn;
+            this._pawn            =  new Pawn(new Coordinate(1, 0), "Black");
+            this._pawn.MouseClick += this.Piece_MouseClick;
+            this.UpdateChessBoard();
+        }
+
+        private void Piece_MouseClick(object sender, MouseEventArgs e)
+        {
+            ((ChessPiece)sender).ShowValidMoves();
             this.UpdateChessBoard();
         }
 

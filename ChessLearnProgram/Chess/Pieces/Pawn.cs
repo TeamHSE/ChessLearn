@@ -9,10 +9,7 @@ namespace Chess.Pieces
         public Pawn(Coordinate coordinate, string color) : base(coordinate, color)
         {
             AllowDrop = true;
-            Anchor = AnchorStyles.Top
-                   | AnchorStyles.Bottom
-                   | AnchorStyles.Left
-                   | AnchorStyles.Right;
+            Anchor    = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             AutoSize  = true;
             BackColor = System.Drawing.Color.Transparent;
             BackgroundImage = new Bitmap("C:\\Users\\aleks\\RiderProjects\\ChessLearn\\ChessLearnProgram\\Chess"
@@ -24,7 +21,7 @@ namespace Chess.Pieces
             ForeColor                  = System.Drawing.Color.DarkRed;
             Location                   = new Point(173, 347);
             Margin                     = new Padding(2);
-            Name                       = "button1";
+            Name                       = "Pawn";
             Size                       = new Size(53, 54);
             TabIndex                   = 7;
             UseVisualStyleBackColor    = true;
@@ -39,12 +36,6 @@ namespace Chess.Pieces
         {
             get { return this.GetValidMoves(CurrentCoordinate); }
         }
-
-        /// <inheritdoc />
-        /// <summary>
-        ///     Статус пешки. True – не срублена, False – срублена.
-        /// </summary>
-        public override bool IsPlayable { get; set; }
 
         private int InitialRow
         {
@@ -85,14 +76,14 @@ namespace Chess.Pieces
             if (currentCoordinate.Row == InitialRow)
             {
                 // На её ходу с первой горизонтали на 2 клетки нет дугих фигур.
-                if (ChessBoard.GetPiece(currentCoordinate.Row + TwoSteps, currentCoordinate.Column) == null)
+                if (ChessBoard.GetPieceOrNull(currentCoordinate.Row + TwoSteps, currentCoordinate.Column) == null)
                 {
                     validMoves.Add(new Coordinate(currentCoordinate.Row + TwoSteps, currentCoordinate.Column));
                 }
             }
 
             // На её ходу с любой горизонтали нет дугих фигур.
-            if (ChessBoard.GetPiece(currentCoordinate.Row + OneStep, currentCoordinate.Column) == null)
+            if (ChessBoard.GetPieceOrNull(currentCoordinate.Row + OneStep, currentCoordinate.Column) == null)
             {
                 validMoves.Add(new Coordinate(currentCoordinate.Row + OneStep, currentCoordinate.Column));
             }
@@ -105,26 +96,36 @@ namespace Chess.Pieces
 
         private void PawnCutMoves(ICoordinate currentCoordinate, ref List<Coordinate> validMoves)
         {
-            bool isLeftPiece = ChessBoard
-                                  .GetPiece(currentCoordinate.Row + OneStep, currentCoordinate.Column - 1)
+            bool isLeftPieceExists = ChessBoard
+                                  .GetPieceOrNull(currentCoordinate.Row + OneStep, currentCoordinate.Column - 1)
                             != null;
-            bool isRightPiece = ChessBoard
-                                   .GetPiece(currentCoordinate.Row + OneStep, currentCoordinate.Column + 1)
+            bool isRightPieceExists = ChessBoard
+                                   .GetPieceOrNull(currentCoordinate.Row + OneStep, currentCoordinate.Column + 1)
                              != null;
-            bool isLeftPieceColor
-                = ChessBoard.GetPiece(currentCoordinate.Row + OneStep, currentCoordinate.Column - 1)
-                            .Color
-               != Color;
-            bool isRightPieceColor = ChessBoard
-                                    .GetPiece(currentCoordinate.Row + OneStep, currentCoordinate.Column + 1)
-                                    .Color
-                                  != Color;
-            if (isLeftPiece && isLeftPieceColor)
+            var isLeftPieceColorDiffers = false;
+            if (isLeftPieceExists)
+            {
+                isLeftPieceColorDiffers = ChessBoard
+                                         .GetPieceOrNull(currentCoordinate.Row + OneStep, currentCoordinate.Column - 1)
+                                         .Color
+                                       != Color;
+            }
+
+            var isRightPieceColorDiffers = false;
+            if (isRightPieceExists)
+            {
+                isRightPieceColorDiffers = ChessBoard
+                                          .GetPieceOrNull(currentCoordinate.Row + OneStep, currentCoordinate.Column + 1)
+                                          .Color
+                                        != Color;
+            }
+
+            if (isLeftPieceExists && isLeftPieceColorDiffers)
             {
                 validMoves.Add(new Coordinate(currentCoordinate.Row + OneStep, currentCoordinate.Column - 1));
             }
 
-            if (isRightPiece && isRightPieceColor)
+            if (isRightPieceExists && isRightPieceColorDiffers)
             {
                 validMoves.Add(new Coordinate(currentCoordinate.Row + OneStep, currentCoordinate.Column + 1));
             }
