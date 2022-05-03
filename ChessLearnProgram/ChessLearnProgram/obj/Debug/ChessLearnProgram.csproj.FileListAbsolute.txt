@@ -23,3 +23,6 @@ C:\Users\aleks\RiderProjects\ChessLearn\ChessLearnProgram\ChessLearnProgram\obj\
 C:\Users\aleks\RiderProjects\ChessLearn\ChessLearnProgram\ChessLearnProgram\obj\Debug\ChessLearnProgram.LessonsForm.resources
 C:\Users\aleks\RiderProjects\ChessLearn\ChessLearnProgram\ChessLearnProgram\obj\Debug\ChessLearnProgram.BoardForm.resources
 C:\Users\aleks\RiderProjects\ChessLearn\ChessLearnProgram\ChessLearnProgram\obj\Debug\ChessLearnProgram.ChessBoardForm.resources
+C:\Users\aleks\RiderProjects\ChessLearn\ChessLearnProgram\ChessLearnProgram\bin\Debug\Chess.dll
+C:\Users\aleks\RiderProjects\ChessLearn\ChessLearnProgram\ChessLearnProgram\bin\Debug\Chess.pdb
+C:\Users\aleks\RiderProjects\ChessLearn\ChessLearnProgram\ChessLearnProgram\obj\Debug\ChessLearnProgram.csproj.CopyComplete

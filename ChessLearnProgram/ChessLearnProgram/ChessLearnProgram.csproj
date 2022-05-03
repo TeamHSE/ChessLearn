@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-    <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')"/>
+    <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
     <PropertyGroup>
         <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
         <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -33,26 +33,26 @@
         <WarningLevel>4</WarningLevel>
     </PropertyGroup>
     <ItemGroup>
-        <Reference Include="System"/>
-        <Reference Include="System.Core"/>
-        <Reference Include="System.Xml.Linq"/>
-        <Reference Include="System.Data.DataSetExtensions"/>
-        <Reference Include="Microsoft.CSharp"/>
-        <Reference Include="System.Data"/>
-        <Reference Include="System.Deployment"/>
-        <Reference Include="System.Drawing"/>
-        <Reference Include="System.Net.Http"/>
-        <Reference Include="System.Windows.Forms"/>
-        <Reference Include="System.Xml"/>
+        <Reference Include="System" />
+        <Reference Include="System.Core" />
+        <Reference Include="System.Xml.Linq" />
+        <Reference Include="System.Data.DataSetExtensions" />
+        <Reference Include="Microsoft.CSharp" />
+        <Reference Include="System.Data" />
+        <Reference Include="System.Deployment" />
+        <Reference Include="System.Drawing" />
+        <Reference Include="System.Net.Http" />
+        <Reference Include="System.Windows.Forms" />
+        <Reference Include="System.Xml" />
     </ItemGroup>
     <ItemGroup>
         <Compile Include="BoardForm.cs">
             <SubType>Form</SubType>
         </Compile>
-        <Compile Include="BoardForm.Designer.cs"/>
-        <Compile Include="ChessBoardForm.cs"/>
-        <Compile Include="ChessBoardForm.Designer.cs"/>
-        <Compile Include="Enumerator.cs"/>
+        <Compile Include="BoardForm.Designer.cs" />
+        <Compile Include="ChessBoardForm.cs" />
+        <Compile Include="ChessBoardForm.Designer.cs" />
+        <Compile Include="Enumerator.cs" />
         <Compile Include="LessonsForm.cs">
             <SubType>Form</SubType>
         </Compile>
@@ -71,10 +71,10 @@
         <Compile Include="SettingsForm.Designer.cs">
             <DependentUpon>SettingsForm.cs</DependentUpon>
         </Compile>
-        <Compile Include="Program.cs"/>
-        <Compile Include="Properties\AssemblyInfo.cs"/>
-        <EmbeddedResource Include="BoardForm.resx"/>
-        <EmbeddedResource Include="ChessBoardForm.resx"/>
+        <Compile Include="Program.cs" />
+        <Compile Include="Properties\AssemblyInfo.cs" />
+        <EmbeddedResource Include="BoardForm.resx" />
+        <EmbeddedResource Include="ChessBoardForm.resx" />
         <EmbeddedResource Include="LessonsForm.resx">
             <DependentUpon>LessonsForm.cs</DependentUpon>
         </EmbeddedResource>
@@ -104,7 +104,13 @@
         </Compile>
     </ItemGroup>
     <ItemGroup>
-        <None Include="App.config"/>
+        <None Include="App.config" />
     </ItemGroup>
-    <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
+    <ItemGroup>
+      <ProjectReference Include="..\Chess\Chess.csproj">
+        <Project>{af323f8b-9098-485d-b236-ec9e19bd6aa8}</Project>
+        <Name>Chess</Name>
+      </ProjectReference>
+    </ItemGroup>
+    <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

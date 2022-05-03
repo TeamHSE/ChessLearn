@@ -44,9 +44,9 @@ namespace ChessLearnProgram
             this.miniToolStrip.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
-            //
+            // 
             // miniToolStrip
-            //
+            // 
             this.miniToolStrip.AutoSize         = false;
             this.miniToolStrip.Dock             = System.Windows.Forms.DockStyle.None;
             this.miniToolStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
@@ -57,15 +57,15 @@ namespace ChessLearnProgram
             this.miniToolStrip.Size     = new System.Drawing.Size(741, 24);
             this.miniToolStrip.TabIndex = 1;
             this.miniToolStrip.Visible  = false;
-            //
+            // 
             // главноеМенюToolStripMenuItem
-            //
+            // 
             this.главноеМенюToolStripMenuItem.Name = "главноеМенюToolStripMenuItem";
             this.главноеМенюToolStripMenuItem.Size = new System.Drawing.Size(99, 20);
             this.главноеМенюToolStripMenuItem.Text = "Главное меню";
-            //
+            // 
             // tableLayoutPanel1
-            //
+            // 
             this.tableLayoutPanel1.BackgroundImage       = ((System.Drawing.Image)(resources.GetObject("tableLayoutPanel1.BackgroundImage")));
             this.tableLayoutPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.tableLayoutPanel1.ColumnCount           = 8;
@@ -90,60 +90,60 @@ namespace ChessLearnProgram
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.33766F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.tableLayoutPanel1.Size     =  new System.Drawing.Size(460, 462);
-            this.tableLayoutPanel1.TabIndex =  3;
-            //
+            this.tableLayoutPanel1.Size     = new System.Drawing.Size(460, 462);
+            this.tableLayoutPanel1.TabIndex = 3;
+            // 
             // button1
-            //
+            // 
             this.button1.AllowDrop = true;
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                                                                        | System.Windows.Forms.AnchorStyles.Left)
                                                                       | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.AutoSize                   =  true;
-            this.button1.BackColor                  =  System.Drawing.Color.Transparent;
-            this.button1.BackgroundImage            =  ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
-            this.button1.BackgroundImageLayout      =  System.Windows.Forms.ImageLayout.Zoom;
-            this.button1.FlatAppearance.BorderColor =  System.Drawing.Color.White;
-            this.button1.FlatAppearance.BorderSize  =  0;
-            this.button1.FlatStyle                  =  System.Windows.Forms.FlatStyle.Flat;
-            this.button1.ForeColor                  =  System.Drawing.Color.DarkRed;
-            this.button1.Location                   =  new System.Drawing.Point(173, 347);
-            this.button1.Margin                     =  new System.Windows.Forms.Padding(2);
-            this.button1.Name                       =  "button1";
-            this.button1.Size                       =  new System.Drawing.Size(53, 54);
-            this.button1.TabIndex                   =  7;
-            this.button1.UseVisualStyleBackColor    =  true;
-            //
+            this.button1.AutoSize                   = true;
+            this.button1.BackColor                  = System.Drawing.Color.Transparent;
+            this.button1.BackgroundImage            = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
+            this.button1.BackgroundImageLayout      = System.Windows.Forms.ImageLayout.Zoom;
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.button1.FlatAppearance.BorderSize  = 0;
+            this.button1.FlatStyle                  = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.ForeColor                  = System.Drawing.Color.DarkRed;
+            this.button1.Location                   = new System.Drawing.Point(173, 347);
+            this.button1.Margin                     = new System.Windows.Forms.Padding(2);
+            this.button1.Name                       = "button1";
+            this.button1.Size                       = new System.Drawing.Size(53, 54);
+            this.button1.TabIndex                   = 7;
+            this.button1.UseVisualStyleBackColor    = true;
+            // 
             // printDialog1
-            //
+            // 
             this.printDialog1.UseEXDialog = true;
-            //
+            // 
             // button2
-            //
+            // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                                                                       | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location                =  new System.Drawing.Point(571, 76);
-            this.button2.Margin                  =  new System.Windows.Forms.Padding(2);
-            this.button2.Name                    =  "button2";
-            this.button2.Size                    =  new System.Drawing.Size(54, 48);
-            this.button2.TabIndex                =  4;
-            this.button2.Text                    =  "button2";
-            this.button2.UseVisualStyleBackColor =  true;
-            //
+            this.button2.Location                = new System.Drawing.Point(571, 76);
+            this.button2.Margin                  = new System.Windows.Forms.Padding(2);
+            this.button2.Name                    = "button2";
+            this.button2.Size                    = new System.Drawing.Size(54, 48);
+            this.button2.TabIndex                = 4;
+            this.button2.Text                    = "button2";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
             // button3
-            //
+            // 
             this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                                                                       | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.Location                =  new System.Drawing.Point(571, 149);
-            this.button3.Margin                  =  new System.Windows.Forms.Padding(2);
-            this.button3.Name                    =  "button3";
-            this.button3.Size                    =  new System.Drawing.Size(53, 46);
-            this.button3.TabIndex                =  5;
-            this.button3.Text                    =  "button3";
-            this.button3.UseVisualStyleBackColor =  true;
-            //
+            this.button3.Location                = new System.Drawing.Point(571, 149);
+            this.button3.Margin                  = new System.Windows.Forms.Padding(2);
+            this.button3.Name                    = "button3";
+            this.button3.Size                    = new System.Drawing.Size(53, 46);
+            this.button3.TabIndex                = 5;
+            this.button3.Text                    = "button3";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
             // button15
-            //
+            // 
             this.button15.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                                                                        | System.Windows.Forms.AnchorStyles.Right)));
             this.button15.Location                =  new System.Drawing.Point(556, 251);
@@ -153,9 +153,10 @@ namespace ChessLearnProgram
             this.button15.TabIndex                =  6;
             this.button15.Text                    =  "button15";
             this.button15.UseVisualStyleBackColor =  true;
-            //
+            this.button15.Click                   += new System.EventHandler(this.button15_Click);
+            // 
             // ChessBoardForm
-            //
+            // 
             this.AutoScaleDimensions   = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode         = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor             = System.Drawing.SystemColors.Control;
@@ -181,11 +182,11 @@ namespace ChessLearnProgram
 
         #endregion
         private MenuStrip                              miniToolStrip;
-        private System.Windows.Forms.ToolStripMenuItem главноеМенюToolStripMenuItem;
-        private System.Windows.Forms.TableLayoutPanel  tableLayoutPanel1;
-        private System.Windows.Forms.PrintDialog       printDialog1;
-        private System.Windows.Forms.Button            button2;
-        private System.Windows.Forms.Button            button3;
-        private System.Windows.Forms.Button            button15;
+        private ToolStripMenuItem главноеМенюToolStripMenuItem;
+        private TableLayoutPanel  tableLayoutPanel1;
+        private PrintDialog       printDialog1;
+        private Button            button2;
+        private Button            button3;
+        private Button            button15;
     }
 }

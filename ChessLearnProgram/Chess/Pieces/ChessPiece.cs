@@ -13,14 +13,20 @@ namespace Chess.Pieces
         /// <summary>
         ///     Текущая координата фигуры.
         /// </summary>
-        protected abstract Coordinate CurrentCoordinate { get; set; }
+        public Coordinate CurrentCoordinate { get; set; }
 
         /// <summary>
         ///     Список корректных возможных ходов.
         /// </summary>
-        protected abstract List<Coordinate> ValidMoves { get; set; }
+        protected abstract List<Coordinate> ValidMoves { get; }
 
         private string _color;
+
+        public ChessPiece(Coordinate coordinate, string color)
+        {
+            CurrentCoordinate = coordinate;
+            Color             = color;
+        }
 
         /// <summary>
         ///     Статус фигуры. True – не срублена, False – срублена.

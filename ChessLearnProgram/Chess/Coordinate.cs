@@ -16,7 +16,7 @@ namespace Chess
         /// </summary>
         /// <param name="row">Строка координаты.</param>
         /// <param name="column">Столбец координаты.</param>
-        internal Coordinate(int row, int column)
+        public Coordinate(int row, int column)
         {
             Row    = row;
             Column = column;
