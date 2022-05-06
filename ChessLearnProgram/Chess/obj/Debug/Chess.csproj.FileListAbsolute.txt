@@ -6,3 +6,5 @@ C:\Users\aleks\RiderProjects\ChessLearn\ChessLearnProgram\Chess\obj\Debug\Chess.
 C:\Users\aleks\RiderProjects\ChessLearn\ChessLearnProgram\Chess\obj\Debug\Chess.pdb
 C:\Users\aleks\RiderProjects\ChessLearn\ChessLearnProgram\Chess\obj\Debug\Chess.Properties.Resources.resources
 C:\Users\aleks\RiderProjects\ChessLearn\ChessLearnProgram\Chess\obj\Debug\Chess.csproj.GenerateResource.cache
+C:\Users\aleks\RiderProjects\ChessLearn\ChessLearnProgram\Chess\obj\Debug\Chess.ResourceBlack.resources
+C:\Users\aleks\RiderProjects\ChessLearn\ChessLearnProgram\Chess\obj\Debug\Chess.ResourceWhite.resources

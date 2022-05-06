@@ -13,8 +13,9 @@ namespace Chess.Pieces
             AutoSize  = true;
             BackColor = System.Drawing.Color.Transparent;
             BackgroundImage = color == "Black"
-                                  ? new Bitmap("C:\\Users\\aleks\\RiderProjects\\ChessLearn\\ChessLearnProgram\\Chess\\Properties\\Images\\Black\\Pawn.png")
-                                  : new Bitmap("C:\\Users\\aleks\\RiderProjects\\ChessLearn\\ChessLearnProgram\\Chess\\Properties\\Images\\White\\Pawn.png");
+                                  ? new Bitmap(ResourceBlack.Pawn)
+                                  : new Bitmap(ResourceWhite.Pawn);
+
             BackgroundImageLayout      = ImageLayout.Zoom;
             FlatAppearance.BorderColor = System.Drawing.Color.White;
             FlatAppearance.BorderSize  = 0;
