@@ -15,6 +15,7 @@ namespace Chess.Pieces
             BackgroundImage = color == "Black"
                                   ? new Bitmap(ResourceBlack.Pawn)
                                   : new Bitmap(ResourceWhite.Pawn);
+
             BackgroundImageLayout      = ImageLayout.Zoom;
             FlatAppearance.BorderColor = System.Drawing.Color.White;
             FlatAppearance.BorderSize  = 0;
