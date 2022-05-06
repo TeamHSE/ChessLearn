@@ -47,12 +47,34 @@
         <Compile Include="Pieces\ChessPiece.cs" />
         <Compile Include="Pieces\Pawn.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
+        <Compile Include="Properties\Resources.Designer.cs">
+          <DesignTime>True</DesignTime>
+          <AutoGen>True</AutoGen>
+          <DependentUpon>Resources.resx</DependentUpon>
+        </Compile>
     </ItemGroup>
     <ItemGroup>
         <None Include="ClassDiagram1.cd" />
     </ItemGroup>
     <ItemGroup>
-      <Folder Include="Pieces\Images" />
+      <EmbeddedResource Include="Properties\Resources.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+    </ItemGroup>
+    <ItemGroup>
+      <Content Include="Properties\Images\Black\Bishop.png" />
+      <Content Include="Properties\Images\Black\King.png" />
+      <Content Include="Properties\Images\Black\Knight.png" />
+      <Content Include="Properties\Images\Black\Pawn.png" />
+      <Content Include="Properties\Images\Black\Queen.png" />
+      <Content Include="Properties\Images\Black\Rook.png" />
+      <Content Include="Properties\Images\White\Bishop.png" />
+      <Content Include="Properties\Images\White\King.png" />
+      <Content Include="Properties\Images\White\Knight.png" />
+      <Content Include="Properties\Images\White\Pawn.png" />
+      <Content Include="Properties\Images\White\Queen.png" />
+      <Content Include="Properties\Images\White\Rook.png" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -12,8 +12,9 @@ namespace Chess.Pieces
             Anchor    = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             AutoSize  = true;
             BackColor = System.Drawing.Color.Transparent;
-            BackgroundImage = new Bitmap("C:\\Users\\aleks\\RiderProjects\\ChessLearn\\ChessLearnProgram\\Chess"
-                                       + "\\Pieces\\Images\\Черные\\Пешка.png");
+            BackgroundImage = color == "Black"
+                                  ? new Bitmap("C:\\Users\\aleks\\RiderProjects\\ChessLearn\\ChessLearnProgram\\Chess\\Properties\\Images\\Black\\Pawn.png")
+                                  : new Bitmap("C:\\Users\\aleks\\RiderProjects\\ChessLearn\\ChessLearnProgram\\Chess\\Properties\\Images\\White\\Pawn.png");
             BackgroundImageLayout      = ImageLayout.Zoom;
             FlatAppearance.BorderColor = System.Drawing.Color.White;
             FlatAppearance.BorderSize  = 0;
@@ -97,11 +98,11 @@ namespace Chess.Pieces
         private void PawnCutMoves(ICoordinate currentCoordinate, ref List<Coordinate> validMoves)
         {
             bool isLeftPieceExists = ChessBoard
-                                  .GetPieceOrNull(currentCoordinate.Row + OneStep, currentCoordinate.Column - 1)
-                            != null;
+                                        .GetPieceOrNull(currentCoordinate.Row + OneStep, currentCoordinate.Column - 1)
+                                  != null;
             bool isRightPieceExists = ChessBoard
-                                   .GetPieceOrNull(currentCoordinate.Row + OneStep, currentCoordinate.Column + 1)
-                             != null;
+                                         .GetPieceOrNull(currentCoordinate.Row + OneStep, currentCoordinate.Column + 1)
+                                   != null;
             var isLeftPieceColorDiffers = false;
             if (isLeftPieceExists)
             {

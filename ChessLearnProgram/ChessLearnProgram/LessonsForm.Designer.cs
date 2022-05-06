@@ -31,8 +31,8 @@ namespace ChessLearnProgram
         /// </summary>
         private void InitializeComponent()
         {
-            this.LessonsLabel        = new System.Windows.Forms.Label();
-            this.LessonFiguresButton = new System.Windows.Forms.Button();
+            this.LessonsLabel             = new System.Windows.Forms.Label();
+            this.LessonHowToFiguresButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // LessonsLabel
@@ -47,29 +47,29 @@ namespace ChessLearnProgram
             this.LessonsLabel.Text      = "Каталог уроков";
             this.LessonsLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // LessonFiguresButton
+            // LessonHowToFiguresButton
             // 
-            this.LessonFiguresButton.Location                =  new System.Drawing.Point(327, 136);
-            this.LessonFiguresButton.Name                    =  "LessonFiguresButton";
-            this.LessonFiguresButton.Size                    =  new System.Drawing.Size(149, 48);
-            this.LessonFiguresButton.TabIndex                =  1;
-            this.LessonFiguresButton.Text                    =  "Фигуры";
-            this.LessonFiguresButton.UseVisualStyleBackColor =  true;
-            this.LessonFiguresButton.Click                   += new System.EventHandler(this.LessonFiguresButton_Click);
+            this.LessonHowToFiguresButton.Location                =  new System.Drawing.Point(327, 136);
+            this.LessonHowToFiguresButton.Name                    =  "LessonHowToFiguresButton";
+            this.LessonHowToFiguresButton.Size                    =  new System.Drawing.Size(149, 48);
+            this.LessonHowToFiguresButton.TabIndex                =  1;
+            this.LessonHowToFiguresButton.Text                    =  "Как ходят фигуры";
+            this.LessonHowToFiguresButton.UseVisualStyleBackColor =  true;
+            this.LessonHowToFiguresButton.Click                   += new System.EventHandler(this.LessonFiguresButton_Click);
             // 
             // LessonsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode       = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize          = new System.Drawing.Size(800, 518);
-            this.Controls.Add(this.LessonFiguresButton);
+            this.Controls.Add(this.LessonHowToFiguresButton);
             this.Controls.Add(this.LessonsLabel);
             this.Name = "LessonsForm";
             this.Text = "LessonsForm";
             this.ResumeLayout(false);
         }
 
-        private System.Windows.Forms.Button LessonFiguresButton;
+        private System.Windows.Forms.Button LessonHowToFiguresButton;
 
         private System.Windows.Forms.Label LessonsLabel;
 

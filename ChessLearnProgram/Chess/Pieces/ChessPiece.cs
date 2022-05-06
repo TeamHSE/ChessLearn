@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Windows.Forms;
 
 namespace Chess.Pieces
@@ -82,12 +81,18 @@ namespace Chess.Pieces
             ChessBoard.ChessBoardMatrix[newCoordinate.Column, newCoordinate.Row] = this;
         }
 
-        public void ShowValidMoves()
+        public void ToggleShowValidMoves()
         {
             foreach (Coordinate coordinate in ValidMoves)
             {
-                var validMove = new ValidMove(coordinate, Color);
-                ChessBoard.ChessBoardMatrix[coordinate.Column, coordinate.Row] = validMove;
+                if (ChessBoard.ChessBoardMatrix[coordinate.Column, coordinate.Row] == null)
+                {
+                    ChessBoard.ChessBoardMatrix[coordinate.Column, coordinate.Row] = new ValidMove(coordinate, Color);
+                }
+                else if (ChessBoard.ChessBoardMatrix[coordinate.Column, coordinate.Row] is ValidMove)
+                {
+                    ChessBoard.ChessBoardMatrix[coordinate.Column, coordinate.Row] = null;
+                }
             }
         }
     }
@@ -97,13 +102,13 @@ namespace Chess.Pieces
         public ValidMove(Coordinate coordinate, string color) : base(coordinate, color)
         {
             AllowDrop = true;
-            Anchor    = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            AutoSize  = true;
+            Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            AutoSize = true;
             BackColor = System.Drawing.Color.Chartreuse;
             FlatAppearance.BorderColor = System.Drawing.Color.White;
-            FlatAppearance.BorderSize  = 0;
-            FlatStyle                  = FlatStyle.Flat;
-            UseVisualStyleBackColor    = true;
+            FlatAppearance.BorderSize = 0;
+            FlatStyle = FlatStyle.Flat;
+            UseVisualStyleBackColor = true;
         }
     }
 }

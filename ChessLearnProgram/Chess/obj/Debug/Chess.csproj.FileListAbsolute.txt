@@ -4,3 +4,5 @@ C:\Users\aleks\RiderProjects\ChessLearn\ChessLearnProgram\Chess\bin\Debug\Chess.
 C:\Users\aleks\RiderProjects\ChessLearn\ChessLearnProgram\Chess\bin\Debug\Chess.pdb
 C:\Users\aleks\RiderProjects\ChessLearn\ChessLearnProgram\Chess\obj\Debug\Chess.dll
 C:\Users\aleks\RiderProjects\ChessLearn\ChessLearnProgram\Chess\obj\Debug\Chess.pdb
+C:\Users\aleks\RiderProjects\ChessLearn\ChessLearnProgram\Chess\obj\Debug\Chess.Properties.Resources.resources
+C:\Users\aleks\RiderProjects\ChessLearn\ChessLearnProgram\Chess\obj\Debug\Chess.csproj.GenerateResource.cache
