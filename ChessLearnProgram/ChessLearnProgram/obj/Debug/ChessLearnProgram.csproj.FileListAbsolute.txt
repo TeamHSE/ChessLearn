@@ -26,3 +26,4 @@ C:\Users\aleks\RiderProjects\ChessLearn\ChessLearnProgram\ChessLearnProgram\bin\
 C:\Users\aleks\RiderProjects\ChessLearn\ChessLearnProgram\ChessLearnProgram\bin\Debug\Chess.pdb
 C:\Users\aleks\RiderProjects\ChessLearn\ChessLearnProgram\ChessLearnProgram\obj\Debug\ChessLearnProgram.csproj.CopyComplete
 C:\Users\aleks\RiderProjects\ChessLearn\ChessLearnProgram\ChessLearnProgram\obj\Debug\ChessLearnProgram.HowToFiguresLesson.resources
+C:\Users\aleks\RiderProjects\ChessLearn\ChessLearnProgram\ChessLearnProgram\obj\Debug\ChessLearnProgram.Resource.resources

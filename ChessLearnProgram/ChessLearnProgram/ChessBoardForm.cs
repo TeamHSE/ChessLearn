@@ -5,15 +5,15 @@ using System.Threading;
 using System.Windows.Forms;
 using Chess;
 using Chess.Pieces;
+using ChessLearnProgram.Properties;
 
 namespace ChessLearnProgram
 {
     internal sealed partial class ChessBoardForm : Form
     {
-        private SoundPlayer[] _sounds =
+        private readonly SoundPlayer[] _sounds =
         {
-            new SoundPlayer("C:\\Users\\aleks\\RiderProjects\\ChessLearn\\"
-                          + "ChessLearnProgram\\ChessLearnProgram\\Properties\\Audio\\pawn_train.wav"),
+            new SoundPlayer(Resource.pawn_train),
         };
 
         private SoundPlayer _currentSound;
@@ -112,12 +112,7 @@ namespace ChessLearnProgram
             this.UpdateChessBoard();
             this._currentSound = this._sounds[0];
 
-            this.MessageTextBox.Text
-                = @"    Шахматы – популярная развивающая игра и полезно начать её изучение с того, как ходят фигуры на шахматной доске.
-    Начнём с пешки. Всего пешек в начале игры 8 – как у вас, так и у противника. Располагаются пешки на двух горизонталях в ряд, занимая всю ширину доски.
-    Пешка ходит только вперед на одну или две клетки, если на пути пешки стоит другая фигура, то ход невозможен.
-    Первым ходом с начальной горизонтали пешка может пойти как на одну, так и на две клетки вперёд.
-    Если пешка уже не на начальной горизонтали, то она может продвигаться только на одну клетку вперёд.";
+            this.MessageTextBox.Text = Resource.pawn_train_text;
         }
     }
 }
