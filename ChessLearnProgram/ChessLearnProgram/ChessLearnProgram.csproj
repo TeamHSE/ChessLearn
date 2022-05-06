@@ -46,17 +46,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BoardForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="BoardForm.Designer.cs" />
-    <Compile Include="ChessBoard.cs" />
     <Compile Include="ChessBoardForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ChessBoardForm.Designer.cs" />
-    <Compile Include="ChessPart.cs" />
     <Compile Include="Enumerator.cs" />
+    <Compile Include="HowToFiguresLesson.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HowToFiguresLesson.Designer.cs">
+      <DependentUpon>HowToFiguresLesson.cs</DependentUpon>
+    </Compile>
     <Compile Include="LessonsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -69,7 +69,6 @@
     <Compile Include="MainMenuForm.Designer.cs">
       <DependentUpon>MainMenuForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Pawn.cs" />
     <Compile Include="SettingsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -78,8 +77,10 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="BoardForm.resx" />
     <EmbeddedResource Include="ChessBoardForm.resx" />
+    <EmbeddedResource Include="HowToFiguresLesson.resx">
+      <DependentUpon>HowToFiguresLesson.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LessonsForm.resx">
       <DependentUpon>LessonsForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -110,6 +111,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Chess\Chess.csproj">
+      <Project>{af323f8b-9098-485d-b236-ec9e19bd6aa8}</Project>
+      <Name>Chess</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Properties\Audio\pawn_move.wav" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

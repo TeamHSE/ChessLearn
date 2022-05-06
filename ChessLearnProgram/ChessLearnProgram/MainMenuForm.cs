@@ -5,7 +5,10 @@ namespace ChessLearnProgram
 {
     internal sealed partial class MainMenuForm : Form
     {
-        public MainMenuForm() => this.InitializeComponent();
+        public MainMenuForm()
+        {
+            this.InitializeComponent();
+        }
 
         private void SettingsButton_Click(object sender, EventArgs e)
         {

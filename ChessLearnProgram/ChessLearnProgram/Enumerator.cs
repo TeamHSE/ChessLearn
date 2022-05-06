@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ChessLearnProgram
+﻿namespace ChessLearnProgram
 {
     public struct Point
     {
@@ -17,22 +11,25 @@ namespace ChessLearnProgram
             this.y = y;
         }
 
-        public override string ToString() => ($"{x},{y}");
-
-        
+        public override string ToString()
+        {
+            return $"{this.x},{this.y}";
+        }
     }
+
     public enum Direction
     {
         Forward,
         Backward,
         Left,
-        Right,
+        Right
     }
+
     public enum DiagonalDirection
     {
         ForwardLeft,
         ForwardRight,
         BackwardLeft,
-        BackwardRight,
+        BackwardRight
     }
 }

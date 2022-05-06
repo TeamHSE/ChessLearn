@@ -1,83 +1,123 @@
 ﻿using System;
 using System.Drawing;
+using System.Media;
+using System.Threading;
 using System.Windows.Forms;
+using Chess;
+using Chess.Pieces;
 
 namespace ChessLearnProgram
 {
     internal sealed partial class ChessBoardForm : Form
     {
+        private SoundPlayer[] _sounds =
+        {
+            new SoundPlayer("C:\\Users\\aleks\\RiderProjects\\ChessLearn\\"
+                          + "ChessLearnProgram\\ChessLearnProgram\\Properties\\Audio\\pawn_train.wav"),
+        };
+
+        private SoundPlayer _currentSound;
+
+        private int _playButtonClicks;
+
+        private Pawn _pawn;
+
         public ChessBoardForm()
         {
-            InitializeComponent();
+            this.InitializeComponent();
         }
 
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        private void UpdateChessBoard()
         {
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            tableLayoutPanel1.Size += new Size(20, 20);
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            tableLayoutPanel1.Size -= new Size(20, 20);
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private static int clickCount = 0;
-
-        private void button9_Click(object sender, EventArgs e)
-        {
-            var coords = tableLayoutPanel1.GetCellPosition(button9);
-
-            if (clickCount % 2 == 0)
+            this.tableLayoutPanel1.Controls.Clear();
+            for (var i = 0; i < 8; i++)
             {
-                var possibleMove = new Button();
-                tableLayoutPanel1.Controls.Add(new Button(), coords.Column, coords.Row - 1);
-                possibleMove.Click += moveButtonClick;
+                for (var j = 0; j < 8; j++)
+                {
+                    if (ChessBoard.ChessBoardMatrix[i, j] != null)
+                    {
+                        this.tableLayoutPanel1.Controls.Add(ChessBoard.ChessBoardMatrix[i, j], i, j);
+                    }
+                }
+            }
+        }
+
+        private void SizeTrackBar_Scroll(object sender, EventArgs e)
+        {
+            this.tableLayoutPanel1.Size = new Size(this.SizeTrackBar.Value, this.SizeTrackBar.Value + 2);
+        }
+
+        private void PlayButton_Click(object sender, EventArgs e)
+        {
+            this._playButtonClicks++;
+            SoundPlayer soundPlayer = this._currentSound;
+            if ((this._playButtonClicks % 2) != 0)
+            {
+                soundPlayer.Play();
             }
             else
             {
-                tableLayoutPanel1.Controls.Remove(tableLayoutPanel1.GetControlFromPosition(coords.Column, coords.Row - 1));
+                soundPlayer.Stop();
             }
-            ++clickCount;
 
+            var thread = new Thread(() =>
+                                    {
+                                        // sleep 23 seconds
+                                        Thread.Sleep(22000);
+                                        Control centralWhitePawn
+                                            = this.tableLayoutPanel1.GetControlFromPosition(4, 6);
+                                        this.tableLayoutPanel1.Controls.Add(centralWhitePawn, 4, 5);
+                                        Thread.Sleep(2000);
+                                        Control centralBlackPawn = this.tableLayoutPanel1.GetControlFromPosition(3, 1);
+                                        this.tableLayoutPanel1.Controls.Add(centralBlackPawn, 3, 3);
+                                        Thread.Sleep(3000);
+                                        Control nearWhitePawn = this.tableLayoutPanel1.GetControlFromPosition(3, 6);
+                                        this.tableLayoutPanel1.Controls.Add(nearWhitePawn, 3, 4);
+                                        Thread.Sleep(5000);
+                                        Control nearBlackPawn
+                                            = this.tableLayoutPanel1.GetControlFromPosition(2, 1);
+                                        this.tableLayoutPanel1.Controls.Add(nearBlackPawn, 2, 3);
+                                        Thread.Sleep(2000);
+                                        Control farWhitePawn = this.tableLayoutPanel1.GetControlFromPosition(2, 6);
+                                        this.tableLayoutPanel1.Controls.Add(farWhitePawn, 2, 5);
+                                        Thread.Sleep(5000);
+                                        this.tableLayoutPanel1.Controls.Add(nearBlackPawn, 2, 4);
+                                        Thread.Sleep(4000);
+                                        Control secondWhitePawn = this.tableLayoutPanel1.GetControlFromPosition(1, 6);
+                                        this.tableLayoutPanel1.Controls.Add(secondWhitePawn, 1, 5);
+                                        Thread.Sleep(7000);
+                                        this.tableLayoutPanel1.Controls.Remove(secondWhitePawn);
+                                        this.tableLayoutPanel1.Controls.Add(nearBlackPawn, 1, 5);
+                                        Thread.Sleep(3000);
+                                        Control edgeWhitePawn = this.tableLayoutPanel1.GetControlFromPosition(0, 6);
+                                        this.tableLayoutPanel1.Controls.Add(edgeWhitePawn, 0, 5);
+                                        Thread.Sleep(1000);
+                                        this.tableLayoutPanel1.Controls.Add(nearBlackPawn, 1, 6);
+                                        Thread.Sleep(1000);
+                                        this.tableLayoutPanel1.Controls.Add(edgeWhitePawn, 0, 4);
+                                        Thread.Sleep(1000);
+                                        this.tableLayoutPanel1.Controls.Add(nearBlackPawn, 1, 7);
+                                    });
+            thread.Start();
         }
 
-        private void moveButtonClick(object sender, EventArgs e)
+        public void LoadPawnScene()
         {
-            TableLayoutPanelCellPosition coords = tableLayoutPanel1.GetCellPosition(button9);
-            tableLayoutPanel1.Controls.Add(button9, coords.Column, coords.Row - 1);
-        }
+            for (var i = 0; i < 8; i++)
+            {
+                var blackPawn = new Pawn(new Coordinate(1, i), "Black");
+                var whitePawn = new Pawn(new Coordinate(6, i), "White");
+            }
 
-        private void TableLayoutPanel1OnCellPaint(object sender, TableLayoutCellPaintEventArgs e)
-        {
-            var rectangle = e.CellBounds;
-            rectangle.Inflate(-1, -1);
-            ControlPaint.DrawBorder3D(e.Graphics, rectangle, Border3DStyle.Raised, Border3DSide.All); // 3D border
-        }
+            this.UpdateChessBoard();
+            this._currentSound = this._sounds[0];
 
-        private void button15_Click(object sender, EventArgs e)
-        {
-            TableLayoutPanelCellPosition coords = tableLayoutPanel1.GetCellPosition(button9);
-            tableLayoutPanel1.Controls.Add(button9, coords.Column, coords.Row - 1);
-        }
-
-        private void button7_Click(object sender, EventArgs e)
-        {
-
+            this.MessageTextBox.Text
+                = @"    Шахматы – популярная развивающая игра и полезно начать её изучение с того, как ходят фигуры на шахматной доске.
+    Начнём с пешки. Всего пешек в начале игры 8 – как у вас, так и у противника. Располагаются пешки на двух горизонталях в ряд, занимая всю ширину доски.
+    Пешка ходит только вперед на одну или две клетки, если на пути пешки стоит другая фигура, то ход невозможен.
+    Первым ходом с начальной горизонтали пешка может пойти как на одну, так и на две клетки вперёд.
+    Если пешка уже не на начальной горизонтали, то она может продвигаться только на одну клетку вперёд.";
         }
     }
-
 }
