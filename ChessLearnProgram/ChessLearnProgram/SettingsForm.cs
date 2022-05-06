@@ -14,27 +14,10 @@ namespace ChessLearnProgram
         {
         }
 
-        private void FullScreenСheckBox_CheckedChanged(object sender, EventArgs e)
+
+        private void WayToMoveDomainUpDown_SelectedItemChanged(object sender, EventArgs e)
         {
-            if (ActiveForm == null)
-            {
-                return;
-            }
 
-            if (!this.FullScreenСheckBox.Checked)
-            {
-                ActiveForm.TopMost              = false;
-                ActiveForm.FormBorderStyle      = FormBorderStyle.Sizable;
-                ActiveForm.WindowState          = FormWindowState.Normal;
-                this.FullScreenСheckBox.Checked = true;
-                return;
-            }
-
-            this.Dispose();
-            ActiveForm.TopMost              = true;
-            ActiveForm.FormBorderStyle      = FormBorderStyle.None;
-            ActiveForm.WindowState          = FormWindowState.Maximized;
-            this.FullScreenСheckBox.Checked = false;
         }
     }
 }

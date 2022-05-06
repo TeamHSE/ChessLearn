@@ -8,3 +8,13 @@ C:\Users\aleks\RiderProjects\ChessLearn\ChessLearnProgram\Chess\obj\Debug\Chess.
 C:\Users\aleks\RiderProjects\ChessLearn\ChessLearnProgram\Chess\obj\Debug\Chess.csproj.GenerateResource.cache
 C:\Users\aleks\RiderProjects\ChessLearn\ChessLearnProgram\Chess\obj\Debug\Chess.ResourceBlack.resources
 C:\Users\aleks\RiderProjects\ChessLearn\ChessLearnProgram\Chess\obj\Debug\Chess.ResourceWhite.resources
+C:\Users\ZAKHAR\Source\Repos\ChessLearn\ChessLearnProgram\Chess\bin\Debug\Chess.dll
+C:\Users\ZAKHAR\Source\Repos\ChessLearn\ChessLearnProgram\Chess\bin\Debug\Chess.pdb
+C:\Users\ZAKHAR\Source\Repos\ChessLearn\ChessLearnProgram\Chess\obj\Debug\Chess.csproj.AssemblyReference.cache
+C:\Users\ZAKHAR\Source\Repos\ChessLearn\ChessLearnProgram\Chess\obj\Debug\Chess.Properties.Resources.resources
+C:\Users\ZAKHAR\Source\Repos\ChessLearn\ChessLearnProgram\Chess\obj\Debug\Chess.ResourceBlack.resources
+C:\Users\ZAKHAR\Source\Repos\ChessLearn\ChessLearnProgram\Chess\obj\Debug\Chess.ResourceWhite.resources
+C:\Users\ZAKHAR\Source\Repos\ChessLearn\ChessLearnProgram\Chess\obj\Debug\Chess.csproj.GenerateResource.cache
+C:\Users\ZAKHAR\Source\Repos\ChessLearn\ChessLearnProgram\Chess\obj\Debug\Chess.csproj.CoreCompileInputs.cache
+C:\Users\ZAKHAR\Source\Repos\ChessLearn\ChessLearnProgram\Chess\obj\Debug\Chess.dll
+C:\Users\ZAKHAR\Source\Repos\ChessLearn\ChessLearnProgram\Chess\obj\Debug\Chess.pdb
