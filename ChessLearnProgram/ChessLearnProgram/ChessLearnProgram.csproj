@@ -50,7 +50,6 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ChessBoardForm.Designer.cs" />
-    <Compile Include="Enumerator.cs" />
     <Compile Include="HowToFiguresLesson.cs">
       <SubType>Form</SubType>
     </Compile>
