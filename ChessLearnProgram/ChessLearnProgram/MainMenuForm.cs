@@ -17,8 +17,7 @@ namespace ChessLearnProgram
         }
         private void LessonsButton_Click(object sender, EventArgs e)
         {
-            var lessonsForm = new LessonsForm();
-            lessonsForm.ShowDialog();
+            new HowToFiguresLesson().ShowDialog();
         }
     }
 }
