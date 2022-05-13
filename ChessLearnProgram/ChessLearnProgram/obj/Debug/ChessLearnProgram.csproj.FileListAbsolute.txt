@@ -36,7 +36,6 @@ C:\Users\ZAKHAR\Source\Repos\ChessLearn\ChessLearnProgram\ChessLearnProgram\obj\
 C:\Users\ZAKHAR\Source\Repos\ChessLearn\ChessLearnProgram\ChessLearnProgram\obj\Debug\ChessLearnProgram.csproj.SuggestedBindingRedirects.cache
 C:\Users\ZAKHAR\Source\Repos\ChessLearn\ChessLearnProgram\ChessLearnProgram\obj\Debug\ChessLearnProgram.ChessBoardForm.resources
 C:\Users\ZAKHAR\Source\Repos\ChessLearn\ChessLearnProgram\ChessLearnProgram\obj\Debug\ChessLearnProgram.HowToFiguresLesson.resources
-C:\Users\ZAKHAR\Source\Repos\ChessLearn\ChessLearnProgram\ChessLearnProgram\obj\Debug\ChessLearnProgram.LessonsForm.resources
 C:\Users\ZAKHAR\Source\Repos\ChessLearn\ChessLearnProgram\ChessLearnProgram\obj\Debug\ChessLearnProgram.MainMenuForm.resources
 C:\Users\ZAKHAR\Source\Repos\ChessLearn\ChessLearnProgram\ChessLearnProgram\obj\Debug\ChessLearnProgram.Resource.resources
 C:\Users\ZAKHAR\Source\Repos\ChessLearn\ChessLearnProgram\ChessLearnProgram\obj\Debug\ChessLearnProgram.SettingsForm.resources

@@ -64,10 +64,14 @@ namespace ChessLearnProgram
                                     {
                                         // sleep 23 seconds
                                         Thread.Sleep(22000);
+                                        // Берем фигуру.
                                         Control centralWhitePawn
                                             = this.tableLayoutPanel1.GetControlFromPosition(4, 6);
+                                        // Ставим на новую позицию.
                                         this.tableLayoutPanel1.Controls.Add(centralWhitePawn, 4, 5);
                                         Thread.Sleep(2000);
+
+
                                         Control centralBlackPawn = this.tableLayoutPanel1.GetControlFromPosition(3, 1);
                                         this.tableLayoutPanel1.Controls.Add(centralBlackPawn, 3, 3);
                                         Thread.Sleep(3000);
