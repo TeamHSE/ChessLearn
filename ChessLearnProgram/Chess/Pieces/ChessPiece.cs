@@ -35,7 +35,7 @@ namespace Chess.Pieces
         /// <summary>
         ///     Список корректных возможных ходов.
         /// </summary>
-        protected virtual List<Coordinate> ValidMoves { get; } = new List<Coordinate>();
+        public virtual List<Coordinate> ValidMoves { get; } = new List<Coordinate>();
 
         private string     _color;
         private Coordinate _currentCoordinate;

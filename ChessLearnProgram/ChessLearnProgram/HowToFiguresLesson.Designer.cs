@@ -73,12 +73,13 @@ namespace ChessLearnProgram
             // 
             // HowToKingButton
             // 
-            this.HowToKingButton.Location                = new System.Drawing.Point(326, 194);
-            this.HowToKingButton.Name                    = "HowToKingButton";
-            this.HowToKingButton.Size                    = new System.Drawing.Size(149, 48);
-            this.HowToKingButton.TabIndex                = 2;
-            this.HowToKingButton.Text                    = "Король";
-            this.HowToKingButton.UseVisualStyleBackColor = true;
+            this.HowToKingButton.Location                =  new System.Drawing.Point(326, 194);
+            this.HowToKingButton.Name                    =  "HowToKingButton";
+            this.HowToKingButton.Size                    =  new System.Drawing.Size(149, 48);
+            this.HowToKingButton.TabIndex                =  2;
+            this.HowToKingButton.Text                    =  "Король";
+            this.HowToKingButton.UseVisualStyleBackColor =  true;
+            this.HowToKingButton.Click                   += new System.EventHandler(this.HowToKingButton_Click);
             // 
             // HowToKnightButton
             // 
