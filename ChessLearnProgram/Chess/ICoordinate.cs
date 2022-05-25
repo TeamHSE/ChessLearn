@@ -3,7 +3,7 @@
     /// <summary>
     ///     Интерфейс, описывающий координату.
     /// </summary>
-    internal interface ICoordinate
+    public interface ICoordinate
     {
         /// <summary>
         ///     Координата столбца.

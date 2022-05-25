@@ -17,6 +17,13 @@ namespace ChessLearnProgram
             chessBoardForm.LoadPawnScene();
             chessBoardForm.ShowDialog();
         }
+
+        private void HowToKingButton_Click(object sender, EventArgs e)
+        {
+            var chessBoardForm = new ChessBoardForm();
+            chessBoardForm.LoadKingScene();
+            chessBoardForm.ShowDialog();
+        }
     }
 }
 

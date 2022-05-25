@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Linq;
 using System.Media;
 using System.Threading;
 using System.Windows.Forms;
@@ -20,11 +21,16 @@ namespace ChessLearnProgram
 
         private int _playButtonClicks;
 
-        private Pawn _pawn;
-
         public ChessBoardForm()
         {
             this.InitializeComponent();
+            for (var i = 0; i < 8; i++)
+            {
+                for (var j = 0; j < 8; j++)
+                {
+                    this.tableLayoutPanel1.Controls.Add(new EmptyControl(new Coordinate(j, i)), i, j);
+                }
+            }
         }
 
         private void UpdateChessBoard()
@@ -58,6 +64,7 @@ namespace ChessLearnProgram
             else
             {
                 soundPlayer.Stop();
+                return;
             }
 
             var thread = new Thread(() =>
@@ -70,8 +77,6 @@ namespace ChessLearnProgram
                                         // Ставим на новую позицию.
                                         this.tableLayoutPanel1.Controls.Add(centralWhitePawn, 4, 5);
                                         Thread.Sleep(2000);
-
-
                                         Control centralBlackPawn = this.tableLayoutPanel1.GetControlFromPosition(3, 1);
                                         this.tableLayoutPanel1.Controls.Add(centralBlackPawn, 3, 3);
                                         Thread.Sleep(3000);
@@ -110,13 +115,79 @@ namespace ChessLearnProgram
             for (var i = 0; i < 8; i++)
             {
                 var blackPawn = new Pawn(new Coordinate(1, i), "Black");
+                blackPawn.Click += this.PawnOnClick;
                 var whitePawn = new Pawn(new Coordinate(6, i), "White");
+                whitePawn.Click += this.PawnOnClick;
             }
 
             this.UpdateChessBoard();
             this._currentSound = this._sounds[0];
 
             this.MessageTextBox.Text = Resource.pawn_train_text;
+        }
+
+        public void LoadKingScene()
+        {
+            var blackKing = new King(new Coordinate(4, 2), "Black");
+            blackKing.Click += this.KingOnClick;
+            var whiteKing = new King(new Coordinate(3, 6), "White");
+            whiteKing.Click += this.KingOnClick;
+
+            this.UpdateChessBoard();
+            this._currentSound = this._sounds[0];
+
+            // this.MessageTextBox.Text = Resource.king_train_text;
+            this.MessageTextBox.Text = "Resource.king_train_text";
+        }
+
+        private void KingOnClick(object sender, EventArgs e)
+        {
+            ((King)sender).Clicks++;
+            if ((((King)sender).Clicks % 2) != 0)
+            {
+                foreach (Button cell in ((King)sender).ValidMoves.Select(coordinate =>
+                                                                             ChessBoard.ChessBoardMatrix
+                                                                                 [coordinate.Column, coordinate.Row]))
+                {
+                    cell.BackColor = Color.Aquamarine;
+                }
+            }
+            else
+            {
+                foreach (Button cell in ((King)sender).ValidMoves.Select(coordinate =>
+                                                                             ChessBoard.ChessBoardMatrix
+                                                                                 [coordinate.Column, coordinate.Row]))
+                {
+                    cell.BackColor = Color.Transparent;
+                }
+            }
+
+            this.UpdateChessBoard();
+        }
+
+        private void PawnOnClick(object sender, EventArgs e)
+        {
+            ((Pawn)sender).Clicks++;
+            if ((((Pawn)sender).Clicks % 2) != 0)
+            {
+                foreach (Button cell in ((Pawn)sender).ValidMoves.Select(coordinate =>
+                                                                             ChessBoard.ChessBoardMatrix
+                                                                                 [coordinate.Column, coordinate.Row]))
+                {
+                    cell.BackColor = Color.Aquamarine;
+                }
+            }
+            else
+            {
+                foreach (Button cell in ((Pawn)sender).ValidMoves.Select(coordinate =>
+                                                                             ChessBoard.ChessBoardMatrix
+                                                                                 [coordinate.Column, coordinate.Row]))
+                {
+                    cell.BackColor = Color.Transparent;
+                }
+            }
+
+            this.UpdateChessBoard();
         }
     }
 }

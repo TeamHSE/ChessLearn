@@ -47,6 +47,8 @@
     <Compile Include="Pieces\ChessPiece.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Pieces\EmptyControl.cs" />
+    <Compile Include="Pieces\King.cs" />
     <Compile Include="Pieces\Pawn.cs">
       <SubType>Component</SubType>
     </Compile>
