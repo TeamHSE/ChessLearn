@@ -2,7 +2,7 @@
 
 namespace ChessLearnProgram
 {
-    partial class HowToFiguresLesson
+    sealed partial class HowToFiguresLesson
     {
         /// <summary>
         /// Required designer variable.

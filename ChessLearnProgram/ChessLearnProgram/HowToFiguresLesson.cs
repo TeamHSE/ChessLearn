@@ -3,9 +3,9 @@ using System.Windows.Forms;
 
 namespace ChessLearnProgram
 {
-    public partial class HowToFiguresLesson : Form
+    public sealed partial class HowToFiguresLesson : Form
     {
-        public HowToFiguresLesson()
+        internal HowToFiguresLesson()
         {
             this.InitializeComponent();
         }

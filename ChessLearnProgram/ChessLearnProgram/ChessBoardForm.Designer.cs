@@ -155,10 +155,11 @@ namespace ChessLearnProgram
             this.Controls.Add(this.MessageTextBox);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.miniToolStrip);
-            this.DoubleBuffered = true;
-            this.Location       = new System.Drawing.Point(15, 15);
-            this.Margin         = new System.Windows.Forms.Padding(2);
-            this.Name           = "ChessBoardForm";
+            this.DoubleBuffered =  true;
+            this.Location       =  new System.Drawing.Point(15, 15);
+            this.Margin         =  new System.Windows.Forms.Padding(2);
+            this.Name           =  "ChessBoardForm";
+            this.FormClosed     += new System.Windows.Forms.FormClosedEventHandler(this.ChessBoardForm_FormClosed);
             this.miniToolStrip.ResumeLayout(false);
             this.miniToolStrip.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SizeTrackBar)).EndInit();

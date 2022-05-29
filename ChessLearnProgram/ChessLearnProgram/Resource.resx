@@ -117,6 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="king_train_text" xml:space="preserve">
+    <value>    Король – самая важная шахматная фигура, от его безопасности зависит исход партии, ведь если королю угрожают срубить вражеские фигуры, при этом король не может уйти от этой угрозы, то партия заканчивается проигрышем того, чей король оказался под ударом.
+    Ударом здесь является объявление шаха – когда вражеская фигура сделала ход таким образом, что следующим своим ходом может срубить короля. В таком случае вам нужно убрать короля из-под шаха, то есть уйти или закрыться другой фигурой, другие ходы, не спасающие короля от шаха, сделаны быть не могут. Если королю нечем закрыться или нет возможности уйти из-под шаха, то объявляется мат – партия объявляется проигранной игроку, у которого король остался под атакой.
+    Ходит король на одну клетку во все стороны. Король не может ходить туда, где ему будет грозить шах, поэтому срубить короля нельзя, как и невозможно, чтобы два вражеских короля сближались вплотную.</value>
+  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="pawn_train" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\pawn_train.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
