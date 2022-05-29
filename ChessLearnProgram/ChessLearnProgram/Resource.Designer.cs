@@ -63,6 +63,26 @@ namespace ChessLearnProgram {
         /// <summary>
         ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         /// </summary>
+        internal static System.IO.UnmanagedMemoryStream bishop_train {
+            get {
+                return ResourceManager.GetStream("bishop_train", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to       Перейдём к следующей фигуре – слону. Всего слонов четыре: два у вас и два у противника.
+        ///      Одноцветные слоны находятся на разных по цвету клетках. Слон может ходить на любое количество клеток, но только по диагонали, поэтому одноцветные слоны никак не пересекутся. Слоны, перемещающиеся на клетках с одинаковым цветом, могут быть только один ваш и один противника, и называются при этом на шахматном жаргоне однопольными.
+        ///      Если на пути слона стоит любая фигура, то дальше неё и на её место слон в [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string bishop_train_text {
+            get {
+                return ResourceManager.GetString("bishop_train_text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
         internal static System.IO.UnmanagedMemoryStream king_train {
             get {
                 return ResourceManager.GetStream("king_train", resourceCulture);

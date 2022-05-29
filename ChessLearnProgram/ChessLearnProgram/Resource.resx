@@ -136,4 +136,12 @@
   <data name="king_train" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\king_train.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="bishop_train" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\bishop_train.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="bishop_train_text" xml:space="preserve">
+    <value>      Перейдём к следующей фигуре – слону. Всего слонов четыре: два у вас и два у противника.
+      Одноцветные слоны находятся на разных по цвету клетках. Слон может ходить на любое количество клеток, но только по диагонали, поэтому одноцветные слоны никак не пересекутся. Слоны, перемещающиеся на клетках с одинаковым цветом, могут быть только один ваш и один противника, и называются при этом на шахматном жаргоне однопольными.
+      Если на пути слона стоит любая фигура, то дальше неё и на её место слон встать не может. Исключением может стать вражеская фигура, которую слон может срубить, встав на её место.</value>
+  </data>
 </root>

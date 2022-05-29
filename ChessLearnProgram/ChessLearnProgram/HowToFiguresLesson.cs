@@ -24,6 +24,13 @@ namespace ChessLearnProgram
             chessBoardForm.LoadKingScene();
             chessBoardForm.ShowDialog();
         }
+
+        private void HowToBishopButton_Click(object sender, EventArgs e)
+        {
+            var chessBoardForm = new ChessBoardForm();
+            chessBoardForm.LoadBishopScene();
+            chessBoardForm.ShowDialog();
+        }
     }
 }
 

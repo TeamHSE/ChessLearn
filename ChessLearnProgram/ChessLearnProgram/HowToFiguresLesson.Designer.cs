@@ -64,12 +64,13 @@ namespace ChessLearnProgram
             // 
             // HowToBishopButton
             // 
-            this.HowToBishopButton.Location                = new System.Drawing.Point(326, 262);
-            this.HowToBishopButton.Name                    = "HowToBishopButton";
-            this.HowToBishopButton.Size                    = new System.Drawing.Size(149, 48);
-            this.HowToBishopButton.TabIndex                = 3;
-            this.HowToBishopButton.Text                    = "Слон";
-            this.HowToBishopButton.UseVisualStyleBackColor = true;
+            this.HowToBishopButton.Location                =  new System.Drawing.Point(326, 262);
+            this.HowToBishopButton.Name                    =  "HowToBishopButton";
+            this.HowToBishopButton.Size                    =  new System.Drawing.Size(149, 48);
+            this.HowToBishopButton.TabIndex                =  3;
+            this.HowToBishopButton.Text                    =  "Слон";
+            this.HowToBishopButton.UseVisualStyleBackColor =  true;
+            this.HowToBishopButton.Click                   += new System.EventHandler(this.HowToBishopButton_Click);
             // 
             // HowToKingButton
             // 

@@ -42,8 +42,8 @@ namespace Chess.Pieces
 
         public ChessPiece(Coordinate coordinate, string color)
         {
-            CurrentCoordinate                                              = coordinate;
-            Color                                                          = color;
+            this.CurrentCoordinate                                         = coordinate;
+            this.Color                                                        = color;
             ChessBoard.ChessBoardMatrix[coordinate.Column, coordinate.Row] = this;
         }
 
@@ -71,23 +71,23 @@ namespace Chess.Pieces
         /// <exception cref="ArgumentException">Фигура не может переместиться на новую клетку.</exception>
         public void MoveTo(Coordinate newCoordinate)
         {
-            if (!ValidMoves.Contains(newCoordinate))
+            if (!this.ValidMoves.Contains(newCoordinate))
             {
-                throw new ArgumentException($"Фигура не может переместиться с {CurrentCoordinate}"
+                throw new ArgumentException($"Фигура не может переместиться с {this.CurrentCoordinate}"
                                           + $" на {newCoordinate}!");
             }
 
-            CurrentCoordinate                                                    = newCoordinate;
+            this.CurrentCoordinate                                                    = newCoordinate;
             ChessBoard.ChessBoardMatrix[newCoordinate.Column, newCoordinate.Row] = this;
         }
 
         public void ToggleShowValidMoves()
         {
-            foreach (Coordinate coordinate in ValidMoves)
+            foreach (Coordinate coordinate in this.ValidMoves)
             {
                 if (ChessBoard.ChessBoardMatrix[coordinate.Column, coordinate.Row] == null)
                 {
-                    ChessBoard.ChessBoardMatrix[coordinate.Column, coordinate.Row] = new ValidMove(coordinate, Color);
+                    ChessBoard.ChessBoardMatrix[coordinate.Column, coordinate.Row] = new ValidMove(coordinate, this.Color);
                 }
                 else if (ChessBoard.ChessBoardMatrix[coordinate.Column, coordinate.Row] is ValidMove)
                 {
@@ -101,14 +101,14 @@ namespace Chess.Pieces
     {
         public ValidMove(Coordinate coordinate, string color) : base(coordinate, color)
         {
-            AllowDrop = true;
-            Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            AutoSize = true;
-            BackColor = System.Drawing.Color.Chartreuse;
-            FlatAppearance.BorderColor = System.Drawing.Color.White;
-            FlatAppearance.BorderSize = 0;
-            FlatStyle = FlatStyle.Flat;
-            UseVisualStyleBackColor = true;
+            this.AllowDrop                  = true;
+            this.Anchor                     = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            this.AutoSize                   = true;
+            this.BackColor                  = System.Drawing.Color.Chartreuse;
+            this.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.FlatAppearance.BorderSize  = 0;
+            this.FlatStyle                  = FlatStyle.Flat;
+            this.UseVisualStyleBackColor       = true;
         }
     }
 }
