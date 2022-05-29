@@ -60,7 +60,6 @@ namespace ChessLearnProgram
                 this._soundPlayer.Stop();
                 this._theoryThread.Abort();
             }
-
         }
 
         public void LoadPawnScene()
@@ -72,58 +71,82 @@ namespace ChessLearnProgram
             }
 
             this.UpdateChessBoard();
-            this._soundPlayer = this._sounds[0];
-            this._theoryThread = new Thread(() =>
-                                    {
-                                        // sleep 23 seconds
-                                        Thread.Sleep(22000);
-                                        // Берем фигуру.
-                                        Control centralWhitePawn
-                                            = this.tableLayoutPanel1.GetControlFromPosition(4, 6);
-                                        // Ставим на новую позицию.
-                                        this.tableLayoutPanel1.Controls.Add(centralWhitePawn, 4, 5);
-                                        Thread.Sleep(2000);
-                                        Control centralBlackPawn = this.tableLayoutPanel1.GetControlFromPosition(3, 1);
-                                        this.tableLayoutPanel1.Controls.Add(centralBlackPawn, 3, 3);
-                                        Thread.Sleep(3000);
-                                        Control nearWhitePawn = this.tableLayoutPanel1.GetControlFromPosition(3, 6);
-                                        this.tableLayoutPanel1.Controls.Add(nearWhitePawn, 3, 4);
-                                        Thread.Sleep(5000);
-                                        Control nearBlackPawn
-                                            = this.tableLayoutPanel1.GetControlFromPosition(2, 1);
-                                        this.tableLayoutPanel1.Controls.Add(nearBlackPawn, 2, 3);
-                                        Thread.Sleep(2000);
-                                        Control farWhitePawn = this.tableLayoutPanel1.GetControlFromPosition(2, 6);
-                                        this.tableLayoutPanel1.Controls.Add(farWhitePawn, 2, 5);
-                                        Thread.Sleep(5000);
-                                        this.tableLayoutPanel1.Controls.Add(nearBlackPawn, 2, 4);
-                                        Thread.Sleep(4000);
-                                        Control secondWhitePawn = this.tableLayoutPanel1.GetControlFromPosition(1, 6);
-                                        this.tableLayoutPanel1.Controls.Add(secondWhitePawn, 1, 5);
-                                        Thread.Sleep(7000);
-                                        this.tableLayoutPanel1.Controls.Remove(secondWhitePawn);
-                                        this.tableLayoutPanel1.Controls.Add(nearBlackPawn, 1, 5);
-                                        Thread.Sleep(3000);
-                                        Control edgeWhitePawn = this.tableLayoutPanel1.GetControlFromPosition(0, 6);
-                                        this.tableLayoutPanel1.Controls.Add(edgeWhitePawn, 0, 5);
-                                        Thread.Sleep(1000);
-                                        this.tableLayoutPanel1.Controls.Add(nearBlackPawn, 1, 6);
-                                        Thread.Sleep(1000);
-                                        this.tableLayoutPanel1.Controls.Add(edgeWhitePawn, 0, 4);
-                                        Thread.Sleep(1000);
-                                        this.tableLayoutPanel1.Controls.Add(nearBlackPawn, 1, 7);
-                                    });
-
+            this._soundPlayer        = this._sounds[0];
+            this._theoryThread       = new Thread(this.StartPawnLesson);
             this.MessageTextBox.Text = Resource.pawn_train_text;
+        }
+
+        private void StartPawnLesson()
+        {
+            // sleep 23 seconds
+            Thread.Sleep(22000);
+            // Берем фигуру.
+            Control centralWhitePawn = this.tableLayoutPanel1.GetControlFromPosition(4, 6);
+            // Ставим на новую позицию.
+            this.tableLayoutPanel1.Controls.Add(centralWhitePawn, 4, 5);
+            Thread.Sleep(2000);
+            Control centralBlackPawn = this.tableLayoutPanel1.GetControlFromPosition(3, 1);
+            this.tableLayoutPanel1.Controls.Add(centralBlackPawn, 3, 3);
+            Thread.Sleep(3000);
+            Control nearWhitePawn = this.tableLayoutPanel1.GetControlFromPosition(3, 6);
+            this.tableLayoutPanel1.Controls.Add(nearWhitePawn, 3, 4);
+            Thread.Sleep(5000);
+            Control nearBlackPawn = this.tableLayoutPanel1.GetControlFromPosition(2, 1);
+            this.tableLayoutPanel1.Controls.Add(nearBlackPawn, 2, 3);
+            Thread.Sleep(2000);
+            Control farWhitePawn = this.tableLayoutPanel1.GetControlFromPosition(2, 6);
+            this.tableLayoutPanel1.Controls.Add(farWhitePawn, 2, 5);
+            Thread.Sleep(5000);
+            this.tableLayoutPanel1.Controls.Add(nearBlackPawn, 2, 4);
+            Thread.Sleep(4000);
+            Control secondWhitePawn = this.tableLayoutPanel1.GetControlFromPosition(1, 6);
+            this.tableLayoutPanel1.Controls.Add(secondWhitePawn, 1, 5);
+            Thread.Sleep(7000);
+            this.tableLayoutPanel1.Controls.Remove(secondWhitePawn);
+            this.tableLayoutPanel1.Controls.Add(nearBlackPawn, 1, 5);
+            Thread.Sleep(3000);
+            Control edgeWhitePawn = this.tableLayoutPanel1.GetControlFromPosition(0, 6);
+            this.tableLayoutPanel1.Controls.Add(edgeWhitePawn, 0, 5);
+            Thread.Sleep(1000);
+            this.tableLayoutPanel1.Controls.Add(nearBlackPawn, 1, 6);
+            Thread.Sleep(1000);
+            this.tableLayoutPanel1.Controls.Add(edgeWhitePawn, 0, 4);
+            Thread.Sleep(1000);
+            this.tableLayoutPanel1.Controls.Add(nearBlackPawn, 1, 7);
         }
 
         public void LoadKingScene()
         {
             var blackKing = new King(new Coordinate(4, 2), "Black");
             var whiteKing = new King(new Coordinate(3, 6), "White");
+            var whitePawn = new Pawn(new Coordinate(6, 1), "White");
+            _ = new Pawn(new Coordinate(1, 6), "White");
+            void StartKingLesson()
+            {
+                // Ожидание начала.
+                Thread.Sleep(20000);
+                // Делается шах королю пешкой.
+                this.tableLayoutPanel1.Controls.Add(whitePawn, 1, 5);
+                blackKing.BackColor = Color.Red;
+                // Король рубит пешку.
+                Thread.Sleep(10000);
+                blackKing.BackColor = Color.Transparent;
+                this.tableLayoutPanel1.Controls.Remove(whitePawn);
+                this.tableLayoutPanel1.Controls.Add(blackKing, 1, 5);
+                // Двигаем королей.
+                Thread.Sleep(25000);
+                this.tableLayoutPanel1.Controls.Add(whiteKing, 6, 4);
+                Thread.Sleep(2000);
+                this.tableLayoutPanel1.Controls.Add(blackKing, 2, 5);
+                Thread.Sleep(2000);
+                this.tableLayoutPanel1.Controls.Add(whiteKing, 5, 5);
+                Thread.Sleep(2000);
+                this.tableLayoutPanel1.Controls.Add(blackKing, 3, 5);
+            }
 
             this.UpdateChessBoard();
             this._soundPlayer        = this._sounds[1];
+            this._theoryThread       = new Thread(StartKingLesson);
             this.MessageTextBox.Text = Resource.king_train_text;
         }
 
