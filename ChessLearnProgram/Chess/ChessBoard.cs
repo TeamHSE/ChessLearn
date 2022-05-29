@@ -5,7 +5,7 @@ namespace Chess
 {
     public static class ChessBoard
     {
-        public static readonly Button[,] ChessBoardMatrix = new Button[8, 8];
+        public static ChessPiece[,] ChessBoardMatrix = new ChessPiece[8, 8];
 
         internal static ChessPiece GetPieceOrNull(int currentRow, int currentColumn)
         {
@@ -16,12 +16,7 @@ namespace Chess
                 return null;
             }
 
-            if (ChessBoardMatrix[currentRow, currentColumn] is ChessPiece piece)
-            {
-                return piece;
-            }
-
-            return null;
+            return ChessBoardMatrix[currentRow, currentColumn];
         }
     }
 }
