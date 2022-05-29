@@ -18,8 +18,8 @@ namespace Chess
         /// <param name="column">Столбец координаты.</param>
         public Coordinate(int row, int column)
         {
-            Row    = row;
-            Column = column;
+            this.Row = row;
+            this.Column = column;
         }
 
         /// <inheritdoc />

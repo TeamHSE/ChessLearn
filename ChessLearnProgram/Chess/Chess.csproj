@@ -44,6 +44,7 @@
     <Compile Include="ChessBoard.cs" />
     <Compile Include="Coordinate.cs" />
     <Compile Include="ICoordinate.cs" />
+    <Compile Include="Pieces\Bishop.cs" />
     <Compile Include="Pieces\ChessPiece.cs">
       <SubType>Component</SubType>
     </Compile>
