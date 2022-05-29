@@ -133,4 +133,7 @@
     Первым ходом с начальной горизонтали пешка может пойти как на одну, так и на две клетки вперёд.
     Если пешка уже не на начальной горизонтали, то она может продвигаться только на одну клетку вперёд.</value>
   </data>
+  <data name="king_train" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\king_train.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

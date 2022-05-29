@@ -14,6 +14,7 @@ namespace ChessLearnProgram
         private readonly SoundPlayer[] _sounds =
         {
             new SoundPlayer(Resource.pawn_train),
+            new SoundPlayer(Resource.king_train),
         };
 
         private SoundPlayer _soundPlayer;
@@ -122,8 +123,7 @@ namespace ChessLearnProgram
             var whiteKing = new King(new Coordinate(3, 6), "White");
 
             this.UpdateChessBoard();
-            this._soundPlayer = this._sounds[0];
-
+            this._soundPlayer        = this._sounds[1];
             this.MessageTextBox.Text = Resource.king_train_text;
         }
 
