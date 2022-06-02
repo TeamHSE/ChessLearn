@@ -84,30 +84,33 @@ namespace ChessLearnProgram
             // 
             // HowToKnightButton
             // 
-            this.HowToKnightButton.Location                = new System.Drawing.Point(326, 474);
-            this.HowToKnightButton.Name                    = "HowToKnightButton";
-            this.HowToKnightButton.Size                    = new System.Drawing.Size(149, 48);
-            this.HowToKnightButton.TabIndex                = 5;
-            this.HowToKnightButton.Text                    = "Конь";
-            this.HowToKnightButton.UseVisualStyleBackColor = true;
+            this.HowToKnightButton.Location                =  new System.Drawing.Point(326, 474);
+            this.HowToKnightButton.Name                    =  "HowToKnightButton";
+            this.HowToKnightButton.Size                    =  new System.Drawing.Size(149, 48);
+            this.HowToKnightButton.TabIndex                =  5;
+            this.HowToKnightButton.Text                    =  "Конь";
+            this.HowToKnightButton.UseVisualStyleBackColor =  true;
+            this.HowToKnightButton.Click                   += new System.EventHandler(this.HowToKnightButton_Click);
             // 
             // HowToQueenButton
             // 
-            this.HowToQueenButton.Location                = new System.Drawing.Point(326, 402);
-            this.HowToQueenButton.Name                    = "HowToQueenButton";
-            this.HowToQueenButton.Size                    = new System.Drawing.Size(149, 48);
-            this.HowToQueenButton.TabIndex                = 6;
-            this.HowToQueenButton.Text                    = "Ферзь";
-            this.HowToQueenButton.UseVisualStyleBackColor = true;
+            this.HowToQueenButton.Location                =  new System.Drawing.Point(326, 402);
+            this.HowToQueenButton.Name                    =  "HowToQueenButton";
+            this.HowToQueenButton.Size                    =  new System.Drawing.Size(149, 48);
+            this.HowToQueenButton.TabIndex                =  6;
+            this.HowToQueenButton.Text                    =  "Ферзь";
+            this.HowToQueenButton.UseVisualStyleBackColor =  true;
+            this.HowToQueenButton.Click                   += new System.EventHandler(this.HowToQueenButton_Click);
             // 
             // HowToRookButton
             // 
-            this.HowToRookButton.Location                = new System.Drawing.Point(326, 331);
-            this.HowToRookButton.Name                    = "HowToRookButton";
-            this.HowToRookButton.Size                    = new System.Drawing.Size(149, 48);
-            this.HowToRookButton.TabIndex                = 4;
-            this.HowToRookButton.Text                    = "Ладья";
-            this.HowToRookButton.UseVisualStyleBackColor = true;
+            this.HowToRookButton.Location                =  new System.Drawing.Point(326, 331);
+            this.HowToRookButton.Name                    =  "HowToRookButton";
+            this.HowToRookButton.Size                    =  new System.Drawing.Size(149, 48);
+            this.HowToRookButton.TabIndex                =  4;
+            this.HowToRookButton.Text                    =  "Ладья";
+            this.HowToRookButton.UseVisualStyleBackColor =  true;
+            this.HowToRookButton.Click                   += new System.EventHandler(this.HowToRookButton_Click);
             // 
             // HowToFiguresLesson
             // 

@@ -43,7 +43,7 @@ namespace Chess.Pieces
         public ChessPiece(Coordinate coordinate, string color)
         {
             this.CurrentCoordinate                                         = coordinate;
-            this.Color                                                        = color;
+            this.Color                                                     = color;
             ChessBoard.ChessBoardMatrix[coordinate.Column, coordinate.Row] = this;
         }
 
@@ -77,7 +77,7 @@ namespace Chess.Pieces
                                           + $" на {newCoordinate}!");
             }
 
-            this.CurrentCoordinate                                                    = newCoordinate;
+            this.CurrentCoordinate                                               = newCoordinate;
             ChessBoard.ChessBoardMatrix[newCoordinate.Column, newCoordinate.Row] = this;
         }
 
@@ -87,7 +87,8 @@ namespace Chess.Pieces
             {
                 if (ChessBoard.ChessBoardMatrix[coordinate.Column, coordinate.Row] == null)
                 {
-                    ChessBoard.ChessBoardMatrix[coordinate.Column, coordinate.Row] = new ValidMove(coordinate, this.Color);
+                    ChessBoard.ChessBoardMatrix[coordinate.Column, coordinate.Row]
+                        = new ValidMove(coordinate, this.Color);
                 }
                 else if (ChessBoard.ChessBoardMatrix[coordinate.Column, coordinate.Row] is ValidMove)
                 {
@@ -101,14 +102,14 @@ namespace Chess.Pieces
     {
         public ValidMove(Coordinate coordinate, string color) : base(coordinate, color)
         {
-            this.AllowDrop                  = true;
-            this.Anchor                     = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            this.AutoSize                   = true;
-            this.BackColor                  = System.Drawing.Color.Chartreuse;
+            this.AllowDrop = true;
+            this.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            this.AutoSize = true;
+            this.BackColor = System.Drawing.Color.Chartreuse;
             this.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.FlatAppearance.BorderSize  = 0;
-            this.FlatStyle                  = FlatStyle.Flat;
-            this.UseVisualStyleBackColor       = true;
+            this.FlatAppearance.BorderSize = 0;
+            this.FlatStyle = FlatStyle.Flat;
+            this.UseVisualStyleBackColor = true;
         }
     }
 }
