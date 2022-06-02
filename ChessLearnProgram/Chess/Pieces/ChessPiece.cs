@@ -10,6 +10,16 @@ namespace Chess.Pieces
     /// </summary>
     public abstract class ChessPiece : Button
     {
+        private string     _color;
+        private Coordinate _currentCoordinate;
+
+        public ChessPiece(Coordinate coordinate, string color)
+        {
+            this.CurrentCoordinate                                         = coordinate;
+            this.Color                                                     = color;
+            ChessBoard.ChessBoardMatrix[coordinate.Column, coordinate.Row] = this;
+        }
+
         public int Clicks { get; set; } = 0;
 
         /// <summary>
@@ -18,7 +28,7 @@ namespace Chess.Pieces
         public Coordinate CurrentCoordinate
         {
             get { return this._currentCoordinate; }
-            private set
+            set
             {
                 if ((value.Column < 0) || (value.Column > 7))
                 {
@@ -34,18 +44,8 @@ namespace Chess.Pieces
             }
         }
 
-        private string     _color;
-        private Coordinate _currentCoordinate;
-
-        public ChessPiece(Coordinate coordinate, string color)
-        {
-            this.CurrentCoordinate                                         = coordinate;
-            this.Color                                                     = color;
-            ChessBoard.ChessBoardMatrix[coordinate.Column, coordinate.Row] = this;
-        }
-
         /// <summary>
-        /// Цвет фигуры.
+        ///     Цвет фигуры.
         /// </summary>
         public string Color
         {

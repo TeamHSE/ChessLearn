@@ -1,172 +1,190 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-  <!-- 
-    Microsoft ResX Schema 
-    
-    Version 2.0
-    
-    The primary goals of this format is to allow a simple XML format 
-    that is mostly human readable. The generation and parsing of the 
-    various data types are done through the TypeConverter classes 
-    associated with the data types.
-    
-    Example:
-    
-    ... ado.net/XML headers & schema ...
-    <resheader name="resmimetype">text/microsoft-resx</resheader>
-    <resheader name="version">2.0</resheader>
-    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
-    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
-    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
-    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
-    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
-        <value>[base64 mime encoded serialized .NET Framework object]</value>
-    </data>
-    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
-        <comment>This is a comment</comment>
-    </data>
-                
-    There are any number of "resheader" rows that contain simple 
-    name/value pairs.
-    
-    Each data row contains a name, and value. The row also contains a 
-    type or mimetype. Type corresponds to a .NET class that support 
-    text/value conversion through the TypeConverter architecture. 
-    Classes that don't support this are serialized and stored with the 
-    mimetype set.
-    
-    The mimetype is used for serialized objects, and tells the 
-    ResXResourceReader how to depersist the object. This is currently not 
-    extensible. For a given mimetype the value must be set accordingly:
-    
-    Note - application/x-microsoft.net.object.binary.base64 is the format 
-    that the ResXResourceWriter will generate, however the reader can 
-    read any of the formats listed below.
-    
-    mimetype: application/x-microsoft.net.object.binary.base64
-    value   : The object must be serialized with 
-            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
-            : and then encoded with base64 encoding.
-    
-    mimetype: application/x-microsoft.net.object.soap.base64
-    value   : The object must be serialized with 
-            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
-            : and then encoded with base64 encoding.
-
-    mimetype: application/x-microsoft.net.object.bytearray.base64
-    value   : The object must be serialized into a byte array 
-            : using a System.ComponentModel.TypeConverter
-            : and then encoded with base64 encoding.
-    -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
-    <xsd:element name="root" msdata:IsDataSet="true">
-      <xsd:complexType>
-        <xsd:choice maxOccurs="unbounded">
-          <xsd:element name="metadata">
+    <!-- 
+      Microsoft ResX Schema 
+      
+      Version 2.0
+      
+      The primary goals of this format is to allow a simple XML format 
+      that is mostly human readable. The generation and parsing of the 
+      various data types are done through the TypeConverter classes 
+      associated with the data types.
+      
+      Example:
+      
+      ... ado.net/XML headers & schema ...
+      <resheader name="resmimetype">text/microsoft-resx</resheader>
+      <resheader name="version">2.0</resheader>
+      <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+      <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+      <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+      <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+      <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+          <value>[base64 mime encoded serialized .NET Framework object]</value>
+      </data>
+      <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+          <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+          <comment>This is a comment</comment>
+      </data>
+                  
+      There are any number of "resheader" rows that contain simple 
+      name/value pairs.
+      
+      Each data row contains a name, and value. The row also contains a 
+      type or mimetype. Type corresponds to a .NET class that support 
+      text/value conversion through the TypeConverter architecture. 
+      Classes that don't support this are serialized and stored with the 
+      mimetype set.
+      
+      The mimetype is used for serialized objects, and tells the 
+      ResXResourceReader how to depersist the object. This is currently not 
+      extensible. For a given mimetype the value must be set accordingly:
+      
+      Note - application/x-microsoft.net.object.binary.base64 is the format 
+      that the ResXResourceWriter will generate, however the reader can 
+      read any of the formats listed below.
+      
+      mimetype: application/x-microsoft.net.object.binary.base64
+      value   : The object must be serialized with 
+              : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+              : and then encoded with base64 encoding.
+      
+      mimetype: application/x-microsoft.net.object.soap.base64
+      value   : The object must be serialized with 
+              : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+              : and then encoded with base64 encoding.
+  
+      mimetype: application/x-microsoft.net.object.bytearray.base64
+      value   : The object must be serialized into a byte array 
+              : using a System.ComponentModel.TypeConverter
+              : and then encoded with base64 encoding.
+      -->
+    <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root"
+                xmlns="">
+        <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+        <xsd:element name="root" msdata:IsDataSet="true">
             <xsd:complexType>
-              <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
-              </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+                <xsd:choice maxOccurs="unbounded">
+                    <xsd:element name="metadata">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+                            </xsd:sequence>
+                            <xsd:attribute name="name" use="required" type="xsd:string"/>
+                            <xsd:attribute name="type" type="xsd:string"/>
+                            <xsd:attribute name="mimetype" type="xsd:string"/>
+                            <xsd:attribute ref="xml:space"/>
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="assembly">
+                        <xsd:complexType>
+                            <xsd:attribute name="alias" type="xsd:string"/>
+                            <xsd:attribute name="name" type="xsd:string"/>
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="data">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+                            </xsd:sequence>
+                            <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+                            <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+                            <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+                            <xsd:attribute ref="xml:space"/>
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="resheader">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                            </xsd:sequence>
+                            <xsd:attribute name="name" type="xsd:string" use="required"/>
+                        </xsd:complexType>
+                    </xsd:element>
+                </xsd:choice>
             </xsd:complexType>
-          </xsd:element>
-          <xsd:element name="assembly">
-            <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
-            </xsd:complexType>
-          </xsd:element>
-          <xsd:element name="data">
-            <xsd:complexType>
-              <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
-              </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
-            </xsd:complexType>
-          </xsd:element>
-          <xsd:element name="resheader">
-            <xsd:complexType>
-              <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-              </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
-            </xsd:complexType>
-          </xsd:element>
-        </xsd:choice>
-      </xsd:complexType>
-    </xsd:element>
-  </xsd:schema>
-  <resheader name="resmimetype">
-    <value>text/microsoft-resx</value>
-  </resheader>
-  <resheader name="version">
-    <value>2.0</value>
-  </resheader>
-  <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </resheader>
-  <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </resheader>
-  <data name="king_train_text" xml:space="preserve">
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>2.0</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral,
+            PublicKeyToken=b77a5c561934e089
+        </value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral,
+            PublicKeyToken=b77a5c561934e089
+        </value>
+    </resheader>
+    <data name="king_train_text" xml:space="preserve">
     <value>    Король – самая важная шахматная фигура, от его безопасности зависит исход партии, ведь если королю угрожают срубить вражеские фигуры, при этом король не может уйти от этой угрозы, то партия заканчивается проигрышем того, чей король оказался под ударом.
     Ударом здесь является объявление шаха – когда вражеская фигура сделала ход таким образом, что следующим своим ходом может срубить короля. В таком случае вам нужно убрать короля из-под шаха, то есть отойти, или срубить атакующую фигуру, если при этом шах не возобновится, или закрыться другой фигурой. Другие ходы, не спасающие короля от шаха, сделаны быть не могут. Если королю нечем закрыться или нет возможности уйти из-под шаха, то объявляется мат – партия объявляется проигранной игроку, у которого король остался под атакой.
     Ходит король на одну клетку во все стороны. Король не может ходить туда, где ему будет грозить шах, поэтому срубить короля нельзя, как и невозможно, чтобы два вражеских короля сближались вплотную.</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="pawn_train" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\pawn_train.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="pawn_train_text" xml:space="preserve">
+    <assembly alias="System.Windows.Forms"
+              name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"/>
+    <data name="pawn_train" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>Resources\pawn_train.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral,
+            PublicKeyToken=b77a5c561934e089
+        </value>
+    </data>
+    <data name="pawn_train_text" xml:space="preserve">
     <value>    Шахматы – популярная развивающая игра и полезно начать её изучение с того, как ходят фигуры на шахматной доске.
     Начнём с пешки. Всего пешек в начале игры 8 – как у вас, так и у противника. Располагаются пешки на двух горизонталях в ряд, занимая всю ширину доски.
     Пешка ходит только вперед на одну или две клетки, если на пути пешки стоит другая фигура, то ход невозможен.
     Первым ходом с начальной горизонтали пешка может пойти как на одну, так и на две клетки вперёд.
     Если пешка уже не на начальной горизонтали, то она может продвигаться только на одну клетку вперёд.</value>
   </data>
-  <data name="king_train" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\king_train.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="bishop_train" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\bishop_train.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="bishop_train_text" xml:space="preserve">
+    <data name="king_train" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>Resources\king_train.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral,
+            PublicKeyToken=b77a5c561934e089
+        </value>
+    </data>
+    <data name="bishop_train" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>Resources\bishop_train.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral,
+            PublicKeyToken=b77a5c561934e089
+        </value>
+    </data>
+    <data name="bishop_train_text" xml:space="preserve">
     <value>      Перейдём к следующей фигуре – слону. Всего слонов четыре: два у вас и два у противника.
       Одноцветные слоны находятся на разных по цвету клетках. Слон может ходить на любое количество клеток, но только по диагонали, поэтому одноцветные слоны никак не пересекутся. Слоны, перемещающиеся на клетках с одинаковым цветом, могут быть только один ваш и один противника, и называются при этом на шахматном жаргоне однопольными.
       Если на пути слона стоит любая фигура, то дальше неё и на её место слон встать не может. Исключением может стать вражеская фигура, которую слон может срубить, встав на её место.</value>
   </data>
-  <data name="rook_train" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\rook_train.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="queen_train" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\queen_train.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="knight_train" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\knight_train.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="rook_train_text" xml:space="preserve">
+    <data name="rook_train" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>Resources\rook_train.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral,
+            PublicKeyToken=b77a5c561934e089
+        </value>
+    </data>
+    <data name="queen_train" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>Resources\queen_train.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral,
+            PublicKeyToken=b77a5c561934e089
+        </value>
+    </data>
+    <data name="knight_train" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>Resources\knight_train.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral,
+            PublicKeyToken=b77a5c561934e089
+        </value>
+    </data>
+    <data name="rook_train_text" xml:space="preserve">
     <value>  Продолжим узнавать о шахматных фигурах. Следующая фигура для изучения-ладья. Ладья — это вторая по силе фигура после ферзя.
   Всего у игрока 2 фигуры ладьи, которые располагаются для вас в нижнем левом углу и в нижнем правом углу. У соперника ладьи располагаются так же, но в верхней от вас части доски.
   Ладья не может перепрыгивать через другие фигуры. Исключение составляет рокировка: при рокировке ладья прыгает через короля. Существует два вида рокировок, короткая и длинная. При короткой рокировке король ходит к ладье справа впритык. При длинной рокировке король ходит к ладье слева оставляя между ладьей и королём одну клетку.
   Ладья может ходить только по горизонтали и вертикали, как на всю длину шахматного поля, так и на более короткие расстояния. Если на пути ладье стоит фигура соперника, ладья не может ходить дальше за неё, она её может срубить.
 </value>
   </data>
-  <data name="queen_train_text" xml:space="preserve">
+    <data name="queen_train_text" xml:space="preserve">
     <value>  Ферзь является самой сильной шахматной фигурой, потому что он может атаковать или защищать больше полей, чем любая другая фигура. Ферзь располагается рядом с королём, белый ферзь находится на поле белого цвета, а чёрный ферзь – чёрного.
   Ферзь ходит в любом направлении как король, но на любое количество полей. Как и ладья, ферзь может ходить на любое количество полей вперёд и назад по вертикали или вправо-влево по горизонтали. Так же ферзь может ходить по диагоналям как слон.
   Если на пути ферзю стоит фигура противника, ферзь может занять поле, где она расположена. 
 </value>
   </data>
-  <data name="knight_train_text" xml:space="preserve">
+    <data name="knight_train_text" xml:space="preserve">
     <value>  Конь- самая хитра из шахматных фигур! Конь ходит непохоже на другие фигуры.
   В начале партии у каждого из противников по два коня. Кони расположены с боку у ладьи. Кони уникальный по двум причинам. Первая — это единственные фигуры, способные перепрыгивать через другие фигуры. Вторая¬ — при каждом прыжке конь переходит с чёрного поля на белое и с белого на чёрное.
   За один ход конь преодолевает несколько полей. Он проходит на два поля в одном направлении и далее на одно поле под углом 90 градусов. Например, на два поля вперёд и на одно вправо, или на два поля влево и на одно назад. Можно запомнить, что конь ходит буквой Г в любые стороны.

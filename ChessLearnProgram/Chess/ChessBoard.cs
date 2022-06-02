@@ -15,11 +15,11 @@ namespace Chess
                 return null;
             }
 
-            return ChessBoardMatrix[currentRow, currentColumn];
+            return ChessBoardMatrix[currentColumn, currentRow];
         }
 
         /// <summary>
-        /// Очистка доски.
+        ///     Очистка доски.
         /// </summary>
         public static void Clear()
         {

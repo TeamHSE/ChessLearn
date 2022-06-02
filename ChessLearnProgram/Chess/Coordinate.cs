@@ -8,8 +8,8 @@ namespace Chess
     /// </summary>
     public sealed class Coordinate : ICoordinate
     {
-        private int _row;
         private int _column;
+        private int _row;
 
         /// <summary>
         ///     Координата фигуры.
@@ -76,7 +76,10 @@ namespace Chess
 
         /// <summary>Определяет, равен ли заданный объект текущему объекту.</summary>
         /// <param name="obj">Объект, который требуется сравнить с текущим объектом.</param>
-        /// <returns>Значение <see langword="true" />, если указанный объект равен текущему объекту; в противном случае — значение <see langword="false" />.</returns>
+        /// <returns>
+        ///     Значение <see langword="true" />, если указанный объект равен текущему объекту; в противном случае — значение
+        ///     <see langword="false" />.
+        /// </returns>
         public override bool Equals(object obj)
         {
             if (obj is Coordinate coordinate)
