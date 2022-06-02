@@ -33,7 +33,6 @@ namespace Chess.Pieces
         }
 
 
-
         /// <inheritdoc />
         /// <summary>
         ///     Список корректных возможных ходов пешки.

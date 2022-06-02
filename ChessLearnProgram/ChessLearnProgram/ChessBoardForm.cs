@@ -86,6 +86,7 @@ namespace ChessLearnProgram
 
         public void LoadPawnScene()
         {
+            this.PracticeButton.Text += " (пешка)";
             for (var i = 0; i < 8; i++)
             {
                 _ = new Pawn(new Coordinate(1, i), "Black");
@@ -203,18 +204,13 @@ namespace ChessLearnProgram
 
         private void ChessBoardForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            UnloadChessBoard();
+            ChessBoard.Clear();
             this.StopSound();
         }
 
         private void StopSound()
         {
             this._soundPlayer?.Stop();
-        }
-
-        private static void UnloadChessBoard()
-        {
-            ChessBoard.ChessBoardMatrix = new ChessPiece[8, 8];
         }
 
         public void LoadRookScene()
@@ -379,6 +375,40 @@ namespace ChessLearnProgram
             this._soundPlayer        = this._sounds["knight_train"];
             this._theoryThread       = new Thread(StartQueenLesson);
             this.MessageTextBox.Text = Resource.knight_train_text;
+        }
+
+        private void PracticeButton_Click(object sender, EventArgs e)
+        {
+            this._theoryThread?.Abort();
+            this._soundPlayer?.Stop();
+            ChessBoard.Clear();
+            this.PlayButton.Enabled = false;
+            this.UpdateChessBoard();
+            this.MessageTextBox.Text = "Вы перешли к практической части задания!\n";
+            if (!(sender is Button button))
+            {
+                return;
+            }
+
+            if (button.Text.Contains("пешка"))
+            {
+                this.MessageTextBox.Text += "Сейчас вам предлагается закрепить знания о пешке.";
+                this.LoadPawnPracticeScene();
+            }
+        }
+
+        private void LoadPawnPracticeScene()
+        {
+            var pawn = new Pawn(new Coordinate(6, 3), "White");
+            pawn.Click += this.PawnOnClick;
+            this.UpdateChessBoard();
+        }
+
+        private void PawnOnClick(object sender, EventArgs e)
+        {
+            var pawn = sender as Pawn;
+            pawn?.ToggleShowValidMoves();
+            this.UpdateChessBoard();
         }
     }
 }

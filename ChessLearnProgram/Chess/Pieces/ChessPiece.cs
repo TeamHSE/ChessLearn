@@ -85,15 +85,13 @@ namespace Chess.Pieces
         {
             foreach (Coordinate coordinate in this.ValidMoves)
             {
-                if (ChessBoard.ChessBoardMatrix[coordinate.Column, coordinate.Row] == null)
-                {
-                    ChessBoard.ChessBoardMatrix[coordinate.Column, coordinate.Row]
-                        = new ValidMove(coordinate, this.Color);
-                }
-                else if (ChessBoard.ChessBoardMatrix[coordinate.Column, coordinate.Row] is ValidMove)
-                {
-                    ChessBoard.ChessBoardMatrix[coordinate.Column, coordinate.Row] = null;
-                }
+                ChessBoard.ChessBoardMatrix[coordinate.Column, coordinate.Row]
+                    = ChessBoard.ChessBoardMatrix[coordinate.Column, coordinate.Row] switch
+                      {
+                          null        => new ValidMove(coordinate, this.Color),
+                          ValidMove _ => null,
+                          _           => ChessBoard.ChessBoardMatrix[coordinate.Column, coordinate.Row]
+                      };
             }
         }
     }
