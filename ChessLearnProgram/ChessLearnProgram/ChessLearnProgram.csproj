@@ -124,7 +124,12 @@
     <Content Include="Properties\pawn_train.wav">
       <DependentUpon>Resources.resx</DependentUpon>
     </Content>
+    <Content Include="Resources\bishop_train.wav" />
+    <Content Include="Resources\king_train.wav" />
+    <Content Include="Resources\knight_train.wav" />
     <Content Include="Resources\pawn_train.wav" />
+    <Content Include="Resources\queen_train.wav" />
+    <Content Include="Resources\rook_train.wav" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
