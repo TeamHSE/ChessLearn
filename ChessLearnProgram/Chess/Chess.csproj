@@ -50,16 +50,7 @@
     <Compile Include="Pieces\King.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Pieces\Knight.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Pieces\Pawn.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Pieces\Queen.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Pieces\Rook.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />

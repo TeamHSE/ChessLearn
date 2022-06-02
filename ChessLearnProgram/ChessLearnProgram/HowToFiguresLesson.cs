@@ -24,27 +24,6 @@ namespace ChessLearnProgram
             chessBoardForm.LoadKingScene();
             chessBoardForm.ShowDialog();
         }
-
-        private void HowToRookButton_Click(object sender, EventArgs e)
-        {
-            var chessBoardForm = new ChessBoardForm();
-            chessBoardForm.LoadRookScene();
-            chessBoardForm.ShowDialog();
-        }
-
-        private void HowToQueenButton_Click(object sender, EventArgs e)
-        {
-            var chessBoardForm = new ChessBoardForm();
-            chessBoardForm.LoadQueenScene();
-            chessBoardForm.ShowDialog();
-        }
-
-        private void HowToKnightButton_Click(object sender, EventArgs e)
-        {
-            var chessBoardForm = new ChessBoardForm();
-            chessBoardForm.LoadKnightScene();
-            chessBoardForm.ShowDialog();
-        }
     }
 }
 
