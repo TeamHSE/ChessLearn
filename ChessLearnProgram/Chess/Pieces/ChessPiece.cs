@@ -10,13 +10,25 @@ namespace Chess.Pieces
     /// </summary>
     public abstract class ChessPiece : Button
     {
+        private string     _color;
+        private Coordinate _currentCoordinate;
+
+        public ChessPiece(Coordinate coordinate, string color)
+        {
+            this.CurrentCoordinate                                         = coordinate;
+            this.Color                                                     = color;
+            ChessBoard.ChessBoardMatrix[coordinate.Column, coordinate.Row] = this;
+        }
+
+        public int Clicks { get; set; } = 0;
+
         /// <summary>
         ///     Текущая координата фигуры.
         /// </summary>
-        protected Coordinate CurrentCoordinate
+        public Coordinate CurrentCoordinate
         {
             get { return this._currentCoordinate; }
-            private set
+            set
             {
                 if ((value.Column < 0) || (value.Column > 7))
                 {
@@ -33,22 +45,7 @@ namespace Chess.Pieces
         }
 
         /// <summary>
-        ///     Список корректных возможных ходов.
-        /// </summary>
-        public virtual List<Coordinate> ValidMoves { get; } = new List<Coordinate>();
-
-        private string     _color;
-        private Coordinate _currentCoordinate;
-
-        public ChessPiece(Coordinate coordinate, string color)
-        {
-            this.CurrentCoordinate                                         = coordinate;
-            this.Color                                                     = color;
-            ChessBoard.ChessBoardMatrix[coordinate.Column, coordinate.Row] = this;
-        }
-
-        /// <summary>
-        /// Цвет фигуры.
+        ///     Цвет фигуры.
         /// </summary>
         public string Color
         {
@@ -71,29 +68,30 @@ namespace Chess.Pieces
         /// <exception cref="ArgumentException">Фигура не может переместиться на новую клетку.</exception>
         public void MoveTo(Coordinate newCoordinate)
         {
-            if (!this.ValidMoves.Contains(newCoordinate))
+            if (!this.GetValidMoves(this._currentCoordinate).Contains(newCoordinate))
             {
                 throw new ArgumentException($"Фигура не может переместиться с {this.CurrentCoordinate}"
                                           + $" на {newCoordinate}!");
             }
 
-            this.CurrentCoordinate                                               = newCoordinate;
-            ChessBoard.ChessBoardMatrix[newCoordinate.Column, newCoordinate.Row] = this;
+            ChessBoard.ChessBoardMatrix[newCoordinate.Column, newCoordinate.Row]                   = this;
+            ChessBoard.ChessBoardMatrix[this.CurrentCoordinate.Column, this.CurrentCoordinate.Row] = null;
+            this.CurrentCoordinate                                                                 = newCoordinate;
         }
+
+        public abstract List<Coordinate> GetValidMoves(ICoordinate coordinate);
 
         public void ToggleShowValidMoves()
         {
-            foreach (Coordinate coordinate in this.ValidMoves)
+            foreach (Coordinate coordinate in this.GetValidMoves(this._currentCoordinate))
             {
-                if (ChessBoard.ChessBoardMatrix[coordinate.Column, coordinate.Row] == null)
-                {
-                    ChessBoard.ChessBoardMatrix[coordinate.Column, coordinate.Row]
-                        = new ValidMove(coordinate, this.Color);
-                }
-                else if (ChessBoard.ChessBoardMatrix[coordinate.Column, coordinate.Row] is ValidMove)
-                {
-                    ChessBoard.ChessBoardMatrix[coordinate.Column, coordinate.Row] = null;
-                }
+                ChessBoard.ChessBoardMatrix[coordinate.Column, coordinate.Row]
+                    = ChessBoard.ChessBoardMatrix[coordinate.Column, coordinate.Row] switch
+                      {
+                          null        => new ValidMove(coordinate, this.Color),
+                          ValidMove _ => null,
+                          _           => ChessBoard.ChessBoardMatrix[coordinate.Column, coordinate.Row]
+                      };
             }
         }
     }
@@ -110,6 +108,16 @@ namespace Chess.Pieces
             this.FlatAppearance.BorderSize = 0;
             this.FlatStyle = FlatStyle.Flat;
             this.UseVisualStyleBackColor = true;
+        }
+
+        public Coordinate Coordinate
+        {
+            get { return this.CurrentCoordinate; }
+        }
+
+        public override List<Coordinate> GetValidMoves(ICoordinate coordinate)
+        {
+            return null;
         }
     }
 }

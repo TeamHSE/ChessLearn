@@ -11,7 +11,7 @@ namespace ChessLearnProgram
 {
     internal sealed partial class ChessBoardForm : Form
     {
-        private readonly Dictionary<string, SoundPlayer?> _sounds = new Dictionary<string, SoundPlayer?>()
+        private readonly Dictionary<string, SoundPlayer?> _sounds = new Dictionary<string, SoundPlayer?>
                                                                     {
                                                                         {
                                                                             "bishop_train",
@@ -39,10 +39,15 @@ namespace ChessLearnProgram
                                                                         }
                                                                     };
 
-        private SoundPlayer? _soundPlayer;
-        private Thread?      _theoryThread;
+        private ChessPiece? _lastClickedPiece;
+
+        private ChessPiece? _mainEnemyPiece;
+        private ChessPiece? _mainPiece;
 
         private int _playButtonClicks;
+
+        private SoundPlayer? _soundPlayer;
+        private Thread?      _theoryThread;
 
         public ChessBoardForm()
         {
@@ -86,6 +91,7 @@ namespace ChessLearnProgram
 
         public void LoadPawnScene()
         {
+            this.PracticeButton.Text += " (пешка)";
             for (var i = 0; i < 8; i++)
             {
                 _ = new Pawn(new Coordinate(1, i), "Black");
@@ -203,18 +209,13 @@ namespace ChessLearnProgram
 
         private void ChessBoardForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            UnloadChessBoard();
+            ChessBoard.Clear();
             this.StopSound();
         }
 
         private void StopSound()
         {
             this._soundPlayer?.Stop();
-        }
-
-        private static void UnloadChessBoard()
-        {
-            ChessBoard.ChessBoardMatrix = new ChessPiece[8, 8];
         }
 
         public void LoadRookScene()
@@ -379,6 +380,174 @@ namespace ChessLearnProgram
             this._soundPlayer        = this._sounds["knight_train"];
             this._theoryThread       = new Thread(StartQueenLesson);
             this.MessageTextBox.Text = Resource.knight_train_text;
+        }
+
+        private void PracticeButton_Click(object sender, EventArgs e)
+        {
+            this._theoryThread?.Abort();
+            this._soundPlayer?.Stop();
+            ChessBoard.Clear();
+            this.PlayButton.Enabled = false;
+            this.UpdateChessBoard();
+            this.MessageTextBox.Text = "  Вы перешли к практической части задания!\n";
+            if (!(sender is Button button))
+            {
+                return;
+            }
+
+            if (button.Text.Contains("пешка"))
+            {
+                this.MessageTextBox.Text += @"  Сейчас вам предлагается закрепить знания о пешке.
+  Перед вами стоит задача провести пешку до конца поля, чтобы превратить её в ферзя.
+  Соперник, однако, надеется опередить вас и поставить свою пешку.
+  В пылу эмоций он забывает про своего коня, воспользуйтесь этим и проведите свою центраьную пешку быстрее него!
+  Внимание! Чтобы опередить соперника проводить нужно именно центральную пешку!
+";
+                this.LoadPawnPracticeScene();
+            }
+        }
+
+        private void LoadPawnPracticeScene()
+        {
+            var pawn = new Pawn(new Coordinate(6, 3), "White");
+            _          =  new Knight(new Coordinate(1, 2), "Black");
+            _          =  new Pawn(new Coordinate(1,   3), "Black");
+            _          =  new Pawn(new Coordinate(1,   7), "Black");
+            _          =  new Pawn(new Coordinate(1,   6), "Black");
+            _          =  new King(new Coordinate(0,   7), "Black");
+            _          =  new Pawn(new Coordinate(2,   0), "Black");
+            _          =  new King(new Coordinate(7,   7), "White");
+            _          =  new Pawn(new Coordinate(6,   7), "White");
+            _          =  new Pawn(new Coordinate(6,   6), "White");
+            pawn.Click += this.PawnOnClick;
+            this.UpdateChessBoard();
+            this._mainEnemyPiece = this.tableLayoutPanel1.GetControlFromPosition(0, 2) as Pawn;
+        }
+
+        private void PawnOnClick(object sender, EventArgs e)
+        {
+            var pawn = sender as Pawn;
+            this._lastClickedPiece = pawn;
+            this._mainPiece        = pawn;
+            if (pawn != null)
+            {
+                List<Coordinate>? validMoves = pawn.GetValidMoves(pawn.CurrentCoordinate);
+                pawn.Clicks++;
+                pawn.ToggleShowValidMoves();
+                this.UpdateChessBoard();
+                if (validMoves != null)
+                {
+                    foreach (Coordinate? coordinate in validMoves)
+                    {
+                        ChessPiece? piece = ChessBoard.ChessBoardMatrix[coordinate.Column, coordinate.Row];
+                        if (piece is ValidMove)
+                        {
+                            piece.Click += this.ValidMoveOnClick;
+                        }
+                    }
+                }
+
+                ChessPiece enemy;
+                if (pawn.CurrentCoordinate.Row == 2)
+                {
+                    void OnEnemyOnClick(object o, EventArgs args)
+                    {
+                        ChessBoard.ChessBoardMatrix[enemy.CurrentCoordinate.Column, enemy.CurrentCoordinate.Row]
+                            = pawn;
+                        ChessBoard.ChessBoardMatrix[pawn.CurrentCoordinate.Column, pawn.CurrentCoordinate.Row]
+                            = null;
+                        this.tableLayoutPanel1.Controls.Remove(enemy);
+                        pawn.CurrentCoordinate = enemy.CurrentCoordinate;
+                        this.tableLayoutPanel1.Controls.Add(pawn, pawn.CurrentCoordinate.Column,
+                                                            pawn.CurrentCoordinate.Row);
+                        this.UpdateChessBoard();
+                        this.NextBlackMove(this._mainEnemyPiece);
+                    }
+
+                    if (this.tableLayoutPanel1.GetControlFromPosition(pawn.CurrentCoordinate.Column - 1, 1) is
+                        ChessPiece piece)
+                    {
+                        enemy           =  piece;
+                        enemy.BackColor =  Color.Red;
+                        enemy.Click     += OnEnemyOnClick;
+                    }
+                }
+            }
+        }
+
+        private void NextBlackMove(ChessPiece piece)
+        {
+            piece.MoveTo(new Coordinate(piece.CurrentCoordinate.Row + 1, piece.CurrentCoordinate.Column));
+            if (piece.CurrentCoordinate.Row == 7)
+            {
+                piece = new Queen(new Coordinate(piece.CurrentCoordinate.Row, piece.CurrentCoordinate.Column),
+                                  "Black");
+                this._mainPiece.Enabled = false;
+                var whiteking = this.tableLayoutPanel1.GetControlFromPosition(7, 7) as King;
+                whiteking.Enabled   = false;
+                whiteking.BackColor = Color.Red;
+
+                this.MessageTextBox.Text += @"
+  Увы! Вы не смогли поставить мат королю соперника.
+  Попробуйте заново! Попробуйте просчитать, как можно опередить пешку соперника!";
+                MessageBox.Show(@"Вы не смогли поставить мат королю соперника.
+  Попробуйте заново! Попробуйте просчитать, как можно опередить пешку соперника!", @"Вы проиграли!",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
+            }
+
+            this.UpdateChessBoard();
+        }
+
+        private void ValidMoveOnClick(object sender, EventArgs e)
+        {
+            ChessPiece? mainPiece = this._mainPiece;
+            if ((mainPiece != null) && (mainPiece.CurrentCoordinate.Row == 1))
+            {
+                ChessBoard.ChessBoardMatrix[this._mainPiece.CurrentCoordinate.Column,
+                                            this._mainPiece.CurrentCoordinate.Row] = null;
+                var queen
+                    = new
+                        Queen(new Coordinate(this._mainPiece.CurrentCoordinate.Row - 1, this._mainPiece.CurrentCoordinate.Column),
+                              "White");
+                this.tableLayoutPanel1.Controls.Remove(this._mainPiece);
+                this.tableLayoutPanel1.Controls.Add(queen, queen.CurrentCoordinate.Column,
+                                                    queen.CurrentCoordinate.Row);
+                this.UpdateChessBoard();
+                mainPiece.Click -= this.PawnOnClick;
+                if (this.tableLayoutPanel1.GetControlFromPosition(7, 0) is King blackKing)
+                {
+                    blackKing.Enabled   = false;
+                    blackKing.BackColor = Color.Red;
+                    this.MessageTextBox.Text
+                        += @"
+  Поздравляем! Вы успешно смогли поставить мат королю соперника, тем самым выиграв партию!";
+                    MessageBox.Show(@"Поздравляем! Вы успешно смогли поставить мат королю соперника, тем самым выиграв партию!",
+                                    @"Поздравляем!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+            }
+
+
+            ChessPiece? lastClickedPiece = this._lastClickedPiece;
+            if (lastClickedPiece != null)
+            {
+                lastClickedPiece.Clicks++;
+                lastClickedPiece.ToggleShowValidMoves();
+                var         validMove  = sender as ValidMove;
+                Coordinate? coordinate = validMove?.Coordinate;
+                if (coordinate != null)
+                {
+                    this._lastClickedPiece?.MoveTo(coordinate);
+                    this.UpdateChessBoard();
+                }
+
+                ChessPiece? chessPiece = this._mainEnemyPiece;
+                if ((chessPiece != null) && (((ValidMove)sender).CurrentCoordinate.Row != 0))
+                {
+                    this.NextBlackMove(chessPiece);
+                }
+            }
         }
     }
 }

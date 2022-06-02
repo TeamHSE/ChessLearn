@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace Chess.Pieces
@@ -10,7 +11,7 @@ namespace Chess.Pieces
             this.AllowDrop = true;
             this.Anchor    = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             this.AutoSize  = true;
-            this.BackColor    = System.Drawing.Color.Transparent;
+            this.BackColor = System.Drawing.Color.Transparent;
             this.BackgroundImage = color == "Black"
                                        ? new Bitmap(ResourceBlack.King)
                                        : new Bitmap(ResourceWhite.King);
@@ -25,9 +26,12 @@ namespace Chess.Pieces
             this.Name                       = "King";
             this.Size                       = new Size(53, 54);
             this.TabIndex                   = 7;
-            this.UseVisualStyleBackColor       = true;
+            this.UseVisualStyleBackColor    = true;
         }
 
-        public int Clicks { get; set; }
+        public override List<Coordinate> GetValidMoves(ICoordinate coordinate)
+        {
+            return null;
+        }
     }
 }

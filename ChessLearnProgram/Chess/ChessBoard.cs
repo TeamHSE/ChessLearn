@@ -1,5 +1,4 @@
-﻿using System.Windows.Forms;
-using Chess.Pieces;
+﻿using Chess.Pieces;
 
 namespace Chess
 {
@@ -16,7 +15,21 @@ namespace Chess
                 return null;
             }
 
-            return ChessBoardMatrix[currentRow, currentColumn];
+            return ChessBoardMatrix[currentColumn, currentRow];
+        }
+
+        /// <summary>
+        ///     Очистка доски.
+        /// </summary>
+        public static void Clear()
+        {
+            for (var row = 0; row < 8; row++)
+            {
+                for (var column = 0; column < 8; column++)
+                {
+                    ChessBoardMatrix[row, column] = null;
+                }
+            }
         }
     }
 }

@@ -41,6 +41,7 @@ namespace ChessLearnProgram
             this.SizeTrackBar                 = new System.Windows.Forms.TrackBar();
             this.BoardSizeSliderLabel         = new System.Windows.Forms.Label();
             this.PlayButton                   = new System.Windows.Forms.Button();
+            this.PracticeButton               = new System.Windows.Forms.Button();
             this.miniToolStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SizeTrackBar)).BeginInit();
             this.SuspendLayout();
@@ -91,7 +92,7 @@ namespace ChessLearnProgram
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.33766F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.tableLayoutPanel1.Size     = new System.Drawing.Size(460, 462);
+            this.tableLayoutPanel1.Size     = new System.Drawing.Size(504, 496);
             this.tableLayoutPanel1.TabIndex = 3;
             // 
             // printDialog1
@@ -134,13 +135,24 @@ namespace ChessLearnProgram
             // PlayButton
             // 
             this.PlayButton.Font                    =  new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.PlayButton.Location                =  new System.Drawing.Point(236, 29);
+            this.PlayButton.Location                =  new System.Drawing.Point(223, 12);
             this.PlayButton.Name                    =  "PlayButton";
-            this.PlayButton.Size                    =  new System.Drawing.Size(170, 39);
+            this.PlayButton.Size                    =  new System.Drawing.Size(145, 56);
             this.PlayButton.TabIndex                =  11;
-            this.PlayButton.Text                    =  "Получить теорию";
+            this.PlayButton.Text                    =  "Включить демонстрацию";
             this.PlayButton.UseVisualStyleBackColor =  true;
             this.PlayButton.Click                   += new System.EventHandler(this.PlayButton_Click);
+            // 
+            // PracticeButton
+            // 
+            this.PracticeButton.Font                    =  new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.PracticeButton.Location                =  new System.Drawing.Point(378, 12);
+            this.PracticeButton.Name                    =  "PracticeButton";
+            this.PracticeButton.Size                    =  new System.Drawing.Size(189, 56);
+            this.PracticeButton.TabIndex                =  12;
+            this.PracticeButton.Text                    =  "Перейти к практике";
+            this.PracticeButton.UseVisualStyleBackColor =  true;
+            this.PracticeButton.Click                   += new System.EventHandler(this.PracticeButton_Click);
             // 
             // ChessBoardForm
             // 
@@ -149,6 +161,7 @@ namespace ChessLearnProgram
             this.BackColor             = System.Drawing.SystemColors.Control;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize            = new System.Drawing.Size(961, 636);
+            this.Controls.Add(this.PracticeButton);
             this.Controls.Add(this.PlayButton);
             this.Controls.Add(this.BoardSizeSliderLabel);
             this.Controls.Add(this.SizeTrackBar);
@@ -166,6 +179,8 @@ namespace ChessLearnProgram
             this.ResumeLayout(false);
             this.PerformLayout();
         }
+
+        private System.Windows.Forms.Button PracticeButton;
 
         private System.Windows.Forms.Button PlayButton;
 
