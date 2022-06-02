@@ -41,6 +41,7 @@ namespace ChessLearnProgram
 
         private SoundPlayer? _soundPlayer;
         private Thread?      _theoryThread;
+        private ChessPiece?  _lastClickedPiece;
 
         private int _playButtonClicks;
 
@@ -400,6 +401,7 @@ namespace ChessLearnProgram
         private void LoadPawnPracticeScene()
         {
             var pawn = new Pawn(new Coordinate(6, 3), "White");
+            var blackPawn = new Pawn(new Coordinate(1, 2), "Black");
             pawn.Click += this.PawnOnClick;
             this.UpdateChessBoard();
         }
@@ -407,8 +409,42 @@ namespace ChessLearnProgram
         private void PawnOnClick(object sender, EventArgs e)
         {
             var pawn = sender as Pawn;
-            pawn?.ToggleShowValidMoves();
-            this.UpdateChessBoard();
+            this._lastClickedPiece = pawn;
+            if (pawn != null)
+            {
+                List<Coordinate>? validMoves = pawn.GetValidMoves(pawn.CurrentCoordinate);
+                pawn.Clicks++;
+                pawn.ToggleShowValidMoves();
+                this.UpdateChessBoard();
+                if (validMoves != null)
+                {
+                    foreach (Coordinate? coordinate in validMoves)
+                    {
+                        ChessPiece? piece = ChessBoard.ChessBoardMatrix[coordinate.Column, coordinate.Row];
+                        if (piece is ValidMove)
+                        {
+                            piece.Click += this.ValidMoveOnClick;
+                        }
+                    }
+                }
+            }
+        }
+
+        private void ValidMoveOnClick(object sender, EventArgs e)
+        {
+            ChessPiece? lastClickedPiece = this._lastClickedPiece;
+            if (lastClickedPiece != null)
+            {
+                lastClickedPiece.Clicks++;
+                lastClickedPiece.ToggleShowValidMoves();
+                var         validMove  = sender as ValidMove;
+                Coordinate? coordinate = validMove?.Coordinate;
+                if (coordinate != null)
+                {
+                    this._lastClickedPiece?.MoveTo(coordinate);
+                    this.UpdateChessBoard();
+                }
+            }
         }
     }
 }

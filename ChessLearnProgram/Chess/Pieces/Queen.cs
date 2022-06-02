@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Chess.Pieces
 {
     public sealed class Queen: ChessPiece
     {
-        public int Clicks = 0;
-
         public Queen(Coordinate coordinate, string color) : base(coordinate, color)
         {
             this.AllowDrop = true;
@@ -33,6 +27,11 @@ namespace Chess.Pieces
             this.Size                       = new Size(53, 54);
             this.TabIndex                   = 7;
             this.UseVisualStyleBackColor       = true;
+        }
+
+        public override List<Coordinate> GetValidMoves(ICoordinate coordinate)
+        {
+            return null;
         }
     }
 }

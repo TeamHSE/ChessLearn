@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace Chess.Pieces
@@ -28,6 +29,9 @@ namespace Chess.Pieces
             this.UseVisualStyleBackColor       = true;
         }
 
-        public int Clicks { get; set; }
+        public override List<Coordinate> GetValidMoves(ICoordinate coordinate)
+        {
+            return null;
+        }
     }
 }

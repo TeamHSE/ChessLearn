@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace Chess.Pieces
@@ -26,6 +27,11 @@ namespace Chess.Pieces
             this.Size                       = new Size(53, 54);
             this.TabIndex                   = 7;
             this.UseVisualStyleBackColor    = true;
+        }
+
+        public override List<Coordinate> GetValidMoves(ICoordinate coordinate)
+        {
+            return null;
         }
     }
 }
