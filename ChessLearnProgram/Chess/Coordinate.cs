@@ -8,8 +8,8 @@ namespace Chess
     /// </summary>
     public sealed class Coordinate : ICoordinate
     {
-        private int _row;
         private int _column;
+        private int _row;
 
         /// <summary>
         ///     Координата фигуры.
@@ -18,8 +18,8 @@ namespace Chess
         /// <param name="column">Столбец координаты.</param>
         public Coordinate(int row, int column)
         {
-            Row    = row;
-            Column = column;
+            this.Row    = row;
+            this.Column = column;
         }
 
         /// <inheritdoc />
@@ -65,6 +65,45 @@ namespace Chess
         private static bool IsCoordinateInDiapason(int coordinatePart)
         {
             return (coordinatePart >= 0) && (coordinatePart < 8);
+        }
+
+        /// <summary>Возвращает строку, представляющую текущий объект.</summary>
+        /// <returns>Строка, представляющая текущий объект.</returns>
+        public override string ToString()
+        {
+            return $"{this.Row} {this.Column}";
+        }
+
+        /// <summary>Определяет, равен ли заданный объект текущему объекту.</summary>
+        /// <param name="obj">Объект, который требуется сравнить с текущим объектом.</param>
+        /// <returns>
+        ///     Значение <see langword="true" />, если указанный объект равен текущему объекту; в противном случае — значение
+        ///     <see langword="false" />.
+        /// </returns>
+        public override bool Equals(object obj)
+        {
+            if (obj is Coordinate coordinate)
+            {
+                return (this.Row == coordinate.Row) && (this.Column == coordinate.Column);
+            }
+
+            return false;
+        }
+
+        private bool Equals(Coordinate other)
+        {
+            return (this._row    == other._row)
+                && (this._column == other._column);
+        }
+
+        /// <summary>Служит хэш-функцией по умолчанию.</summary>
+        /// <returns>Хэш-код для текущего объекта.</returns>
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                return (this._row * 397) ^ this._column;
+            }
         }
     }
 }

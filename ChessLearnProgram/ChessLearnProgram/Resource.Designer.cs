@@ -63,6 +63,26 @@ namespace ChessLearnProgram {
         /// <summary>
         ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         /// </summary>
+        internal static System.IO.UnmanagedMemoryStream bishop_train {
+            get {
+                return ResourceManager.GetStream("bishop_train", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to       Перейдём к следующей фигуре – слону. Всего слонов четыре: два у вас и два у противника.
+        ///      Одноцветные слоны находятся на разных по цвету клетках. Слон может ходить на любое количество клеток, но только по диагонали, поэтому одноцветные слоны никак не пересекутся. Слоны, перемещающиеся на клетках с одинаковым цветом, могут быть только один ваш и один противника, и называются при этом на шахматном жаргоне однопольными.
+        ///      Если на пути слона стоит любая фигура, то дальше неё и на её место слон в [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string bishop_train_text {
+            get {
+                return ResourceManager.GetString("bishop_train_text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
         internal static System.IO.UnmanagedMemoryStream king_train {
             get {
                 return ResourceManager.GetStream("king_train", resourceCulture);
@@ -76,6 +96,26 @@ namespace ChessLearnProgram {
         internal static string king_train_text {
             get {
                 return ResourceManager.GetString("king_train_text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream knight_train {
+            get {
+                return ResourceManager.GetStream("knight_train", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to   Конь- самая хитра из шахматных фигур! Конь ходит непохоже на другие фигуры.
+        ///  В начале партии у каждого из противников по два коня. Кони расположены с боку у ладьи. Кони уникальный по двум причинам. Первая — это единственные фигуры, способные перепрыгивать через другие фигуры. Вторая¬ — при каждом прыжке конь переходит с чёрного поля на белое и с белого на чёрное.
+        ///  За один ход конь преодолевает несколько полей. Он проходит на два поля в одном направлении и далее на одно поле под углом 90 градусов. Напр [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string knight_train_text {
+            get {
+                return ResourceManager.GetString("knight_train_text", resourceCulture);
             }
         }
         
@@ -98,6 +138,46 @@ namespace ChessLearnProgram {
         internal static string pawn_train_text {
             get {
                 return ResourceManager.GetString("pawn_train_text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream queen_train {
+            get {
+                return ResourceManager.GetStream("queen_train", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to   Ферзь является самой сильной шахматной фигурой, потому что он может атаковать или защищать больше полей, чем любая другая фигура. Ферзь располагается рядом с королём, белый ферзь находится на поле белого цвета, а чёрный ферзь – чёрного.
+        ///  Ферзь ходит в любом направлении как король, но на любое количество полей. Как и ладья, ферзь может ходить на любое количество полей вперёд и назад по вертикали или вправо-влево по горизонтали. Так же ферзь может ходить по диагоналям как слон.
+        ///  Если на пути ферзю стоит [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string queen_train_text {
+            get {
+                return ResourceManager.GetString("queen_train_text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream rook_train {
+            get {
+                return ResourceManager.GetStream("rook_train", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to   Продолжим узнавать о шахматных фигурах. Следующая фигура для изучения-ладья. Ладья — это вторая по силе фигура после ферзя.
+        ///  Всего у игрока 2 фигуры ладьи, которые располагаются для вас в нижнем левом углу и в нижнем правом углу. У соперника ладьи располагаются так же, но в верхней от вас части доски.
+        ///  Ладья не может перепрыгивать через другие фигуры. Исключение составляет рокировка: при рокировке ладья прыгает через короля. Существует два вида рокировок, короткая и длинная. При короткой рокировке кор [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string rook_train_text {
+            get {
+                return ResourceManager.GetString("rook_train_text", resourceCulture);
             }
         }
     }

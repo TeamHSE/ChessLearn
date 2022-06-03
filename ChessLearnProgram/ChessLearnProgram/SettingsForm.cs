@@ -17,7 +17,6 @@ namespace ChessLearnProgram
 
         private void WayToMoveDomainUpDown_SelectedItemChanged(object sender, EventArgs e)
         {
-
         }
     }
 }
