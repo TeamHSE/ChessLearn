@@ -804,12 +804,10 @@ namespace ChessLearnProgram
                                                        coordinate.Row]);
             foreach (ChessPiece piece in validMoves)
             {
-                if (piece == null)
+                if (piece is ValidMove || piece.BackColor == Color.Red)
                 {
-                    continue;
+                    piece.Click += this.ValidRookMoveOnClick;
                 }
-
-                piece.Click += this.ValidRookMoveOnClick;
             }
         }
 
@@ -828,16 +826,15 @@ namespace ChessLearnProgram
             var whiteRook = (Rook)this._lastClickedPiece;
             var         move      = (ChessPiece)sender;
             Coordinate? moveCoord = move.CurrentCoordinate;
-            if (!(move is ValidMove) && IsEnemy(move))
-            {
-                ChessBoard.ChessBoardMatrix[move.CurrentCoordinate.Column, move.CurrentCoordinate.Row] = null;
-                whiteRook.MoveTo(moveCoord);
-                // whiteRook.ToggleShowValidMoves();
-                // whiteRook.Clicks++;
-                this.UpdateChessBoard();
-                return;
-            }
+            // if (IsEnemy(move))
+            // {
+            //     whiteRook.ToggleShowValidMoves();
+            //     whiteRook.MoveTo(moveCoord);
+            //     this.UpdateChessBoard();
+            //     return;
+            // }
 
+            this.UpdateChessBoard();
             whiteRook.Clicks++;
             whiteRook.ToggleShowValidMoves();
             whiteRook.MoveTo(moveCoord);
