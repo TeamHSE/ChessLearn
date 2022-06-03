@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Media;
 using System.Threading;
 using System.Windows.Forms;
@@ -74,6 +75,8 @@ namespace ChessLearnProgram
             this.tableLayoutPanel1.Size = new Size(this.SizeTrackBar.Value, this.SizeTrackBar.Value + 2);
         }
 
+        #region Theory part
+
         private void PlayButton_Click(object sender, EventArgs e)
         {
             this._playButtonClicks++;
@@ -91,7 +94,7 @@ namespace ChessLearnProgram
 
         public void LoadPawnScene()
         {
-            this.PracticeButton.Text += " (пешка)";
+            this.PracticeButton.Text += @" (пешка)";
             for (var i = 0; i < 8; i++)
             {
                 _ = new Pawn(new Coordinate(1, i), "Black");
@@ -146,6 +149,7 @@ namespace ChessLearnProgram
 
         public void LoadKingScene()
         {
+            this.PracticeButton.Text += @" (король)";
             var blackKing = new King(new Coordinate(4, 2), "Black");
             var whiteKing = new King(new Coordinate(3, 6), "White");
             var whitePawn = new Pawn(new Coordinate(6, 1), "White");
@@ -182,6 +186,7 @@ namespace ChessLearnProgram
 
         public void LoadBishopScene()
         {
+            this.PracticeButton.Text += @" (слон)";
             var whiteBishop1 = new Bishop(new Coordinate(7, 2), "White");
             var whiteBishop2 = new Bishop(new Coordinate(7, 5), "White");
             var blackBishop1 = new Bishop(new Coordinate(0, 2), "Black");
@@ -207,23 +212,13 @@ namespace ChessLearnProgram
             this.MessageTextBox.Text = Resource.bishop_train_text;
         }
 
-        private void ChessBoardForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            ChessBoard.Clear();
-            this.StopSound();
-        }
-
-        private void StopSound()
-        {
-            this._soundPlayer?.Stop();
-        }
-
         public void LoadRookScene()
         {
-            _ = new Rook(new Coordinate(7, 7), "White");
-            _ = new Rook(new Coordinate(0, 0), "Black");
-            _ = new Rook(new Coordinate(7, 0), "White");
-            _ = new King(new Coordinate(7, 4), "White");
+            this.PracticeButton.Text += @" (ладья)";
+            _                        =  new Rook(new Coordinate(7, 7), "White");
+            _                        =  new Rook(new Coordinate(0, 0), "Black");
+            _                        =  new Rook(new Coordinate(7, 0), "White");
+            _                        =  new King(new Coordinate(7, 4), "White");
 
             void StartRookLesson()
             {
@@ -240,7 +235,7 @@ namespace ChessLearnProgram
                 whiteRook = this.tableLayoutPanel1.GetControlFromPosition(5, 7);
                 this.tableLayoutPanel1.Controls.Add(whiteRook, 7, 7);
                 Thread.Sleep(1500);
-                //Рокировка длинная 
+                //Рокировка длинная
                 whiteKing = this.tableLayoutPanel1.GetControlFromPosition(4, 7);
                 this.tableLayoutPanel1.Controls.Add(whiteKing, 2, 7);
                 Thread.Sleep(700);
@@ -275,10 +270,11 @@ namespace ChessLearnProgram
 
         public void LoadQueenScene()
         {
-            _ = new King(new Coordinate(7,  4), "White");
-            _ = new Queen(new Coordinate(7, 3), "White");
-            _ = new King(new Coordinate(0,  4), "Black");
-            _ = new Queen(new Coordinate(0, 3), "Black");
+            this.PracticeButton.Text += @" (королева)";
+            _                        =  new King(new Coordinate(7,  4), "White");
+            _                        =  new Queen(new Coordinate(7, 3), "White");
+            _                        =  new King(new Coordinate(0,  4), "Black");
+            _                        =  new Queen(new Coordinate(0, 3), "Black");
 
             void StartQueenLesson()
             {
@@ -347,17 +343,18 @@ namespace ChessLearnProgram
 
         public void LoadKnightScene()
         {
-            _ = new Rook(new Coordinate(7,   7), "White");
-            _ = new Rook(new Coordinate(7,   0), "White");
-            _ = new Knight(new Coordinate(7, 6), "White");
-            _ = new Knight(new Coordinate(7, 1), "White");
-            _ = new Pawn(new Coordinate(6,   0), "White");
-            _ = new Pawn(new Coordinate(6,   1), "White");
-            _ = new Pawn(new Coordinate(6,   2), "White");
-            _ = new Rook(new Coordinate(0,   0), "Black");
-            _ = new Rook(new Coordinate(0,   7), "Black");
-            _ = new Knight(new Coordinate(0, 6), "Black");
-            _ = new Knight(new Coordinate(0, 1), "Black");
+            this.PracticeButton.Text += @" (коня)";
+            _                        =  new Rook(new Coordinate(7,   7), "White");
+            _                        =  new Rook(new Coordinate(7,   0), "White");
+            _                        =  new Knight(new Coordinate(7, 6), "White");
+            _                        =  new Knight(new Coordinate(7, 1), "White");
+            _                        =  new Pawn(new Coordinate(6,   0), "White");
+            _                        =  new Pawn(new Coordinate(6,   1), "White");
+            _                        =  new Pawn(new Coordinate(6,   2), "White");
+            _                        =  new Rook(new Coordinate(0,   0), "Black");
+            _                        =  new Rook(new Coordinate(0,   7), "Black");
+            _                        =  new Knight(new Coordinate(0, 6), "Black");
+            _                        =  new Knight(new Coordinate(0, 1), "Black");
 
 
             void StartQueenLesson()
@@ -382,6 +379,19 @@ namespace ChessLearnProgram
             this.MessageTextBox.Text = Resource.knight_train_text;
         }
 
+        private void ChessBoardForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            ChessBoard.Clear();
+            this.StopSound();
+        }
+
+        private void StopSound()
+        {
+            this._soundPlayer?.Stop();
+        }
+
+        #endregion Theory part
+
         private void PracticeButton_Click(object sender, EventArgs e)
         {
             this._theoryThread?.Abort();
@@ -389,7 +399,8 @@ namespace ChessLearnProgram
             ChessBoard.Clear();
             this.PlayButton.Enabled = false;
             this.UpdateChessBoard();
-            this.MessageTextBox.Text = "  Вы перешли к практической части задания!\n";
+            this.MessageTextBox.Text = @"  Вы перешли к практической части задания!
+";
             if (!(sender is Button button))
             {
                 return;
@@ -405,7 +416,18 @@ namespace ChessLearnProgram
 ";
                 this.LoadPawnPracticeScene();
             }
+            else if (button.Text.Contains("король"))
+            {
+                this.MessageTextBox.Text += @"  Сейчас вам предлагается закрепить знания о короле.
+
+  Смтрите! Следующим ходом соперник может поставить вам мат, сделав ход ладьёй на горизонталь с вашим королём!
+  Найдите наилучший ход для короля, чтобы не только избежать мата, но и сохранить свою ладью и завершить партию победой!
+  Обратите внимание! Ваш король не сделал ни одного хода ранее и ваша ладья справа тоже!";
+                this.LoadKingPracticeScene();
+            }
         }
+
+        #region Pawn
 
         private void LoadPawnPracticeScene()
         {
@@ -429,63 +451,84 @@ namespace ChessLearnProgram
             var pawn = sender as Pawn;
             this._lastClickedPiece = pawn;
             this._mainPiece        = pawn;
-            if (pawn != null)
+            if (pawn == null)
             {
-                List<Coordinate>? validMoves = pawn.GetValidMoves(pawn.CurrentCoordinate);
-                pawn.Clicks++;
-                pawn.ToggleShowValidMoves();
-                this.UpdateChessBoard();
-                if (validMoves != null)
+                return;
+            }
+
+            List<Coordinate>? validMoves = pawn.GetValidMoves(pawn.CurrentCoordinate);
+            pawn.Clicks++;
+            pawn.ToggleShowValidMoves();
+            this.UpdateChessBoard();
+            if (validMoves != null)
+            {
+                IEnumerable<ValidMove> valids = validMoves
+                                               .Select(coordinate =>
+                                                           ChessBoard.ChessBoardMatrix[coordinate.Column,
+                                                               coordinate.Row])
+                                               .OfType<ValidMove>();
+                foreach (ValidMove validMove in valids)
                 {
-                    foreach (Coordinate? coordinate in validMoves)
+                    validMove.Click += this.ValidPawnMoveOnClick;
+                }
+            }
+
+            ChessPiece enemy;
+            if (pawn.CurrentCoordinate.Row != 2)
+            {
+                return;
+            }
+
+            {
+                void OnEnemyPawnClick(object o, EventArgs args)
+                {
+                    ChessBoard.ChessBoardMatrix[enemy.CurrentCoordinate.Column, enemy.CurrentCoordinate.Row]
+                        = pawn;
+                    ChessBoard.ChessBoardMatrix[pawn.CurrentCoordinate.Column, pawn.CurrentCoordinate.Row]
+                        = null;
+                    this.tableLayoutPanel1.Controls.Remove(enemy);
+                    pawn.CurrentCoordinate = enemy.CurrentCoordinate;
+                    this.tableLayoutPanel1.Controls.Add(pawn, pawn.CurrentCoordinate.Column,
+                                                        pawn.CurrentCoordinate.Row);
+                    this.UpdateChessBoard();
+                    ChessPiece? mainEnemyPiece = this._mainEnemyPiece;
+                    if (mainEnemyPiece != null)
                     {
-                        ChessPiece? piece = ChessBoard.ChessBoardMatrix[coordinate.Column, coordinate.Row];
-                        if (piece is ValidMove)
-                        {
-                            piece.Click += this.ValidMoveOnClick;
-                        }
+                        this.NextBlackPawnMove(mainEnemyPiece);
                     }
                 }
 
-                ChessPiece enemy;
-                if (pawn.CurrentCoordinate.Row == 2)
+                if (!(this.tableLayoutPanel1.GetControlFromPosition(pawn.CurrentCoordinate.Column - 1, 1) is
+                          ChessPiece piece))
                 {
-                    void OnEnemyOnClick(object o, EventArgs args)
-                    {
-                        ChessBoard.ChessBoardMatrix[enemy.CurrentCoordinate.Column, enemy.CurrentCoordinate.Row]
-                            = pawn;
-                        ChessBoard.ChessBoardMatrix[pawn.CurrentCoordinate.Column, pawn.CurrentCoordinate.Row]
-                            = null;
-                        this.tableLayoutPanel1.Controls.Remove(enemy);
-                        pawn.CurrentCoordinate = enemy.CurrentCoordinate;
-                        this.tableLayoutPanel1.Controls.Add(pawn, pawn.CurrentCoordinate.Column,
-                                                            pawn.CurrentCoordinate.Row);
-                        this.UpdateChessBoard();
-                        this.NextBlackMove(this._mainEnemyPiece);
-                    }
-
-                    if (this.tableLayoutPanel1.GetControlFromPosition(pawn.CurrentCoordinate.Column - 1, 1) is
-                        ChessPiece piece)
-                    {
-                        enemy           =  piece;
-                        enemy.BackColor =  Color.Red;
-                        enemy.Click     += OnEnemyOnClick;
-                    }
+                    return;
                 }
+
+                enemy           =  piece;
+                enemy.BackColor =  Color.Red;
+                enemy.Click     += OnEnemyPawnClick;
             }
         }
 
-        private void NextBlackMove(ChessPiece piece)
+        private void NextBlackPawnMove(ChessPiece piece)
         {
             piece.MoveTo(new Coordinate(piece.CurrentCoordinate.Row + 1, piece.CurrentCoordinate.Column));
             if (piece.CurrentCoordinate.Row == 7)
             {
-                piece = new Queen(new Coordinate(piece.CurrentCoordinate.Row, piece.CurrentCoordinate.Column),
-                                  "Black");
-                this._mainPiece.Enabled = false;
+                _ = new Queen(new Coordinate(piece.CurrentCoordinate.Row, piece.CurrentCoordinate.Column),
+                              "Black");
+                ChessPiece? chessPiece = this._mainPiece;
+                if (chessPiece != null)
+                {
+                    chessPiece.Enabled = false;
+                }
+
                 var whiteking = this.tableLayoutPanel1.GetControlFromPosition(7, 7) as King;
-                whiteking.Enabled   = false;
-                whiteking.BackColor = Color.Red;
+                if (whiteking != null)
+                {
+                    whiteking.Enabled   = false;
+                    whiteking.BackColor = Color.Red;
+                }
 
                 this.MessageTextBox.Text += @"
   Увы! Вы не смогли поставить мат королю соперника.
@@ -499,20 +542,25 @@ namespace ChessLearnProgram
             this.UpdateChessBoard();
         }
 
-        private void ValidMoveOnClick(object sender, EventArgs e)
+        private void ValidPawnMoveOnClick(object sender, EventArgs e)
         {
             ChessPiece? mainPiece = this._mainPiece;
             if ((mainPiece != null) && (mainPiece.CurrentCoordinate.Row == 1))
             {
-                ChessBoard.ChessBoardMatrix[this._mainPiece.CurrentCoordinate.Column,
-                                            this._mainPiece.CurrentCoordinate.Row] = null;
-                var queen
-                    = new
-                        Queen(new Coordinate(this._mainPiece.CurrentCoordinate.Row - 1, this._mainPiece.CurrentCoordinate.Column),
-                              "White");
-                this.tableLayoutPanel1.Controls.Remove(this._mainPiece);
-                this.tableLayoutPanel1.Controls.Add(queen, queen.CurrentCoordinate.Column,
-                                                    queen.CurrentCoordinate.Row);
+                ChessPiece? chessPiece = this._mainPiece;
+                if (chessPiece != null)
+                {
+                    ChessBoard.ChessBoardMatrix[chessPiece.CurrentCoordinate.Column,
+                                                chessPiece.CurrentCoordinate.Row] = null;
+                    var queen
+                        = new
+                            Queen(new Coordinate(chessPiece.CurrentCoordinate.Row - 1, chessPiece.CurrentCoordinate.Column),
+                                  "White");
+                    this.tableLayoutPanel1.Controls.Remove(chessPiece);
+                    this.tableLayoutPanel1.Controls.Add(queen, queen.CurrentCoordinate.Column,
+                                                        queen.CurrentCoordinate.Row);
+                }
+
                 this.UpdateChessBoard();
                 mainPiece.Click -= this.PawnOnClick;
                 if (this.tableLayoutPanel1.GetControlFromPosition(7, 0) is King blackKing)
@@ -530,7 +578,11 @@ namespace ChessLearnProgram
 
 
             ChessPiece? lastClickedPiece = this._lastClickedPiece;
-            if (lastClickedPiece != null)
+            if (lastClickedPiece == null)
+            {
+                return;
+            }
+
             {
                 lastClickedPiece.Clicks++;
                 lastClickedPiece.ToggleShowValidMoves();
@@ -545,9 +597,173 @@ namespace ChessLearnProgram
                 ChessPiece? chessPiece = this._mainEnemyPiece;
                 if ((chessPiece != null) && (((ValidMove)sender).CurrentCoordinate.Row != 0))
                 {
-                    this.NextBlackMove(chessPiece);
+                    this.NextBlackPawnMove(chessPiece);
                 }
             }
         }
+
+        #endregion Pawn
+
+        #region King
+
+        private void LoadKingPracticeScene()
+        {
+            // White pieces
+            var whiteKing = new King(new Coordinate(7, 4), "White");
+            whiteKing.ValidMoves.Add(new Coordinate(whiteKing.CurrentCoordinate.Row,
+                                                    whiteKing.CurrentCoordinate.Column + 1));
+            whiteKing.ValidMoves.Add(new Coordinate(whiteKing.CurrentCoordinate.Row,
+                                                    whiteKing.CurrentCoordinate.Column + 2));
+            whiteKing.ValidMoves.Add(new Coordinate(whiteKing.CurrentCoordinate.Row,
+                                                    whiteKing.CurrentCoordinate.Column - 1));
+            whiteKing.Click += this.OnWhiteKingClick;
+            _ = new Rook(new Coordinate(7, 7), "White");
+            _ = new Pawn(new Coordinate(6, 4), "White");
+            _ = new Pawn(new Coordinate(6, 6), "White");
+            _ = new Pawn(new Coordinate(6, 7), "White");
+
+            // Black pieces
+            _ = new King(new Coordinate(5, 4), "Black");
+            _ = new Rook(new Coordinate(0, 0), "Black");
+            this.UpdateChessBoard();
+        }
+
+        private void OnWhiteKingClick(object sender, EventArgs e)
+        {
+            if (!(sender is King whiteKing))
+            {
+                return;
+            }
+
+            this._lastClickedPiece = whiteKing;
+            whiteKing.Clicks++;
+            whiteKing.ToggleShowValidMoves();
+            this.UpdateChessBoard();
+
+            List<Coordinate>? validMoveCoords = whiteKing.GetValidMoves(whiteKing.CurrentCoordinate);
+            IEnumerable<ValidMove> validMoves = validMoveCoords
+                                               .Select(coordinate =>
+                                                           ChessBoard.ChessBoardMatrix[coordinate.Column,
+                                                               coordinate.Row])
+                                               .OfType<ValidMove>();
+            foreach (ValidMove validMove in validMoves)
+            {
+                validMove.Click += this.ValidKingMoveOnClick;
+            }
+        }
+
+        private void ValidKingMoveOnClick(object sender, EventArgs e)
+        {
+            if (!(sender is ValidMove validMove) || (this._lastClickedPiece == null))
+            {
+                return;
+            }
+
+            Coordinate validMoveCoord = validMove.Coordinate;
+            if (validMoveCoord == null)
+            {
+                return;
+            }
+
+            if (Equals(validMoveCoord, new Coordinate(7, 3)))
+            {
+                this.RunBadKingMoveLoseRook();
+                return;
+            }
+
+            if (Equals(validMoveCoord, new Coordinate(7, 5)))
+            {
+                this.RunBadKingMoveMate();
+                return;
+            }
+
+            if (Equals(validMoveCoord, new Coordinate(7, 6)))
+            {
+                this.RunCorrectKingMove();
+            }
+        }
+
+
+        private void RunCorrectKingMove()
+        {
+            if (this._lastClickedPiece == null)
+            {
+                return;
+            }
+
+            var whiteKing = (King)this._lastClickedPiece;
+            whiteKing.MoveTo(new Coordinate(whiteKing.CurrentCoordinate.Row,
+                                            whiteKing.CurrentCoordinate.Column + 2));
+            var whiteRook = (Rook)ChessBoard.ChessBoardMatrix[7, 7];
+            ChessBoard.ChessBoardMatrix[5, 7] = whiteRook;
+            ChessBoard.ChessBoardMatrix[7, 7] = null;
+            whiteKing.ToggleShowValidMoves();
+            whiteKing.ValidMoves.Clear();
+            this.UpdateChessBoard();
+
+            this.MessageTextBox.Text += @"
+  Поздравляем! Вы смогли защитить короля, сделав рокировку! Этим ходом вы обеспечили не только безопасность своего короля,
+но и открыли для ладьи сразу два пути для развития, что позволит вам провести свои пешки и сделать их ферзями!";
+            MessageBox.Show(@"Поздравляем! Вы смогли защитить короля, сделав рокировку! Этим ходом вы обеспечили не только безопасность своего короля,
+но и открыли для ладьи сразу два пути для развития, что позволит вам провести свои пешки и сделать их ферзями!",
+                            @"Поздравляем!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void RunBadKingMoveMate()
+        {
+            if (this._lastClickedPiece == null)
+            {
+                return;
+            }
+
+            var whiteKing = (King)this._lastClickedPiece;
+            whiteKing.MoveTo(new Coordinate(whiteKing.CurrentCoordinate.Row,
+                                            whiteKing.CurrentCoordinate.Column + 1));
+            whiteKing.ToggleShowValidMoves();
+            whiteKing.ValidMoves.Clear();
+            var blackRook = (Rook)ChessBoard.ChessBoardMatrix[0, 0];
+            ChessBoard.ChessBoardMatrix[0, 7] = blackRook;
+            ChessBoard.ChessBoardMatrix[0, 0] = null;
+            whiteKing.BackColor               = Color.Red;
+            whiteKing.Enabled                 = false;
+            this.UpdateChessBoard();
+
+            this.MessageTextBox.Text += @"
+  О нет! Вам мат! Ваш король оказалься замкнут и не сможет выбраться из-под шаха, что значит, что вы проиграли партию! Попробуйте заново!";
+            MessageBox.Show(@"О нет! Вам мат! Ваш король оказалься замкнут и не сможет выбраться из-под шаха, что значит, что вы проиграли партию! Попробуйте заново!",
+                            @"Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void RunBadKingMoveLoseRook()
+        {
+            if (this._lastClickedPiece == null)
+            {
+                return;
+            }
+
+            var whiteKing = (King)this._lastClickedPiece;
+            whiteKing.MoveTo(new Coordinate(whiteKing.CurrentCoordinate.Row,
+                                            whiteKing.CurrentCoordinate.Column - 1));
+            whiteKing.ToggleShowValidMoves();
+            whiteKing.ValidMoves.Clear();
+            var blackRook = (Rook)ChessBoard.ChessBoardMatrix[0, 0];
+            ChessBoard.ChessBoardMatrix[0, 7] = blackRook;
+            ChessBoard.ChessBoardMatrix[0, 0] = null;
+            whiteKing.BackColor               = Color.Red;
+            whiteKing.Enabled                 = false;
+            this.UpdateChessBoard();
+
+            this.MessageTextBox.Text += @"
+  О нет! Вам шах, и следующим ходом ладья соперника забирает вашу!
+  это значит, что вы будете играть королём и пешками против короля и ладьи соперника, но при такой ситуации это безвыигрышная
+позиция! Попробуйте заново!";
+            MessageBox.Show(@"О нет! Вам шах, и следующим ходом ладья соперника забирает вашу!
+  Это значит, что вы будете играть королём и пешками против короля и ладьи соперника, но при такой ситуации это безвыигрышная позиция!
+  Попробуйте заново!", @"Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        #endregion King
+        
+        
     }
 }

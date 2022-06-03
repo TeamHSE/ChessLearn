@@ -64,7 +64,7 @@ namespace ChessLearnProgram
             // 
             // HowToBishopButton
             // 
-            this.HowToBishopButton.Location                =  new System.Drawing.Point(326, 262);
+            this.HowToBishopButton.Location                =  new System.Drawing.Point(326, 234);
             this.HowToBishopButton.Name                    =  "HowToBishopButton";
             this.HowToBishopButton.Size                    =  new System.Drawing.Size(149, 48);
             this.HowToBishopButton.TabIndex                =  3;
@@ -74,7 +74,7 @@ namespace ChessLearnProgram
             // 
             // HowToKingButton
             // 
-            this.HowToKingButton.Location                =  new System.Drawing.Point(326, 194);
+            this.HowToKingButton.Location                =  new System.Drawing.Point(326, 288);
             this.HowToKingButton.Name                    =  "HowToKingButton";
             this.HowToKingButton.Size                    =  new System.Drawing.Size(149, 48);
             this.HowToKingButton.TabIndex                =  2;
@@ -84,7 +84,7 @@ namespace ChessLearnProgram
             // 
             // HowToKnightButton
             // 
-            this.HowToKnightButton.Location                =  new System.Drawing.Point(326, 474);
+            this.HowToKnightButton.Location                =  new System.Drawing.Point(326, 396);
             this.HowToKnightButton.Name                    =  "HowToKnightButton";
             this.HowToKnightButton.Size                    =  new System.Drawing.Size(149, 48);
             this.HowToKnightButton.TabIndex                =  5;
@@ -94,7 +94,7 @@ namespace ChessLearnProgram
             // 
             // HowToQueenButton
             // 
-            this.HowToQueenButton.Location                =  new System.Drawing.Point(326, 402);
+            this.HowToQueenButton.Location                =  new System.Drawing.Point(326, 342);
             this.HowToQueenButton.Name                    =  "HowToQueenButton";
             this.HowToQueenButton.Size                    =  new System.Drawing.Size(149, 48);
             this.HowToQueenButton.TabIndex                =  6;
@@ -104,7 +104,7 @@ namespace ChessLearnProgram
             // 
             // HowToRookButton
             // 
-            this.HowToRookButton.Location                =  new System.Drawing.Point(326, 331);
+            this.HowToRookButton.Location                =  new System.Drawing.Point(326, 180);
             this.HowToRookButton.Name                    =  "HowToRookButton";
             this.HowToRookButton.Size                    =  new System.Drawing.Size(149, 48);
             this.HowToRookButton.TabIndex                =  4;
