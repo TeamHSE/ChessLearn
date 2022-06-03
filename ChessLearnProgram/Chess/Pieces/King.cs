@@ -29,9 +29,11 @@ namespace Chess.Pieces
             this.UseVisualStyleBackColor    = true;
         }
 
+        public List<Coordinate> ValidMoves { get; } = new List<Coordinate>();
+
         public override List<Coordinate> GetValidMoves(ICoordinate coordinate)
         {
-            return null;
+            return this.ValidMoves;
         }
     }
 }
