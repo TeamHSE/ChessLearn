@@ -907,9 +907,9 @@ namespace ChessLearnProgram
                 ChessBoard.Clear();
                 this.LoadRookPracticeScene();
                 this.UpdateChessBoard();
+                whiteRook.Clicks = 0;
             }
-
-            if (moveCoord.Equals(new Coordinate(5, 3)) && whiteRook.Clicks != 1)
+            else if (moveCoord.Equals(new Coordinate(5, 3)) && whiteRook.Clicks != 1)
             {
                 this.MessageTextBox.Text += @"
   Замечательно! Вы поставили шах его королю, который удерживал ладью от удара и следующим ходом своего короля вы с лёгкостью заберёте его ладью и проведёте пешку, выиграв партию!
@@ -928,6 +928,7 @@ namespace ChessLearnProgram
   Найдите ход получше! Этим ходом вы передаёте инициативу своему сопернику!";
                 MessageBox.Show(@"Найдите ход получше! Этим ходом вы передаёте инициативу своему сопернику!",
                                 @"Неверный ход!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                whiteRook.Clicks = 0;
                 ChessBoard.Clear();
                 this.LoadRookPracticeScene();
                 this.UpdateChessBoard();
