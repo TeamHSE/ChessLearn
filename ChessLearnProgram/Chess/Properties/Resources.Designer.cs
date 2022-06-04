@@ -68,5 +68,25 @@ namespace Chess.Properties {
                 return ResourceManager.GetString("Images", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Icon, аналогичного (Значок).
+        /// </summary>
+        internal static System.Drawing.Icon Иконка_ворона {
+            get {
+                object obj = ResourceManager.GetObject("Иконка_ворона", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Фон_для_кнопки {
+            get {
+                object obj = ResourceManager.GetObject("Фон_для_кнопки", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }
