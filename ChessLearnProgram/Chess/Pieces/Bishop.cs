@@ -31,7 +31,119 @@ namespace Chess.Pieces
 
         public override List<Coordinate> GetValidMoves()
         {
-            return null;
+            var validMoves = new List<Coordinate>();
+
+            this.UpdateProportionalMoves(ref validMoves);
+            this.UpdateDisproportialMoves(ref validMoves);
+            return validMoves;
+        }
+
+        private void UpdateDisproportialMoves(ref List<Coordinate> validMoves)
+        {
+            static bool IsCorrectCoordinates(int col, int row)
+            {
+                return (col >= 0) && (col < 8) && (row >= 0) && (row < 8);
+            }
+
+            int checkingRow    = this.CurrentCoordinate.Row    + 1;
+            int checkingColumn = this.CurrentCoordinate.Column - 1;
+            while (IsCorrectCoordinates(checkingRow, checkingColumn))
+            {
+                if ((ChessBoard.ChessBoardMatrix[checkingColumn, checkingRow] == null)
+                 || ChessBoard.ChessBoardMatrix[checkingColumn, checkingRow] is ValidMove)
+                {
+                    validMoves.Add(new Coordinate(checkingRow, checkingColumn));
+                    checkingColumn--;
+                    checkingRow++;
+                }
+                else if (ChessBoard.ChessBoardMatrix[checkingColumn, checkingRow].Color
+                      != this.Color)
+                {
+                    validMoves.Add(new Coordinate(checkingRow, checkingColumn));
+                    break;
+                }
+                else
+                {
+                    break;
+                }
+            }
+
+            checkingRow    = this.CurrentCoordinate.Row    - 1;
+            checkingColumn = this.CurrentCoordinate.Column + 1;
+            while (IsCorrectCoordinates(checkingRow, checkingColumn))
+            {
+                if ((ChessBoard.ChessBoardMatrix[checkingColumn, checkingRow] == null)
+                 || ChessBoard.ChessBoardMatrix[checkingColumn, checkingRow] is ValidMove)
+                {
+                    validMoves.Add(new Coordinate(checkingRow, checkingColumn));
+                    checkingColumn++;
+                    checkingRow--;
+                }
+                else if (ChessBoard.ChessBoardMatrix[checkingColumn, checkingRow].Color
+                      != this.Color)
+                {
+                    validMoves.Add(new Coordinate(checkingRow, checkingColumn));
+                    break;
+                }
+                else
+                {
+                    break;
+                }
+            }
+        }
+
+        private void UpdateProportionalMoves(ref List<Coordinate> validMoves)
+        {
+            static bool IsCorrectCoordinates(int col, int row)
+            {
+                return (col >= 0) && (col < 8) && (row >= 0) && (row < 8);
+            }
+
+            int checkingRow    = this.CurrentCoordinate.Row    + 1;
+            int checkingColumn = this.CurrentCoordinate.Column + 1;
+            while (IsCorrectCoordinates(checkingRow, checkingColumn))
+            {
+                if ((ChessBoard.ChessBoardMatrix[checkingColumn, checkingRow] == null)
+                 || ChessBoard.ChessBoardMatrix[checkingColumn, checkingRow] is ValidMove)
+                {
+                    validMoves.Add(new Coordinate(checkingRow, checkingColumn));
+                    checkingColumn++;
+                    checkingRow++;
+                }
+                else if (ChessBoard.ChessBoardMatrix[checkingColumn, checkingRow].Color
+                      != this.Color)
+                {
+                    validMoves.Add(new Coordinate(checkingRow, checkingColumn));
+                    break;
+                }
+                else
+                {
+                    break;
+                }
+            }
+
+            checkingRow    = this.CurrentCoordinate.Row    - 1;
+            checkingColumn = this.CurrentCoordinate.Column - 1;
+            while (IsCorrectCoordinates(checkingRow, checkingColumn))
+            {
+                if ((ChessBoard.ChessBoardMatrix[checkingColumn, checkingRow] == null)
+                 || ChessBoard.ChessBoardMatrix[checkingColumn, checkingRow] is ValidMove)
+                {
+                    validMoves.Add(new Coordinate(checkingRow, checkingColumn));
+                    checkingColumn--;
+                    checkingRow--;
+                }
+                else if (ChessBoard.ChessBoardMatrix[checkingColumn, checkingRow].Color
+                      != this.Color)
+                {
+                    validMoves.Add(new Coordinate(checkingRow, checkingColumn));
+                    break;
+                }
+                else
+                {
+                    break;
+                }
+            }
         }
     }
 }

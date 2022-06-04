@@ -85,6 +85,7 @@ namespace Chess.Pieces
             ChessBoard.ChessBoardMatrix[this.CurrentCoordinate.Column, this.CurrentCoordinate.Row] = null;
 
             this.CurrentCoordinate = new Coordinate(newCoordinate.Row, newCoordinate.Column);
+            this.Clicks            = 0;
         }
 
         public abstract List<Coordinate> GetValidMoves();
