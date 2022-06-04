@@ -31,7 +31,7 @@ namespace Chess.Pieces
 
         public List<Coordinate> ValidMoves { get; } = new List<Coordinate>();
 
-        public override List<Coordinate> GetValidMoves(ICoordinate coordinate)
+        public override List<Coordinate> GetValidMoves()
         {
             return this.ValidMoves;
         }

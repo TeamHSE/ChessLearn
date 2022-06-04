@@ -20,6 +20,8 @@ namespace Chess.Pieces
             ChessBoard.ChessBoardMatrix[coordinate.Column, coordinate.Row] = this;
         }
 
+        public List<Coordinate> ValidMoves { get; } = new List<Coordinate>();
+
         public int Clicks { get; set; } = 0;
 
         /// <summary>
@@ -68,7 +70,12 @@ namespace Chess.Pieces
         /// <exception cref="ArgumentException">Фигура не может переместиться на новую клетку.</exception>
         public void MoveTo(Coordinate newCoordinate)
         {
-            if (!this.GetValidMoves(this._currentCoordinate).Contains(newCoordinate))
+            if (this.CurrentCoordinate.Equals(newCoordinate))
+            {
+                return;
+            }
+
+            if (!this.GetValidMoves().Contains(newCoordinate))
             {
                 throw new ArgumentException($"Фигура не может переместиться с {this.CurrentCoordinate}"
                                           + $" на {newCoordinate}!");
@@ -80,19 +87,29 @@ namespace Chess.Pieces
             this.CurrentCoordinate = new Coordinate(newCoordinate.Row, newCoordinate.Column);
         }
 
-        public abstract List<Coordinate> GetValidMoves(ICoordinate coordinate);
+        public abstract List<Coordinate> GetValidMoves();
 
         public void ToggleShowValidMoves()
         {
-            foreach (Coordinate coordinate in this.GetValidMoves(this._currentCoordinate))
+            foreach (Coordinate coordinate in this.GetValidMoves())
             {
-                ChessBoard.ChessBoardMatrix[coordinate.Column, coordinate.Row]
-                    = ChessBoard.ChessBoardMatrix[coordinate.Column, coordinate.Row] switch
-                      {
-                          null        => new ValidMove(coordinate, this.Color),
-                          ValidMove _ => null,
-                          _           => ChessBoard.ChessBoardMatrix[coordinate.Column, coordinate.Row]
-                      };
+                switch (ChessBoard.ChessBoardMatrix[coordinate.Column, coordinate.Row])
+                {
+                    case null:
+                        ChessBoard.ChessBoardMatrix[coordinate.Column, coordinate.Row]
+                            = new ValidMove(coordinate, this.Color);
+                        break;
+                    case ValidMove _:
+                        ChessBoard.ChessBoardMatrix[coordinate.Column, coordinate.Row] = null;
+                        break;
+                    default:
+                        ChessPiece enemy = ChessBoard.ChessBoardMatrix[coordinate.Column, coordinate.Row];
+                        ChessBoard.ChessBoardMatrix[coordinate.Column, coordinate.Row].BackColor
+                            = enemy.BackColor == System.Drawing.Color.Transparent
+                                  ? System.Drawing.Color.Red
+                                  : System.Drawing.Color.Transparent;
+                        break;
+                }
             }
         }
     }
@@ -109,6 +126,7 @@ namespace Chess.Pieces
             this.FlatAppearance.BorderSize = 0;
             this.FlatStyle = FlatStyle.Flat;
             this.UseVisualStyleBackColor = true;
+            ChessBoard.ChessBoardMatrix[coordinate.Column, coordinate.Row] = this;
         }
 
         public Coordinate Coordinate
@@ -116,7 +134,7 @@ namespace Chess.Pieces
             get { return this.CurrentCoordinate; }
         }
 
-        public override List<Coordinate> GetValidMoves(ICoordinate coordinate)
+        public override List<Coordinate> GetValidMoves()
         {
             return null;
         }
