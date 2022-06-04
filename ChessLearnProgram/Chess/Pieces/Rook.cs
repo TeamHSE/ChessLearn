@@ -31,7 +31,6 @@ namespace Chess.Pieces
 
         public override List<Coordinate> GetValidMoves()
         {
-            // add valid moves for rook
             var validMoves = new List<Coordinate>();
 
             this.UpdateVerticalMoves(ref validMoves);
