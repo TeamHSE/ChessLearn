@@ -974,6 +974,7 @@ namespace ChessLearnProgram
             {
                 if (piece != null && (piece is ValidMove || piece.BackColor == Color.Red))
                 {
+                    piece.Click -= this.ValidRookMoveInBishopLesson_Click;
                     piece.Click += this.ValidRookMoveInBishopLesson_Click;
                 }
             }
@@ -1005,7 +1006,8 @@ namespace ChessLearnProgram
                 {
                     control.Enabled = false;
                 }
-            }else if (initialCoord.Row == 7 && moveCoord.Row == 0)
+            }
+            else if (initialCoord.Row == 7 && moveCoord.Row == 0)
             {
                 var blackKing = (King)ChessBoard.ChessBoardMatrix[2, 0];
                 ChessBoard.ChessBoardMatrix[3, 1] = blackKing;
@@ -1020,7 +1022,7 @@ namespace ChessLearnProgram
                 this.LoadBishopPracticeScene();
                 this.UpdateChessBoard();
             }
-            else if (moveCoord.Equals(new Coordinate(0, 2)) && whiteRook.Clicks == 1)
+            else if (moveCoord.Equals(new Coordinate(0, 2)))
             {
                 this.MessageTextBox.Text += @"
   Отличный ход! Продолжайте!";
@@ -1029,7 +1031,7 @@ namespace ChessLearnProgram
                 ChessBoard.ChessBoardMatrix[1, 0] = null;
                 this.UpdateChessBoard();
             }
-            else if (whiteRook.Clicks == 1)
+            else if (whiteRook.Clicks == 0)
             {
                 var blackPawn = (Pawn)ChessBoard.ChessBoardMatrix[0, 1];
                 ChessBoard.ChessBoardMatrix[0, 2] = blackPawn;
@@ -1063,6 +1065,7 @@ namespace ChessLearnProgram
             {
                 if (piece != null && (piece is ValidMove || piece.BackColor == Color.Red))
                 {
+                    piece.Click -= this.ValidBishopMove_Click;
                     piece.Click += this.ValidBishopMove_Click;
                 }
             }
@@ -1075,14 +1078,16 @@ namespace ChessLearnProgram
                 return;
             }
 
-            var         whiteBishop = (Bishop)this._lastClickedPiece;
-            var         move        = (ChessPiece)sender;
-            Coordinate? moveCoord   = move.CurrentCoordinate;
+            var         whiteBishop   = (Bishop)this._lastClickedPiece;
+            int         initialColumn = whiteBishop.CurrentCoordinate.Column;
+            var         move          = (ChessPiece)sender;
+            Coordinate? moveCoord     = move.CurrentCoordinate;
             whiteBishop.ToggleShowValidMoves();
             whiteBishop.MoveTo(moveCoord);
             this.UpdateChessBoard();
 
-            if (ChessBoard.ChessBoardMatrix[1, 0] is King || this._lastClickedPiece.CurrentCoordinate.Column == 6)
+
+            if (ChessBoard.ChessBoardMatrix[1, 0] is King || initialColumn == 7 || !this._lastClickedPiece.CurrentCoordinate.Equals(new Coordinate(2, 4)))
             {
                 var blackPawn = (Pawn)ChessBoard.ChessBoardMatrix[0, 1];
                 ChessBoard.ChessBoardMatrix[0, 2] = blackPawn;
@@ -1098,7 +1103,7 @@ namespace ChessLearnProgram
                 this.UpdateChessBoard();
             }
             else if (this._lastClickedPiece.CurrentCoordinate.Equals(new Coordinate(2, 4))
-                  && this._lastClickedPiece.Clicks == 1)
+                  && this._lastClickedPiece.Clicks == 0)
             {
                 this.MessageTextBox.Text += @"
   Вот это да! Осталось поставить сам мат!";
