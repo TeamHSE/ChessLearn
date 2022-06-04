@@ -22,7 +22,7 @@ namespace Chess.Pieces
 
         public List<Coordinate> ValidMoves { get; } = new List<Coordinate>();
 
-        public int Clicks { get; set; } = 0;
+        public int Clicks { get; set; }
 
         /// <summary>
         ///     Текущая координата фигуры.

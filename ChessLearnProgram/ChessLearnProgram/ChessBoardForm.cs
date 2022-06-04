@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Media;
 using System.Threading;
 using System.Windows.Forms;
-using System.Windows.Forms.VisualStyles;
 using Chess;
 using Chess.Pieces;
 
@@ -75,6 +73,79 @@ namespace ChessLearnProgram
         private void SizeTrackBar_Scroll(object sender, EventArgs e)
         {
             this.tableLayoutPanel1.Size = new Size(this.SizeTrackBar.Value, this.SizeTrackBar.Value + 2);
+        }
+
+        private void PracticeButton_Click(object sender, EventArgs e)
+        {
+            this._theoryThread?.Abort();
+            this._soundPlayer?.Stop();
+            ChessBoard.Clear();
+            this.PlayButton.Enabled = false;
+            this.UpdateChessBoard();
+            this.MessageTextBox.Text = @"  Вы перешли к практической части задания!
+";
+            if (!(sender is Button button))
+            {
+                return;
+            }
+
+            if (button.Text.Contains("пешка"))
+            {
+                this.MessageTextBox.Text += @"  Сейчас вам предлагается закрепить знания о пешке.
+  Перед вами стоит задача провести пешку до конца поля, чтобы превратить её в ферзя.
+  Соперник, однако, надеется опередить вас и поставить свою пешку.
+  В пылу эмоций он забывает про своего коня, воспользуйтесь этим и проведите свою центраьную пешку быстрее него!
+  Внимание! Чтобы опередить соперника проводить нужно именно центральную пешку!
+";
+                button.Text = @"Пройти урок заново (пешка)";
+                this.LoadPawnPracticeScene();
+            }
+            else if (button.Text.Contains("король"))
+            {
+                this.MessageTextBox.Text += @"  Сейчас вам предлагается закрепить знания о короле.
+
+  Смтрите! Следующим ходом соперник может поставить вам мат, сделав ход ладьёй на горизонталь с вашим королём!
+  Найдите наилучший ход для короля, чтобы не только избежать мата, но и сохранить свою ладью и завершить партию победой!
+  Обратите внимание! Ваш король не сделал ни одного хода ранее и ваша ладья справа тоже!";
+                button.Text = @"Пройти урок заново (король)";
+                this.LoadKingPracticeScene();
+            }
+            else if (button.Text.Contains("ладья"))
+            {
+                this.MessageTextBox.Text += @"  Сейчас вам предлагается закрепить знания о ладье.
+
+  Ваша пешка очень близка к тому, чтобы стать ферзём, однако вражеские фигуры мешают вам это сделать!
+  Ваша задача найти лучшие ходы для своей ладьи, чтобы выиграть партию в дальнейшем!";
+                button.Text = @"Пройти урок заново (ладья)";
+                this.LoadRookPracticeScene();
+            }
+            else if (button.Text.Contains("слон"))
+            {
+                this.MessageTextBox.Text += @"  Сейчас вам предлагается закрепить знания о слоне.
+
+  Оцентие позицию и преимущество ваших слонов и найдите мат в 3 хода для вашего соперника.";
+                button.Text = @"Пройти урок заново (слон)";
+                this.LoadBishopPracticeScene();
+            }
+            else if (button.Text.Contains("ферзь"))
+            {
+                this.MessageTextBox.Text += @"  Сейчас вам предлагается закрепить знания о ферзе.";
+                button.Text              =  @"Пройти урок заново (ферзь)";
+                this.LoadQueenPracticeScene();
+            }
+        }
+
+        private void SetAbility(bool enable)
+        {
+            foreach (Control control in this.tableLayoutPanel1.Controls)
+            {
+                if (control is ChessPiece piece && !(piece is ValidMove) && (piece.Color == "White"))
+                {
+                    piece.Enabled = enable;
+                }
+            }
+
+            this._lastClickedPiece.Enabled = true;
         }
 
         #region Theory part
@@ -395,60 +466,6 @@ namespace ChessLearnProgram
         }
 
         #endregion Theory part
-
-        private void PracticeButton_Click(object sender, EventArgs e)
-        {
-            this._theoryThread?.Abort();
-            this._soundPlayer?.Stop();
-            ChessBoard.Clear();
-            this.PlayButton.Enabled = false;
-            this.UpdateChessBoard();
-            this.MessageTextBox.Text = @"  Вы перешли к практической части задания!
-";
-            if (!(sender is Button button))
-            {
-                return;
-            }
-
-            if (button.Text.Contains("пешка"))
-            {
-                this.MessageTextBox.Text += @"  Сейчас вам предлагается закрепить знания о пешке.
-  Перед вами стоит задача провести пешку до конца поля, чтобы превратить её в ферзя.
-  Соперник, однако, надеется опередить вас и поставить свою пешку.
-  В пылу эмоций он забывает про своего коня, воспользуйтесь этим и проведите свою центраьную пешку быстрее него!
-  Внимание! Чтобы опередить соперника проводить нужно именно центральную пешку!
-";
-                button.Text = @"Пройти урок заново (пешка)";
-                this.LoadPawnPracticeScene();
-            }
-            else if (button.Text.Contains("король"))
-            {
-                this.MessageTextBox.Text += @"  Сейчас вам предлагается закрепить знания о короле.
-
-  Смтрите! Следующим ходом соперник может поставить вам мат, сделав ход ладьёй на горизонталь с вашим королём!
-  Найдите наилучший ход для короля, чтобы не только избежать мата, но и сохранить свою ладью и завершить партию победой!
-  Обратите внимание! Ваш король не сделал ни одного хода ранее и ваша ладья справа тоже!";
-                button.Text = @"Пройти урок заново (король)";
-                this.LoadKingPracticeScene();
-            }
-            else if (button.Text.Contains("ладья"))
-            {
-                this.MessageTextBox.Text += @"  Сейчас вам предлагается закрепить знания о ладье.
-
-  Ваша пешка очень близка к тому, чтобы стать ферзём, однако вражеские фигуры мешают вам это сделать!
-  Ваша задача найти лучшие ходы для своей ладьи, чтобы выиграть партию в дальнейшем!";
-                button.Text = @"Пройти урок заново (ладья)";
-                this.LoadRookPracticeScene();
-            }
-            else if (button.Text.Contains("слон"))
-            {
-                this.MessageTextBox.Text += @"  Сейчас вам предлагается закрепить знания о слоне.
-
-  Оцентие позицию и преимущество ваших слонов и найдите мат в 3 хода для вашего соперника.";
-                button.Text = @"Пройти урок заново (слон)";
-                this.LoadBishopPracticeScene();
-            }
-        }
 
         #region Pawn
 
@@ -957,6 +974,8 @@ namespace ChessLearnProgram
 
         #endregion Rook
 
+        #region Bishop
+
         private void LoadBishopPracticeScene()
         {
             var whiteBishop  = new Bishop(new Coordinate(4, 7), "White");
@@ -1023,7 +1042,7 @@ namespace ChessLearnProgram
   Отлично! Вы поставили мат королю соперника, поздравляю!";
                 ChessBoard.ChessBoardMatrix[1, 0].BackColor = Color.Red;
                 this.UpdateChessBoard();
-                MessageBox.Show("Отлично! Вы поставили мат королю соперника, поздравляю!", "Победа!",
+                MessageBox.Show(@"Отлично! Вы поставили мат королю соперника, поздравляю!", @"Победа!",
                                 MessageBoxButtons.OK, MessageBoxIcon.Information);
                 foreach (Control control in this.tableLayoutPanel1.Controls)
                 {
@@ -1140,17 +1159,228 @@ namespace ChessLearnProgram
             }
         }
 
-        private void SetAbility(bool enable)
+        #endregion Bishop
+
+        private void LoadQueenPracticeScene()
         {
-            foreach (Control control in this.tableLayoutPanel1.Controls)
+            var whiteKing = new King(new Coordinate(3, 7), "White");
+            whiteKing.Click   += this.King_Click;
+            whiteKing.Enabled =  false;
+            var whiteQueen = new Queen(new Coordinate(0, 0), "White");
+            whiteQueen.Click += this.Queen_Click;
+            var whitePawn = new Pawn(new Coordinate(6, 0), "White");
+
+            var blackKing = new King(new Coordinate(1, 7), "Black");
+            var blackPawn = new Pawn(new Coordinate(1, 6), "Black");
+            this.UpdateChessBoard();
+        }
+
+        private void King_Click(object sender, EventArgs e)
+        {
+            var whiteKing = (King)sender;
+            this._lastClickedPiece = whiteKing;
+            whiteKing.Clicks++;
+            whiteKing.ToggleShowValidMoves();
+            this.UpdateChessBoard();
+            this.SetAbility((whiteKing.Clicks % 2) == 0);
+
+            List<Coordinate>? validMoveCoords = whiteKing.GetValidMoves();
+            IEnumerable<ChessPiece> validMoves = validMoveCoords
+               .Select(coordinate =>
+                           ChessBoard.ChessBoardMatrix[coordinate.Column,
+                                                       coordinate.Row]);
+            foreach (ChessPiece piece in validMoves)
             {
-                if (control is ChessPiece piece && !(piece is ValidMove) && (piece.Color == "White"))
+                if ((piece != null) && (piece is ValidMove || (piece.BackColor == Color.Red)))
                 {
-                    piece.Enabled = enable;
+                    piece.Click -= this.ValidKingMoveInQueenLesson_Click;
+                    piece.Click += this.ValidKingMoveInQueenLesson_Click;
                 }
             }
+        }
 
-            this._lastClickedPiece.Enabled = true;
+        private void ValidKingMoveInQueenLesson_Click(object sender, EventArgs e)
+        {
+            if (this._lastClickedPiece == null)
+            {
+                return;
+            }
+
+            var         whiteKing     = (King)this._lastClickedPiece;
+            int         initialColumn = whiteKing.CurrentCoordinate.Column;
+            var         move          = (ChessPiece)sender;
+            Coordinate? moveCoord     = move.CurrentCoordinate;
+            whiteKing.ToggleShowValidMoves();
+            whiteKing.MoveTo(moveCoord);
+            this.UpdateChessBoard();
+            this.SetAbility(true);
+
+            if (move.CurrentCoordinate.Equals(new Coordinate(2, 6)))
+            {
+                this.MessageTextBox.Text
+                    += @"
+  Отлично! Найти такой ход довольно непросто, таким ходом вы отрезали королю путь через пешку,
+но не торопитесь, ведь можете загнать короля оппонента в пат – когда ему некуда будет ходить, тогда будет ничья, а вам нужно поставить ему мат!";
+
+                var blackKing = (King)ChessBoard.ChessBoardMatrix[6, 0];
+                ChessBoard.ChessBoardMatrix[5, 0] = blackKing;
+                ChessBoard.ChessBoardMatrix[6, 0] = null;
+                this.UpdateChessBoard();
+                Control? control = this.tableLayoutPanel1.GetControlFromPosition(6, 2);
+                control.Enabled = false;
+            }
+            else
+            {
+                this.MessageTextBox.Text += @"  Этот ход не позволяет поставить мат королю соперника в 4 хода!";
+                MessageBox.Show(@"Этот ход не позволяет поставить мат королю соперника в 4 хода!",
+                                @"Неверный ход!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                this._lastClickedPiece.Clicks = 0;
+                ChessBoard.Clear();
+                this.LoadQueenPracticeScene();
+                this.UpdateChessBoard();
+            }
+        }
+
+        private void Queen_Click(object sender, EventArgs e)
+        {
+            var whiteQueen = (Queen)sender;
+            this._lastClickedPiece = whiteQueen;
+            whiteQueen.Clicks++;
+            whiteQueen.ToggleShowValidMoves();
+            this.UpdateChessBoard();
+            this.SetAbility((whiteQueen.Clicks % 2) == 0);
+
+            List<Coordinate>? validMoveCoords = whiteQueen.GetValidMoves();
+            IEnumerable<ChessPiece> validMoves = validMoveCoords
+               .Select(coordinate =>
+                           ChessBoard.ChessBoardMatrix[coordinate.Column,
+                                                       coordinate.Row]);
+            foreach (ChessPiece piece in validMoves)
+            {
+                if ((piece != null) && (piece is ValidMove || (piece.BackColor == Color.Red)))
+                {
+                    piece.Click -= this.ValidQueenMove_Click;
+                    piece.Click += this.ValidQueenMove_Click;
+                }
+            }
+        }
+
+        private bool _isMate;
+        private void ValidQueenMove_Click(object sender, EventArgs e)
+        {
+            if (this._lastClickedPiece == null)
+            {
+                return;
+            }
+
+            var         whiteQueen    = (Queen)this._lastClickedPiece;
+            int         initialColumn = whiteQueen.CurrentCoordinate.Column;
+            var         move          = (ChessPiece)sender;
+            Coordinate? moveCoord     = move.CurrentCoordinate;
+            whiteQueen.ToggleShowValidMoves();
+            whiteQueen.MoveTo(moveCoord);
+            this.UpdateChessBoard();
+            this.SetAbility(true);
+
+            Coordinate[] mateCoordinates =
+            {
+                new Coordinate(0, 1),
+                new Coordinate(0, 4),
+                new Coordinate(1, 6)
+            };
+
+            if (this._isMate && mateCoordinates.Contains(moveCoord))
+            {
+                this.MessageTextBox.Text += @"  Отлично! Вы поняли, что король может быть загнут в пат, а вам нужно поставить ему мат!
+  Вы справились с матом в 4 хода, поздравляю!";
+                this.SetAbility(false);
+                MessageBox.Show(@"Вы справились с матом в 4 хода, поздравляю!",
+                                @"Победа!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            if (moveCoord.Equals(new Coordinate(4, 4)) && (initialColumn == 0))
+            {
+                this.MessageTextBox.Text += @"
+  Хороший ход, вы дали королю соперника шах, и уйти он может только дальше за пешку. Прдолжайте!";
+                var blackKing = (King)ChessBoard.ChessBoardMatrix[7, 1];
+                ChessBoard.ChessBoardMatrix[6, 0] = blackKing;
+                ChessBoard.ChessBoardMatrix[7, 1] = null;
+                this.UpdateChessBoard();
+                var whiteKing = (King)ChessBoard.ChessBoardMatrix[7, 3];
+                whiteKing.Enabled = true;
+                whiteKing.ValidMoves.Add(new Coordinate(2, 6));
+                whiteKing.ValidMoves.Add(new Coordinate(4, 6));
+                whiteKing.ValidMoves.Add(new Coordinate(4, 7));
+                whiteKing.ValidMoves.Add(new Coordinate(3, 6));
+            }
+            else if (ChessBoard.ChessBoardMatrix[5, 0] is King)
+            {
+                Coordinate[] possibleMovesCoords =
+                {
+                    new Coordinate(3, 4),
+                    new Coordinate(5, 4),
+                    new Coordinate(6, 4),
+                    new Coordinate(7, 4),
+                };
+                if (moveCoord.Equals(new Coordinate(2, 4)))
+                {
+                    this.MessageTextBox.Text += @"
+  Сделав этот ход вы не оставили оппоненту ни хода, но шаха нет,
+поэтому вы получаете пат – игра оканчивается ничьёй! Но нас это не устраивает, попробуйте снова!";
+                    MessageBox.Show(@"Сделав этот ход вы не оставили оппоненту ни хода, но шаха нет,
+поэтому вы получаете пат – игра оканчивается ничьёй! Но нас это не устраивает, попробуйте снова!",
+                                    @"Неверный ход!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    this._lastClickedPiece.Clicks = 0;
+                    ChessBoard.Clear();
+                    this.LoadQueenPracticeScene();
+                    this.UpdateChessBoard();
+                }
+                else if (possibleMovesCoords.Contains(moveCoord))
+                {
+                    this.MessageTextBox.Text += @"
+  Отличный ход, вы дали королю соперника возможность уйти и теперь он у вас в руках! Ставьте мат!";
+                    var blackKing = (King)ChessBoard.ChessBoardMatrix[5, 0];
+                    ChessBoard.ChessBoardMatrix[6, 0] = blackKing;
+                    ChessBoard.ChessBoardMatrix[5, 0] = null;
+                    this.UpdateChessBoard();
+                    this._isMate = true;
+                }
+                else
+                {
+                    this.MessageTextBox.Text += @"  Этот ход не позволяет поставить мат королю соперника в 4 хода!";
+                    MessageBox.Show(@"Этот ход не позволяет поставить мат королю соперника в 4 хода!",
+                                    @"Неверный ход!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    this._lastClickedPiece.Clicks = 0;
+                    ChessBoard.Clear();
+                    this.LoadQueenPracticeScene();
+                    this.UpdateChessBoard();
+                }
+            }
+            else if (!moveCoord.Equals(new Coordinate(4, 4)) && !moveCoord.Equals(new Coordinate(2, 4)))
+            {
+                this.MessageTextBox.Text += @"  Этот ход не позволяет поставить мат королю соперника в 4 хода!";
+                MessageBox.Show(@"Этот ход не позволяет поставить мат королю соперника в 4 хода!",
+                                @"Неверный ход!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                this._lastClickedPiece.Clicks = 0;
+                ChessBoard.Clear();
+                this.LoadQueenPracticeScene();
+                this.UpdateChessBoard();
+            }else if (ChessBoard.ChessBoardMatrix[6, 0] is King && moveCoord.Equals(new Coordinate(2, 4)))
+            {
+                this.MessageTextBox.Text += @"  Этот ход не позволяет поставить мат королю соперника в 4 хода!";
+                MessageBox.Show(@"Этот ход не позволяет поставить мат королю соперника в 4 хода!",
+                                @"Неверный ход!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                this._lastClickedPiece.Clicks = 0;
+                ChessBoard.Clear();
+                this.LoadQueenPracticeScene();
+                this.UpdateChessBoard();
+            }
         }
     }
 }

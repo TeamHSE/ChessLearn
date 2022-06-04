@@ -102,7 +102,7 @@ namespace Chess.Pieces
 
             static bool IsCorrectLowRow(int rowIndex)
             {
-                return (rowIndex < 8);
+                return rowIndex < 8;
             }
 
             while (IsCorrectLowRow(checkingRow))
@@ -129,7 +129,7 @@ namespace Chess.Pieces
 
             static bool IsCorrectHighRow(int rowIndex)
             {
-                return (rowIndex >= 0);
+                return rowIndex >= 0;
             }
 
             while (IsCorrectHighRow(checkingRow))

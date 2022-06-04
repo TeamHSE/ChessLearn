@@ -193,7 +193,7 @@ namespace ChessLearnProgram
         #endregion
         private MenuStrip                             miniToolStrip;
         private ToolStripMenuItem                     главноеМенюToolStripMenuItem;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private TableLayoutPanel tableLayoutPanel1;
         private PrintDialog                           printDialog1;
     }
 }
