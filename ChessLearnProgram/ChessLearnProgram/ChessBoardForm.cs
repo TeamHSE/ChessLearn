@@ -464,12 +464,12 @@ namespace ChessLearnProgram
             _          =  new King(new Coordinate(7,   7), "White");
             _          =  new Pawn(new Coordinate(6,   7), "White");
             _          =  new Pawn(new Coordinate(6,   6), "White");
-            pawn.Click += this.PawnOnClick;
+            pawn.Click += this.Pawn_Click;
             this.UpdateChessBoard();
             this._mainEnemyPiece = this.tableLayoutPanel1.GetControlFromPosition(0, 2) as Pawn;
         }
 
-        private void PawnOnClick(object sender, EventArgs e)
+        private void Pawn_Click(object sender, EventArgs e)
         {
             var pawn = sender as Pawn;
             this._lastClickedPiece = pawn;
@@ -482,6 +482,7 @@ namespace ChessLearnProgram
             List<Coordinate>? validMoves = pawn.GetValidMoves();
             pawn.Clicks++;
             pawn.ToggleShowValidMoves();
+            this.SetAbility((pawn.Clicks % 2) == 0);
             this.UpdateChessBoard();
             if (validMoves != null)
             {
@@ -492,7 +493,12 @@ namespace ChessLearnProgram
                                                .OfType<ValidMove>();
                 foreach (ValidMove validMove in valids)
                 {
-                    validMove.Click += this.ValidPawnMoveOnClick;
+                    if (pawn.Clicks != 1)
+                    {
+                        validMove.Click -= this.ValidPawnMove_Click;
+                    }
+
+                    validMove.Click += this.ValidPawnMove_Click;
                 }
             }
 
@@ -503,7 +509,7 @@ namespace ChessLearnProgram
             }
 
             {
-                void OnEnemyPawnClick(object o, EventArgs args)
+                void EnemyPawn_Click(object o, EventArgs args)
                 {
                     ChessBoard.ChessBoardMatrix[enemy.CurrentCoordinate.Column, enemy.CurrentCoordinate.Row]
                         = pawn;
@@ -529,7 +535,8 @@ namespace ChessLearnProgram
 
                 enemy           =  piece;
                 enemy.BackColor =  Color.Red;
-                enemy.Click     += OnEnemyPawnClick;
+                enemy.Click     -= EnemyPawn_Click;
+                enemy.Click     += EnemyPawn_Click;
             }
         }
 
@@ -565,7 +572,7 @@ namespace ChessLearnProgram
             this.UpdateChessBoard();
         }
 
-        private void ValidPawnMoveOnClick(object sender, EventArgs e)
+        private void ValidPawnMove_Click(object sender, EventArgs e)
         {
             ChessPiece? mainPiece = this._mainPiece;
             if ((mainPiece != null) && (mainPiece.CurrentCoordinate.Row == 1))
@@ -585,7 +592,7 @@ namespace ChessLearnProgram
                 }
 
                 this.UpdateChessBoard();
-                mainPiece.Click -= this.PawnOnClick;
+                mainPiece.Click -= this.Pawn_Click;
                 if (this.tableLayoutPanel1.GetControlFromPosition(7, 0) is King blackKing)
                 {
                     blackKing.Enabled   = false;
@@ -623,6 +630,8 @@ namespace ChessLearnProgram
                     this.NextBlackPawnMove(chessPiece);
                 }
             }
+
+            this.SetAbility(true);
         }
 
         #endregion Pawn
@@ -639,7 +648,7 @@ namespace ChessLearnProgram
                                                     whiteKing.CurrentCoordinate.Column + 2));
             whiteKing.ValidMoves.Add(new Coordinate(whiteKing.CurrentCoordinate.Row,
                                                     whiteKing.CurrentCoordinate.Column - 1));
-            whiteKing.Click += this.OnWhiteKingClick;
+            whiteKing.Click += this.WhiteKing_Click;
             _               =  new Rook(new Coordinate(7, 7), "White");
             _               =  new Pawn(new Coordinate(6, 4), "White");
             _               =  new Pawn(new Coordinate(6, 6), "White");
@@ -651,7 +660,7 @@ namespace ChessLearnProgram
             this.UpdateChessBoard();
         }
 
-        private void OnWhiteKingClick(object sender, EventArgs e)
+        private void WhiteKing_Click(object sender, EventArgs e)
         {
             if (!(sender is King whiteKing))
             {
@@ -662,6 +671,7 @@ namespace ChessLearnProgram
             whiteKing.Clicks++;
             whiteKing.ToggleShowValidMoves();
             this.UpdateChessBoard();
+            this.SetAbility((whiteKing.Clicks % 2) == 0);
 
             List<Coordinate>? validMoveCoords = whiteKing.GetValidMoves();
             IEnumerable<ValidMove> validMoves = validMoveCoords
@@ -671,11 +681,12 @@ namespace ChessLearnProgram
                                                .OfType<ValidMove>();
             foreach (ValidMove validMove in validMoves)
             {
-                validMove.Click += this.ValidKingMoveOnClick;
+                validMove.Click -= this.ValidKingMove_Click;
+                validMove.Click += this.ValidKingMove_Click;
             }
         }
 
-        private void ValidKingMoveOnClick(object sender, EventArgs e)
+        private void ValidKingMove_Click(object sender, EventArgs e)
         {
             if (!(sender is ValidMove validMove) || (this._lastClickedPiece == null))
             {
@@ -690,18 +701,21 @@ namespace ChessLearnProgram
 
             if (Equals(validMoveCoord, new Coordinate(7, 3)))
             {
+                this.SetAbility(true);
                 this.RunBadKingMoveLoseRook();
                 return;
             }
 
             if (Equals(validMoveCoord, new Coordinate(7, 5)))
             {
+                this.SetAbility(true);
                 this.RunBadKingMoveMate();
                 return;
             }
 
             if (Equals(validMoveCoord, new Coordinate(7, 6)))
             {
+                this.SetAbility(true);
                 this.RunCorrectKingMove();
             }
         }
@@ -796,7 +810,7 @@ namespace ChessLearnProgram
             var whitePawn = new Pawn(new Coordinate(2, 2), "White");
             var whiteKing = new King(new Coordinate(0, 1), "White");
             whiteRook.Click += this.Rook_Click;
-            whitePawn.Click += this.OnWhitePawnClick;
+            whitePawn.Click += this.WhitePawn_Click;
 
             // Black pieces.
             var blackRook  = new Rook(new Coordinate(5, 2), "Black");
@@ -806,7 +820,7 @@ namespace ChessLearnProgram
             this.UpdateChessBoard();
         }
 
-        private void OnWhitePawnClick(object sender, EventArgs e)
+        private void WhitePawn_Click(object sender, EventArgs e)
         {
             var pawn = sender as Pawn;
             this._lastClickedPiece = pawn;
@@ -820,6 +834,7 @@ namespace ChessLearnProgram
             pawn.Clicks++;
             pawn.ToggleShowValidMoves();
             this.UpdateChessBoard();
+            this.SetAbility((pawn.Clicks % 2) == 0);
             if (validMoves != null)
             {
                 IEnumerable<ValidMove> valids = validMoves
@@ -829,6 +844,7 @@ namespace ChessLearnProgram
                                                .OfType<ValidMove>();
                 foreach (ValidMove validMove in valids)
                 {
+                    validMove.Click -= this.ValidWhitePawnMove_Click;
                     validMove.Click += this.ValidWhitePawnMove_Click;
                 }
             }
@@ -849,6 +865,7 @@ namespace ChessLearnProgram
             ChessBoard.Clear();
             this.LoadRookPracticeScene();
             this.UpdateChessBoard();
+            this.SetAbility(true);
         }
 
         private void Rook_Click(object sender, EventArgs e)
@@ -858,6 +875,7 @@ namespace ChessLearnProgram
             whiteRook.Clicks++;
             whiteRook.ToggleShowValidMoves();
             this.UpdateChessBoard();
+            this.SetAbility((whiteRook.Clicks % 2) == 0);
 
             List<Coordinate>? validMoveCoords = whiteRook.GetValidMoves();
             IEnumerable<ChessPiece> validMoves = validMoveCoords
@@ -866,8 +884,9 @@ namespace ChessLearnProgram
                                                        coordinate.Row]);
             foreach (ChessPiece piece in validMoves)
             {
-                if (piece != null && (piece is ValidMove || piece.BackColor == Color.Red))
+                if ((piece != null) && (piece is ValidMove || (piece.BackColor == Color.Red)))
                 {
+                    piece.Click -= this.ValidRookMove_Click;
                     piece.Click += this.ValidRookMove_Click;
                 }
             }
@@ -880,14 +899,16 @@ namespace ChessLearnProgram
                 return;
             }
 
-            var         whiteRook = (Rook)this._lastClickedPiece;
-            var         move      = (ChessPiece)sender;
-            Coordinate? moveCoord = move.CurrentCoordinate;
+            var         whiteRook         = (Rook)this._lastClickedPiece;
+            Coordinate? initialCoordinate = whiteRook.CurrentCoordinate;
+            var         move              = (ChessPiece)sender;
+            Coordinate? moveCoord         = move.CurrentCoordinate;
             whiteRook.ToggleShowValidMoves();
             whiteRook.MoveTo(moveCoord);
             this.UpdateChessBoard();
+            this.SetAbility(true);
 
-            if (moveCoord.Equals(new Coordinate(5, 2)) && whiteRook.Clicks == 1)
+            if (moveCoord.Equals(new Coordinate(5, 2)) && (whiteRook.Clicks == 0))
             {
                 this.MessageTextBox.Text += @"
   Отличный очевидный ход! Так вы смогли не только забрать вражескую фигуру, но и сможете помочь своей пешке!
@@ -908,7 +929,7 @@ namespace ChessLearnProgram
                 this.UpdateChessBoard();
                 whiteRook.Clicks = 0;
             }
-            else if (moveCoord.Equals(new Coordinate(5, 3)) && whiteRook.Clicks != 1)
+            else if (moveCoord.Equals(new Coordinate(5, 3)) && (initialCoordinate.Column != 4))
             {
                 this.MessageTextBox.Text += @"
   Замечательно! Вы поставили шах его королю, который удерживал ладью от удара и следующим ходом своего короля вы с лёгкостью заберёте его ладью и проведёте пешку, выиграв партию!
@@ -921,7 +942,7 @@ namespace ChessLearnProgram
                                 @"Победа!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 whiteRook.Enabled = false;
             }
-            else if (!moveCoord.Equals(new Coordinate(5, 3)) && whiteRook.Clicks != 1)
+            else if (!moveCoord.Equals(new Coordinate(5, 3)) || (initialCoordinate.Column == 4))
             {
                 this.MessageTextBox.Text += @"
   Найдите ход получше! Этим ходом вы передаёте инициативу своему сопернику!";
@@ -946,13 +967,13 @@ namespace ChessLearnProgram
             var whiteRookAddit = new Rook(new Coordinate(7, 5), "White");
             whiteRook.Click      += this.RookInBishopLesson_Click;
             whiteRookAddit.Click += this.RookInBishopLesson_Click;
-            var whiteKing  = new King(new Coordinate(7, 0), "White");
-            var blackKing  = new King(new Coordinate(0, 1), "Black");
-            var blackPawn  = new Pawn(new Coordinate(3, 4), "Black");
-            var blackPawn1 = new Pawn(new Coordinate(1, 0), "Black");
-            var blackPawn2 = new Pawn(new Coordinate(1, 1), "Black");
-            var blackPawn3 = new Pawn(new Coordinate(1, 2), "Black");
-            var blackRook  = new Rook(new Coordinate(0, 2), "Black");
+            _                    =  new King(new Coordinate(7, 0), "White");
+            _                    =  new King(new Coordinate(0, 1), "Black");
+            _                    =  new Pawn(new Coordinate(3, 4), "Black");
+            _                    =  new Pawn(new Coordinate(1, 0), "Black");
+            _                    =  new Pawn(new Coordinate(1, 1), "Black");
+            _                    =  new Pawn(new Coordinate(1, 2), "Black");
+            _                    =  new Rook(new Coordinate(0, 2), "Black");
 
             this.UpdateChessBoard();
         }
@@ -964,6 +985,7 @@ namespace ChessLearnProgram
             whiteRook.Clicks++;
             whiteRook.ToggleShowValidMoves();
             this.UpdateChessBoard();
+            this.SetAbility((whiteRook.Clicks % 2) == 0);
 
             List<Coordinate>? validMoveCoords = whiteRook.GetValidMoves();
             IEnumerable<ChessPiece> validMoves = validMoveCoords
@@ -972,7 +994,7 @@ namespace ChessLearnProgram
                                                        coordinate.Row]);
             foreach (ChessPiece piece in validMoves)
             {
-                if (piece != null && (piece is ValidMove || piece.BackColor == Color.Red))
+                if ((piece != null) && (piece is ValidMove || (piece.BackColor == Color.Red)))
                 {
                     piece.Click -= this.ValidRookMoveInBishopLesson_Click;
                     piece.Click += this.ValidRookMoveInBishopLesson_Click;
@@ -994,7 +1016,8 @@ namespace ChessLearnProgram
             whiteRook.ToggleShowValidMoves();
             whiteRook.MoveTo(moveCoord);
             this.UpdateChessBoard();
-            if (initialCoord.Row == 7 && moveCoord.Row == 0 && ChessBoard.ChessBoardMatrix[1, 0] != null)
+            this.SetAbility(true);
+            if ((initialCoord.Row == 7) && (moveCoord.Row == 0) && (ChessBoard.ChessBoardMatrix[1, 0] != null))
             {
                 this.MessageTextBox.Text += @"
   Отлично! Вы поставили мат королю соперника, поздравляю!";
@@ -1007,7 +1030,7 @@ namespace ChessLearnProgram
                     control.Enabled = false;
                 }
             }
-            else if (initialCoord.Row == 7 && moveCoord.Row == 0)
+            else if ((initialCoord.Row == 7) && (moveCoord.Row == 0))
             {
                 var blackKing = (King)ChessBoard.ChessBoardMatrix[2, 0];
                 ChessBoard.ChessBoardMatrix[3, 1] = blackKing;
@@ -1055,6 +1078,7 @@ namespace ChessLearnProgram
             whiteBishop.Clicks++;
             whiteBishop.ToggleShowValidMoves();
             this.UpdateChessBoard();
+            this.SetAbility((whiteBishop.Clicks % 2) == 0);
 
             List<Coordinate>? validMoveCoords = whiteBishop.GetValidMoves();
             IEnumerable<ChessPiece> validMoves = validMoveCoords
@@ -1063,7 +1087,7 @@ namespace ChessLearnProgram
                                                        coordinate.Row]);
             foreach (ChessPiece piece in validMoves)
             {
-                if (piece != null && (piece is ValidMove || piece.BackColor == Color.Red))
+                if ((piece != null) && (piece is ValidMove || (piece.BackColor == Color.Red)))
                 {
                     piece.Click -= this.ValidBishopMove_Click;
                     piece.Click += this.ValidBishopMove_Click;
@@ -1085,9 +1109,11 @@ namespace ChessLearnProgram
             whiteBishop.ToggleShowValidMoves();
             whiteBishop.MoveTo(moveCoord);
             this.UpdateChessBoard();
+            this.SetAbility(true);
 
-
-            if (ChessBoard.ChessBoardMatrix[1, 0] is King || initialColumn == 7 || !this._lastClickedPiece.CurrentCoordinate.Equals(new Coordinate(2, 4)))
+            if (ChessBoard.ChessBoardMatrix[1, 0] is King
+             || (initialColumn == 7)
+             || !this._lastClickedPiece.CurrentCoordinate.Equals(new Coordinate(2, 4)))
             {
                 var blackPawn = (Pawn)ChessBoard.ChessBoardMatrix[0, 1];
                 ChessBoard.ChessBoardMatrix[0, 2] = blackPawn;
@@ -1103,7 +1129,7 @@ namespace ChessLearnProgram
                 this.UpdateChessBoard();
             }
             else if (this._lastClickedPiece.CurrentCoordinate.Equals(new Coordinate(2, 4))
-                  && this._lastClickedPiece.Clicks == 0)
+                  && (this._lastClickedPiece.Clicks == 0))
             {
                 this.MessageTextBox.Text += @"
   Вот это да! Осталось поставить сам мат!";
@@ -1112,6 +1138,19 @@ namespace ChessLearnProgram
                 ChessBoard.ChessBoardMatrix[2, 0] = null;
                 this.UpdateChessBoard();
             }
+        }
+
+        private void SetAbility(bool enable)
+        {
+            foreach (Control control in this.tableLayoutPanel1.Controls)
+            {
+                if (control is ChessPiece piece && !(piece is ValidMove) && (piece.Color == "White"))
+                {
+                    piece.Enabled = enable;
+                }
+            }
+
+            this._lastClickedPiece.Enabled = true;
         }
     }
 }

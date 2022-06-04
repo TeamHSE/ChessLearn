@@ -50,7 +50,7 @@ namespace Chess.Pieces
 
             while (IsCorrectLowCol(checkingCol))
             {
-                if (ChessBoard.ChessBoardMatrix[checkingCol, this.CurrentCoordinate.Row] == null
+                if ((ChessBoard.ChessBoardMatrix[checkingCol, this.CurrentCoordinate.Row] == null)
                  || ChessBoard.ChessBoardMatrix[checkingCol, this.CurrentCoordinate.Row] is ValidMove)
                 {
                     validMoves.Add(new Coordinate(this.CurrentCoordinate.Row, checkingCol));
@@ -76,7 +76,7 @@ namespace Chess.Pieces
 
             while (IsCorrectHighCol(checkingCol))
             {
-                if (ChessBoard.ChessBoardMatrix[checkingCol, this.CurrentCoordinate.Row] == null
+                if ((ChessBoard.ChessBoardMatrix[checkingCol, this.CurrentCoordinate.Row] == null)
                  || ChessBoard.ChessBoardMatrix[checkingCol, this.CurrentCoordinate.Row] is ValidMove)
                 {
                     validMoves.Add(new Coordinate(this.CurrentCoordinate.Row, checkingCol));
@@ -107,7 +107,7 @@ namespace Chess.Pieces
 
             while (IsCorrectLowRow(checkingRow))
             {
-                if (ChessBoard.ChessBoardMatrix[this.CurrentCoordinate.Column, checkingRow] == null
+                if ((ChessBoard.ChessBoardMatrix[this.CurrentCoordinate.Column, checkingRow] == null)
                  || ChessBoard.ChessBoardMatrix[this.CurrentCoordinate.Column, checkingRow] is ValidMove)
                 {
                     validMoves.Add(new Coordinate(checkingRow, this.CurrentCoordinate.Column));
@@ -134,7 +134,7 @@ namespace Chess.Pieces
 
             while (IsCorrectHighRow(checkingRow))
             {
-                if (ChessBoard.ChessBoardMatrix[this.CurrentCoordinate.Column, checkingRow] == null
+                if ((ChessBoard.ChessBoardMatrix[this.CurrentCoordinate.Column, checkingRow] == null)
                  || ChessBoard.ChessBoardMatrix[this.CurrentCoordinate.Column, checkingRow] is ValidMove)
                 {
                     validMoves.Add(new Coordinate(checkingRow, this.CurrentCoordinate.Column));

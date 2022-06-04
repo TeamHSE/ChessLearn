@@ -49,7 +49,7 @@ namespace Chess.Pieces
             int checkingColumn = this.CurrentCoordinate.Column - 1;
             while (IsCorrectCoordinates(checkingRow, checkingColumn))
             {
-                if (ChessBoard.ChessBoardMatrix[checkingColumn, checkingRow] == null
+                if ((ChessBoard.ChessBoardMatrix[checkingColumn, checkingRow] == null)
                  || ChessBoard.ChessBoardMatrix[checkingColumn, checkingRow] is ValidMove)
                 {
                     validMoves.Add(new Coordinate(checkingRow, checkingColumn));
@@ -72,7 +72,7 @@ namespace Chess.Pieces
             checkingColumn = this.CurrentCoordinate.Column + 1;
             while (IsCorrectCoordinates(checkingRow, checkingColumn))
             {
-                if (ChessBoard.ChessBoardMatrix[checkingColumn, checkingRow] == null
+                if ((ChessBoard.ChessBoardMatrix[checkingColumn, checkingRow] == null)
                  || ChessBoard.ChessBoardMatrix[checkingColumn, checkingRow] is ValidMove)
                 {
                     validMoves.Add(new Coordinate(checkingRow, checkingColumn));
@@ -103,7 +103,7 @@ namespace Chess.Pieces
             int checkingColumn = this.CurrentCoordinate.Column + 1;
             while (IsCorrectCoordinates(checkingRow, checkingColumn))
             {
-                if (ChessBoard.ChessBoardMatrix[checkingColumn, checkingRow] == null
+                if ((ChessBoard.ChessBoardMatrix[checkingColumn, checkingRow] == null)
                  || ChessBoard.ChessBoardMatrix[checkingColumn, checkingRow] is ValidMove)
                 {
                     validMoves.Add(new Coordinate(checkingRow, checkingColumn));
@@ -126,7 +126,7 @@ namespace Chess.Pieces
             checkingColumn = this.CurrentCoordinate.Column - 1;
             while (IsCorrectCoordinates(checkingRow, checkingColumn))
             {
-                if (ChessBoard.ChessBoardMatrix[checkingColumn, checkingRow] == null
+                if ((ChessBoard.ChessBoardMatrix[checkingColumn, checkingRow] == null)
                  || ChessBoard.ChessBoardMatrix[checkingColumn, checkingRow] is ValidMove)
                 {
                     validMoves.Add(new Coordinate(checkingRow, checkingColumn));
