@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Media;
@@ -215,10 +216,11 @@ namespace ChessLearnProgram
         public void LoadRookScene()
         {
             this.PracticeButton.Text += @" (ладья)";
-            _                        =  new Rook(new Coordinate(7, 7), "White");
-            _                        =  new Rook(new Coordinate(0, 0), "Black");
-            _                        =  new Rook(new Coordinate(7, 0), "White");
-            _                        =  new King(new Coordinate(7, 4), "White");
+
+            _ = new Rook(new Coordinate(7, 7), "White");
+            _ = new Rook(new Coordinate(0, 0), "Black");
+            _ = new Rook(new Coordinate(7, 0), "White");
+            _ = new King(new Coordinate(7, 4), "White");
 
             void StartRookLesson()
             {
@@ -344,17 +346,18 @@ namespace ChessLearnProgram
         public void LoadKnightScene()
         {
             this.PracticeButton.Text += @" (коня)";
-            _                        =  new Rook(new Coordinate(7,   7), "White");
-            _                        =  new Rook(new Coordinate(7,   0), "White");
-            _                        =  new Knight(new Coordinate(7, 6), "White");
-            _                        =  new Knight(new Coordinate(7, 1), "White");
-            _                        =  new Pawn(new Coordinate(6,   0), "White");
-            _                        =  new Pawn(new Coordinate(6,   1), "White");
-            _                        =  new Pawn(new Coordinate(6,   2), "White");
-            _                        =  new Rook(new Coordinate(0,   0), "Black");
-            _                        =  new Rook(new Coordinate(0,   7), "Black");
-            _                        =  new Knight(new Coordinate(0, 6), "Black");
-            _                        =  new Knight(new Coordinate(0, 1), "Black");
+
+            _ = new Rook(new Coordinate(7,   7), "White");
+            _ = new Rook(new Coordinate(7,   0), "White");
+            _ = new Knight(new Coordinate(7, 6), "White");
+            _ = new Knight(new Coordinate(7, 1), "White");
+            _ = new Pawn(new Coordinate(6,   0), "White");
+            _ = new Pawn(new Coordinate(6,   1), "White");
+            _ = new Pawn(new Coordinate(6,   2), "White");
+            _ = new Rook(new Coordinate(0,   0), "Black");
+            _ = new Rook(new Coordinate(0,   7), "Black");
+            _ = new Knight(new Coordinate(0, 6), "Black");
+            _ = new Knight(new Coordinate(0, 1), "Black");
 
 
             void StartQueenLesson()
@@ -425,6 +428,11 @@ namespace ChessLearnProgram
   Обратите внимание! Ваш король не сделал ни одного хода ранее и ваша ладья справа тоже!";
                 this.LoadKingPracticeScene();
             }
+            else if (button.Text.Contains("ладья"))
+            {
+                this.MessageTextBox.Text += @"  Сейчас вам предлагается закрепить знания о ладье.";
+                this.LoadRookPracticeScene();
+            }
         }
 
         #region Pawn
@@ -456,7 +464,7 @@ namespace ChessLearnProgram
                 return;
             }
 
-            List<Coordinate>? validMoves = pawn.GetValidMoves(pawn.CurrentCoordinate);
+            List<Coordinate>? validMoves = pawn.GetValidMoves();
             pawn.Clicks++;
             pawn.ToggleShowValidMoves();
             this.UpdateChessBoard();
@@ -617,10 +625,10 @@ namespace ChessLearnProgram
             whiteKing.ValidMoves.Add(new Coordinate(whiteKing.CurrentCoordinate.Row,
                                                     whiteKing.CurrentCoordinate.Column - 1));
             whiteKing.Click += this.OnWhiteKingClick;
-            _ = new Rook(new Coordinate(7, 7), "White");
-            _ = new Pawn(new Coordinate(6, 4), "White");
-            _ = new Pawn(new Coordinate(6, 6), "White");
-            _ = new Pawn(new Coordinate(6, 7), "White");
+            _               =  new Rook(new Coordinate(7, 7), "White");
+            _               =  new Pawn(new Coordinate(6, 4), "White");
+            _               =  new Pawn(new Coordinate(6, 6), "White");
+            _               =  new Pawn(new Coordinate(6, 7), "White");
 
             // Black pieces
             _ = new King(new Coordinate(5, 4), "Black");
@@ -640,7 +648,7 @@ namespace ChessLearnProgram
             whiteKing.ToggleShowValidMoves();
             this.UpdateChessBoard();
 
-            List<Coordinate>? validMoveCoords = whiteKing.GetValidMoves(whiteKing.CurrentCoordinate);
+            List<Coordinate>? validMoveCoords = whiteKing.GetValidMoves();
             IEnumerable<ValidMove> validMoves = validMoveCoords
                                                .Select(coordinate =>
                                                            ChessBoard.ChessBoardMatrix[coordinate.Column,
@@ -763,7 +771,63 @@ namespace ChessLearnProgram
         }
 
         #endregion King
-        
-        
+
+        private void LoadRookPracticeScene()
+        {
+            // White pieces.
+            var whiteRook = new Rook(new Coordinate(5, 4), "White");
+            whiteRook.Click += this.OnWhiteRookClick;
+            var blackRook = new Rook(new Coordinate(5, 2), "Black");
+            // blackRook.Click += this.UpdateChessBoard;
+            var blackRook2 = new Rook(new Coordinate(1, 4), "Black");
+            // blackRook2.Click += this.UpdateChessBoard;
+            var blackPawn = new Pawn(new Coordinate(2, 4), "Black");
+            var whitePawn = new Pawn(new Coordinate(2, 2), "White");
+            this.UpdateChessBoard();
+        }
+
+        private void UpdateChessBoard(object sender, EventArgs e)
+        {
+            this.UpdateChessBoard();
+        }
+
+        private void OnWhiteRookClick(object sender, EventArgs e)
+        {
+            var whiteRook = (Rook)sender;
+            this._lastClickedPiece = whiteRook;
+            whiteRook.Clicks++;
+            whiteRook.ToggleShowValidMoves();
+            this.UpdateChessBoard();
+
+            List<Coordinate>? validMoveCoords = whiteRook.GetValidMoves();
+            IEnumerable<ChessPiece> validMoves = validMoveCoords
+               .Select(coordinate =>
+                           ChessBoard.ChessBoardMatrix[coordinate.Column,
+                                                       coordinate.Row]);
+            foreach (ChessPiece piece in validMoves)
+            {
+                if (piece != null && (piece is ValidMove || piece.BackColor == Color.Red))
+                {
+                    piece.Click += this.ValidRookMoveOnClick;
+                }
+            }
+        }
+
+        private void ValidRookMoveOnClick(object sender, EventArgs e)
+        {
+            if (this._lastClickedPiece == null)
+            {
+                return;
+            }
+
+            var whiteRook = (Rook)this._lastClickedPiece;
+            var         move      = (ChessPiece)sender;
+            Coordinate? moveCoord = move.CurrentCoordinate;
+            this.UpdateChessBoard();
+            whiteRook.Clicks++;
+            whiteRook.ToggleShowValidMoves();
+            whiteRook.MoveTo(moveCoord);
+            this.UpdateChessBoard();
+        }
     }
 }

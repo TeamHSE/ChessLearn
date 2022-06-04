@@ -60,9 +60,10 @@ namespace Chess.Pieces
         }
 
         // Получение координат возможных ходов пешки.
-        public override List<Coordinate> GetValidMoves(ICoordinate currentCoordinate)
+        public override List<Coordinate> GetValidMoves()
         {
             var validMoves = new List<Coordinate>();
+            Coordinate currentCoordinate = this.CurrentCoordinate;
 
             // Пешка находится на первом ряду.
             if (currentCoordinate.Row == this.InitialRow)
