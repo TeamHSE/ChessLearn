@@ -129,9 +129,19 @@ namespace ChessLearnProgram
             }
             else if (button.Text.Contains("ферзь"))
             {
-                this.MessageTextBox.Text += @"  Сейчас вам предлагается закрепить знания о ферзе.";
-                button.Text              =  @"Пройти урок заново (ферзь)";
+                this.MessageTextBox.Text
+                    += @"  Сейчас вам предлагается закрепить знания о ферзе. Начиная с хода своего белого ферзя, продолжите с помощью короля и завершите игру, поставив мат сопернику!";
+                button.Text = @"Пройти урок заново (ферзь)";
                 this.LoadQueenPracticeScene();
+            }
+            else if (button.Text.Contains("конь"))
+            {
+                this.MessageTextBox.Text += @"  Сейчас вам предлагается закрепить знания о коне.
+  Закончим наш курс матом, который многие новички пропускают из виду, в пылу сражения теряют бдительность.
+  Я буду давать подсказки по ходам для достижения этого мата, но если хотите, попробуйте поставить его без подсказок.
+  Первым ходом конь, находящийся под атакой слона берёт центральную пешку. ""Зачем?"" – спросите вы, затем, чтобы подготовить атаку на короля с помощью силы ваших коней и слона.";
+                button.Text = @"Пройти урок заново (конь)";
+                this.LoadKnightPracticeScene();
             }
         }
 
@@ -825,15 +835,15 @@ namespace ChessLearnProgram
             // White pieces.
             var whiteRook = new Rook(new Coordinate(5, 4), "White");
             var whitePawn = new Pawn(new Coordinate(2, 2), "White");
-            var whiteKing = new King(new Coordinate(0, 1), "White");
+            new King(new Coordinate(0, 1), "White");
             whiteRook.Click += this.Rook_Click;
             whitePawn.Click += this.WhitePawn_Click;
 
             // Black pieces.
-            var blackRook  = new Rook(new Coordinate(5, 2), "Black");
-            var blackRook2 = new Rook(new Coordinate(1, 4), "Black");
-            var blackPawn  = new Pawn(new Coordinate(2, 4), "Black");
-            var blackKing  = new King(new Coordinate(0, 3), "Black");
+            new Rook(new Coordinate(5, 2), "Black");
+            new Rook(new Coordinate(1, 4), "Black");
+            new Pawn(new Coordinate(2, 4), "Black");
+            new King(new Coordinate(0, 3), "Black");
             this.UpdateChessBoard();
         }
 
@@ -1161,6 +1171,8 @@ namespace ChessLearnProgram
 
         #endregion Bishop
 
+        #region Queen
+
         private void LoadQueenPracticeScene()
         {
             var whiteKing = new King(new Coordinate(3, 7), "White");
@@ -1168,10 +1180,10 @@ namespace ChessLearnProgram
             whiteKing.Enabled =  false;
             var whiteQueen = new Queen(new Coordinate(0, 0), "White");
             whiteQueen.Click += this.Queen_Click;
-            var whitePawn = new Pawn(new Coordinate(6, 0), "White");
+            _                =  new Pawn(new Coordinate(6, 0), "White");
 
-            var blackKing = new King(new Coordinate(1, 7), "Black");
-            var blackPawn = new Pawn(new Coordinate(1, 6), "Black");
+            _ = new King(new Coordinate(1, 7), "Black");
+            _ = new Pawn(new Coordinate(1, 6), "Black");
             this.UpdateChessBoard();
         }
 
@@ -1206,10 +1218,9 @@ namespace ChessLearnProgram
                 return;
             }
 
-            var         whiteKing     = (King)this._lastClickedPiece;
-            int         initialColumn = whiteKing.CurrentCoordinate.Column;
-            var         move          = (ChessPiece)sender;
-            Coordinate? moveCoord     = move.CurrentCoordinate;
+            var         whiteKing = (King)this._lastClickedPiece;
+            var         move      = (ChessPiece)sender;
+            Coordinate? moveCoord = move.CurrentCoordinate;
             whiteKing.ToggleShowValidMoves();
             whiteKing.MoveTo(moveCoord);
             this.UpdateChessBoard();
@@ -1267,6 +1278,7 @@ namespace ChessLearnProgram
         }
 
         private bool _isMate;
+
         private void ValidQueenMove_Click(object sender, EventArgs e)
         {
             if (this._lastClickedPiece == null)
@@ -1292,7 +1304,8 @@ namespace ChessLearnProgram
 
             if (this._isMate && mateCoordinates.Contains(moveCoord))
             {
-                this.MessageTextBox.Text += @"  Отлично! Вы поняли, что король может быть загнут в пат, а вам нужно поставить ему мат!
+                this.MessageTextBox.Text
+                    += @"  Отлично! Вы поняли, что король может быть загнут в пат, а вам нужно поставить ему мат!
   Вы справились с матом в 4 хода, поздравляю!";
                 this.SetAbility(false);
                 MessageBox.Show(@"Вы справились с матом в 4 хода, поздравляю!",
@@ -1370,7 +1383,8 @@ namespace ChessLearnProgram
                 ChessBoard.Clear();
                 this.LoadQueenPracticeScene();
                 this.UpdateChessBoard();
-            }else if (ChessBoard.ChessBoardMatrix[6, 0] is King && moveCoord.Equals(new Coordinate(2, 4)))
+            }
+            else if (ChessBoard.ChessBoardMatrix[6, 0] is King && moveCoord.Equals(new Coordinate(2, 4)))
             {
                 this.MessageTextBox.Text += @"  Этот ход не позволяет поставить мат королю соперника в 4 хода!";
                 MessageBox.Show(@"Этот ход не позволяет поставить мат королю соперника в 4 хода!",
@@ -1379,6 +1393,181 @@ namespace ChessLearnProgram
                 this._lastClickedPiece.Clicks = 0;
                 ChessBoard.Clear();
                 this.LoadQueenPracticeScene();
+                this.UpdateChessBoard();
+            }
+        }
+
+        #endregion Queen
+
+        private void LoadKnightPracticeScene()
+        {
+            // White
+            var whiteKnightRight = new Knight(new Coordinate(5, 5), "White");
+            whiteKnightRight.Click += this.Knight_Click;
+            var whiteKnightLeft = new Knight(new Coordinate(5, 2), "White");
+            whiteKnightLeft.Click += this.Knight_Click;
+            new Rook(new Coordinate(7, 7), "White");
+            new Rook(new Coordinate(7, 0), "White");
+            var bishop = new Bishop(new Coordinate(4, 2), "White");
+            bishop.Click += this.BishopInknightLesson_Click;
+            new Bishop(new Coordinate(7, 2), "White");
+            new Queen(new Coordinate(7,  3), "White");
+            new King(new Coordinate(7,   4), "White");
+            for (var i = 0; i < 8; i++)
+            {
+                _ = new Pawn(new Coordinate(6, i), "White");
+            }
+
+            var whitePawn = (Pawn)ChessBoard.ChessBoardMatrix[4, 6];
+            whitePawn.MoveTo(new Coordinate(4, 4));
+
+            // Black
+            for (var i = 0; i < 8; i++)
+            {
+                _ = new Pawn(new Coordinate(1, i), "Black");
+            }
+
+            var blackPawn = (Pawn)ChessBoard.ChessBoardMatrix[4, 1];
+            blackPawn.MoveTo(new Coordinate(3, 4));
+            var blackPawn2 = (Pawn)ChessBoard.ChessBoardMatrix[3, 1];
+            blackPawn2.MoveTo(new Coordinate(2, 3));
+            _ = new Bishop(new Coordinate(4, 6), "Black");
+            _ = new Bishop(new Coordinate(0, 5), "Black");
+            _ = new Knight(new Coordinate(2, 2), "Black");
+            _ = new Knight(new Coordinate(0, 6), "Black");
+            _ = new Rook(new Coordinate(0,   0), "Black");
+            _ = new Rook(new Coordinate(0,   7), "Black");
+            _ = new Queen(new Coordinate(0,  3), "Black");
+            _ = new King(new Coordinate(0,   4), "Black");
+
+            this.UpdateChessBoard();
+        }
+
+        private void BishopInknightLesson_Click(object sender, EventArgs e)
+        {
+            var whiteBishop = (Bishop)sender;
+            this._lastClickedPiece = whiteBishop;
+            whiteBishop.Clicks++;
+            whiteBishop.ToggleShowValidMoves();
+            this.UpdateChessBoard();
+            this.SetAbility((whiteBishop.Clicks % 2) == 0);
+
+            List<Coordinate>? validMoveCoords = whiteBishop.GetValidMoves();
+            IEnumerable<ChessPiece> validMoves = validMoveCoords
+               .Select(coordinate =>
+                           ChessBoard.ChessBoardMatrix[coordinate.Column,
+                                                       coordinate.Row]);
+            foreach (ChessPiece piece in validMoves)
+            {
+                if ((piece != null) && (piece is ValidMove || (piece.BackColor == Color.Red)))
+                {
+                    piece.Click -= this.ValidBishopMoveInKnightLesson_Click;
+                    piece.Click += this.ValidBishopMoveInKnightLesson_Click;
+                }
+            }
+        }
+
+        private void ValidBishopMoveInKnightLesson_Click(object sender, EventArgs e)
+        {
+            if (this._lastClickedPiece == null)
+            {
+                return;
+            }
+
+            var         whiteBishop   = (Bishop)this._lastClickedPiece;
+            var         move          = (ChessPiece)sender;
+            Coordinate? moveCoord     = move.CurrentCoordinate;
+            whiteBishop.ToggleShowValidMoves();
+            whiteBishop.MoveTo(moveCoord);
+            this.UpdateChessBoard();
+            this.SetAbility(true);
+
+            if (ChessBoard.ChessBoardMatrix[4, 3] is Knight && moveCoord.Equals(new Coordinate(1, 5)))
+            {
+                this.MessageTextBox.Text += @"
+  Отлично! Началась атака на короля, а теперь завершите её красивым матом для вражеского короля!";
+                var blackKing = (King)ChessBoard.ChessBoardMatrix[4, 0];
+                blackKing.ValidMoves.Add(new Coordinate(1, 4));
+                blackKing.MoveTo(new Coordinate(1,         4));
+                this.UpdateChessBoard();
+            }
+            else
+            {
+                this.MessageTextBox.Text += @"  Этот ход не позволяет поставить мат королю соперника в 4 хода!";
+                MessageBox.Show(@"Этот ход не позволяет поставить мат королю соперника! Попробуйте ещё раз.",
+                                @"Неверный ход!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                this._lastClickedPiece.Clicks = 0;
+                ChessBoard.Clear();
+                this.LoadKnightPracticeScene();
+                this.UpdateChessBoard();
+            }
+        }
+
+        private void Knight_Click(object sender, EventArgs e)
+        {
+            var whiteKnight = (Knight)sender;
+            this._lastClickedPiece = whiteKnight;
+            whiteKnight.Clicks++;
+            whiteKnight.ToggleShowValidMoves();
+            this.UpdateChessBoard();
+            this.SetAbility((whiteKnight.Clicks % 2) == 0);
+
+            List<Coordinate>? validMoveCoords = whiteKnight.GetValidMoves();
+            IEnumerable<ChessPiece> validMoves = validMoveCoords
+               .Select(coordinate =>
+                           ChessBoard.ChessBoardMatrix[coordinate.Column,
+                                                       coordinate.Row]);
+            foreach (ChessPiece piece in validMoves)
+            {
+                if ((piece != null) && (piece is ValidMove || (piece.BackColor == Color.Red)))
+                {
+                    piece.Click -= this.ValidKnightMove_Click;
+                    piece.Click += this.ValidKnightMove_Click;
+                }
+            }
+        }
+
+        private void ValidKnightMove_Click(object sender, EventArgs e)
+        {
+            if (this._lastClickedPiece == null)
+            {
+                return;
+            }
+
+            var         whiteKnight = (Knight)this._lastClickedPiece;
+            var         move        = (ChessPiece)sender;
+            Coordinate? moveCoord   = move.CurrentCoordinate;
+            whiteKnight.ToggleShowValidMoves();
+            whiteKnight.MoveTo(moveCoord);
+            this.UpdateChessBoard();
+            this.SetAbility(true);
+
+            if (moveCoord.Equals(new Coordinate(3, 4)))
+            {
+                this.MessageTextBox.Text += @"
+  Хорошо! Наш ферзь оказался забранным, но теперь мы можем начать атаку на короля врага!";
+                var blackBishop = (Bishop)ChessBoard.ChessBoardMatrix[6, 4];
+                blackBishop.MoveTo(new Coordinate(7, 3));
+                this.UpdateChessBoard();
+            }else if (ChessBoard.ChessBoardMatrix[5, 1] is Bishop && moveCoord.Equals(new Coordinate(3, 3)))
+            {
+                this.MessageTextBox.Text += @"
+  Поздравляем! Вы смогли поставить ""мат Легаля""! Надеемся, что навыки, полученные в ходе прохождения курса не пропадут зря!
+  Учитесь играть в шахматы играя!";
+                MessageBox.Show("Поздравляем! Вы смогли поставить \"мат Легаля\"! Надеемся, что навыки, полученные в ходе прохождения курса не пропадут зря! Учитесь играть в шахматы играя!",
+                                "Поздравляем!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.SetAbility(false);
+            }
+            else
+            {
+                this.MessageTextBox.Text += @"  Этот ход не позволяет поставить мат королю соперника в 4 хода!";
+                MessageBox.Show(@"Этот ход не позволяет поставить мат королю соперника! Лучше следовать советам)",
+                                @"Неверный ход!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                this._lastClickedPiece.Clicks = 0;
+                ChessBoard.Clear();
+                this.LoadKnightPracticeScene();
                 this.UpdateChessBoard();
             }
         }

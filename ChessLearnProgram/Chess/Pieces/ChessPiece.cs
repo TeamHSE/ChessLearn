@@ -113,6 +113,10 @@ namespace Chess.Pieces
                 }
             }
         }
+        public static bool IsCorrectCoordinates(int col, int row)
+        {
+            return (col >= 0) && (col < 8) && (row >= 0) && (row < 8);
+        }
     }
 
     public sealed class ValidMove : ChessPiece
