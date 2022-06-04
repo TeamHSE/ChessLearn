@@ -125,7 +125,7 @@ namespace Chess.Pieces
             {
                 validMoves.Add(new Coordinate(currentCoordinate.Row    + this.OneStep,
                                               currentCoordinate.Column + this.OneStep));
-                ChessPiece enemy = ChessBoard
+                ChessBoard
                    .GetPieceOrNull(currentCoordinate.Column + this.OneStep, currentCoordinate.Row + this.OneStep);
             }
 
@@ -133,7 +133,7 @@ namespace Chess.Pieces
             {
                 validMoves.Add(new Coordinate(currentCoordinate.Row    + this.OneStep,
                                               currentCoordinate.Column - this.OneStep));
-                ChessPiece enemy = ChessBoard
+                ChessBoard
                    .GetPieceOrNull(currentCoordinate.Column - this.OneStep, currentCoordinate.Row + this.OneStep);
             }
         }
