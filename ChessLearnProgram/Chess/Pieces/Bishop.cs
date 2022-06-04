@@ -40,10 +40,6 @@ namespace Chess.Pieces
 
         private void UpdateDisproportialMoves(ref List<Coordinate> validMoves)
         {
-            static bool IsCorrectCoordinates(int col, int row)
-            {
-                return (col >= 0) && (col < 8) && (row >= 0) && (row < 8);
-            }
 
             int checkingRow    = this.CurrentCoordinate.Row    + 1;
             int checkingColumn = this.CurrentCoordinate.Column - 1;
@@ -94,10 +90,6 @@ namespace Chess.Pieces
 
         private void UpdateProportionalMoves(ref List<Coordinate> validMoves)
         {
-            static bool IsCorrectCoordinates(int col, int row)
-            {
-                return (col >= 0) && (col < 8) && (row >= 0) && (row < 8);
-            }
 
             int checkingRow    = this.CurrentCoordinate.Row    + 1;
             int checkingColumn = this.CurrentCoordinate.Column + 1;
