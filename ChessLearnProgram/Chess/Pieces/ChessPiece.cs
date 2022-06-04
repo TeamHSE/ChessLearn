@@ -70,6 +70,11 @@ namespace Chess.Pieces
         /// <exception cref="ArgumentException">Фигура не может переместиться на новую клетку.</exception>
         public void MoveTo(Coordinate newCoordinate)
         {
+            if (this.CurrentCoordinate.Equals(newCoordinate))
+            {
+                return;
+            }
+
             if (!this.GetValidMoves().Contains(newCoordinate))
             {
                 throw new ArgumentException($"Фигура не может переместиться с {this.CurrentCoordinate}"

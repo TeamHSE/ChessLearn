@@ -778,9 +778,11 @@ namespace ChessLearnProgram
             var whiteRook = new Rook(new Coordinate(5, 4), "White");
             whiteRook.Click += this.OnWhiteRookClick;
             var blackRook = new Rook(new Coordinate(5, 2), "Black");
-            blackRook.Click += this.UpdateChessBoard;
+            // blackRook.Click += this.UpdateChessBoard;
             var blackRook2 = new Rook(new Coordinate(1, 4), "Black");
-            blackRook2.Click += this.UpdateChessBoard;
+            // blackRook2.Click += this.UpdateChessBoard;
+            var blackPawn = new Pawn(new Coordinate(2, 4), "Black");
+            var whitePawn = new Pawn(new Coordinate(2, 2), "White");
             this.UpdateChessBoard();
         }
 
@@ -804,7 +806,7 @@ namespace ChessLearnProgram
                                                        coordinate.Row]);
             foreach (ChessPiece piece in validMoves)
             {
-                if (piece is ValidMove || piece.BackColor == Color.Red)
+                if (piece != null && (piece is ValidMove || piece.BackColor == Color.Red))
                 {
                     piece.Click += this.ValidRookMoveOnClick;
                 }
@@ -818,22 +820,9 @@ namespace ChessLearnProgram
                 return;
             }
 
-            static bool IsEnemy(ChessPiece piece)
-            {
-                return (piece.Color == "Black") && (piece.BackColor == Color.Red);
-            }
-
             var whiteRook = (Rook)this._lastClickedPiece;
             var         move      = (ChessPiece)sender;
             Coordinate? moveCoord = move.CurrentCoordinate;
-            // if (IsEnemy(move))
-            // {
-            //     whiteRook.ToggleShowValidMoves();
-            //     whiteRook.MoveTo(moveCoord);
-            //     this.UpdateChessBoard();
-            //     return;
-            // }
-
             this.UpdateChessBoard();
             whiteRook.Clicks++;
             whiteRook.ToggleShowValidMoves();
