@@ -433,7 +433,7 @@ namespace ChessLearnProgram
                 this.MessageTextBox.Text += @"  Сейчас вам предлагается закрепить знания о ладье.
 
   Ваша пешка очень близка к тому, чтобы стать ферзём, однако вражеские фигуры мешают вам это сделать!
-  Ваша задача провести пешку, используя удачное расположение своей ладьи.";
+  Ваша задача найти лучшие ходы для своей ладьи, чтобы выиграть партию в дальнейшем!";
                 this.LoadRookPracticeScene();
             }
         }
@@ -822,35 +822,19 @@ namespace ChessLearnProgram
 
         private void ValidWhitePawnMovelick(object sender, EventArgs e)
         {
+            this.MessageTextBox.Text += @"
+  Найдите ход получше! Этим ходом вы передаёте инициативу своему сопернику!";
+            MessageBox.Show(@"Найдите ход получше! Этим ходом вы передаёте инициативу своему сопернику!",
+                            @"Неверный ход!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             ChessPiece? lastClickedPiece = this._lastClickedPiece;
-            if (lastClickedPiece == null)
+            if (lastClickedPiece != null)
             {
-                return;
+                lastClickedPiece.Clicks = 0;
             }
 
-
-            lastClickedPiece.Clicks++;
-            lastClickedPiece.ToggleShowValidMoves();
-            var         validMove  = sender as ValidMove;
-            Coordinate? coordinate = validMove?.Coordinate;
-            if (coordinate != null)
-            {
-                this._lastClickedPiece?.MoveTo(coordinate);
-                if (lastClickedPiece.CurrentCoordinate.Row == 0)
-                {
-                    ChessBoard.ChessBoardMatrix[lastClickedPiece.CurrentCoordinate.Column,
-                                                lastClickedPiece.CurrentCoordinate.Row] = null;
-                    var queen
-                        = new
-                            Queen(new Coordinate(lastClickedPiece.CurrentCoordinate.Row, lastClickedPiece.CurrentCoordinate.Column),
-                                  "White");
-                    this.tableLayoutPanel1.Controls.Remove(lastClickedPiece);
-                    this.tableLayoutPanel1.Controls.Add(queen, queen.CurrentCoordinate.Column,
-                                                        queen.CurrentCoordinate.Row);
-                }
-
-                this.UpdateChessBoard();
-            }
+            ChessBoard.Clear();
+            this.LoadRookPracticeScene();
+            this.UpdateChessBoard();
         }
 
         private void OnWhiteRookClick(object sender, EventArgs e)
