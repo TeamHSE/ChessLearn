@@ -25,8 +25,6 @@ namespace Chess.Pieces
             ChessBoard.ChessBoardMatrix[coordinate.Column, coordinate.Row] = this;
         }
 
-        public List<Coordinate> ValidMoves { get; } = new List<Coordinate>();
-
         public int Clicks { get; set; }
 
         /// <summary>

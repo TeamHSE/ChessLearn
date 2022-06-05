@@ -20,7 +20,5 @@ namespace ChessLearnProgram
         {
             new HowToFiguresLesson().ShowDialog();
         }
-
-       
     }
 }
