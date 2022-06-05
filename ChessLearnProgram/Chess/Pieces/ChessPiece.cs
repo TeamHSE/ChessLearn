@@ -112,17 +112,36 @@ namespace Chess.Pieces
                         ChessPiece enemy = ChessBoard.ChessBoardMatrix[coordinate.Column, coordinate.Row];
                         if (enemy.BackColor == System.Drawing.Color.Transparent)
                         {
-                            enemy.Enabled = true;
+                            enemy.Enabled   = true;
                             enemy.BackColor = System.Drawing.Color.Red;
                         }
                         else
                         {
-                            enemy.Enabled = false;
+                            enemy.Enabled   = false;
                             enemy.BackColor = System.Drawing.Color.Transparent;
                         }
 
                         break;
                 }
+            }
+
+            foreach (ChessPiece chessPiece in ChessBoard.ChessBoardMatrix)
+            {
+                if (chessPiece == null)
+                {
+                    continue;
+                }
+
+                if (chessPiece.Color == "White" && chessPiece.Enabled && !(chessPiece is ValidMove))
+                {
+                    chessPiece.Enabled = false;
+                }
+                else if (chessPiece.Color == "White" && !(chessPiece is ValidMove))
+                {
+                    chessPiece.Enabled = true;
+                }
+
+                this.Enabled = true;
             }
         }
 

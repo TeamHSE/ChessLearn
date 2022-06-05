@@ -1494,12 +1494,11 @@ namespace ChessLearnProgram
 
         private void ValidKnightMove_Click(object sender, EventArgs e)
         {
-            if (this._lastClickedPiece == null)
+            if (!(this._lastClickedPiece is Knight whiteKnight))
             {
                 return;
             }
 
-            var         whiteKnight = (Knight)this._lastClickedPiece;
             var         move        = (ChessPiece)sender;
             Coordinate? moveCoord   = move.CurrentCoordinate;
             whiteKnight.ToggleShowValidMoves();
