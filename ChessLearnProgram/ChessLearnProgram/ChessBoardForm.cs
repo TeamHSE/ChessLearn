@@ -506,50 +506,28 @@ namespace ChessLearnProgram
                                                .OfType<ValidMove>();
                 foreach (ValidMove validMove in valids)
                 {
-                    if (pawn.Clicks != 1)
-                    {
-                        validMove.Click -= this.ValidPawnMove_Click;
-                    }
-
+                    validMove.Click -= this.ValidPawnMove_Click;
                     validMove.Click += this.ValidPawnMove_Click;
                 }
             }
 
-            ChessPiece enemy;
-            if (pawn.CurrentCoordinate.Row != 2)
+            if ((ChessBoard.ChessBoardMatrix[2, 1] is Knight enemyKnight) && (enemyKnight.BackColor == Color.Red))
             {
-                return;
+                if (pawn.Clicks == 1)
+                {
+                    enemyKnight.Click += EnemyPawn_Click;
+                }
             }
 
+            void EnemyPawn_Click(object o, EventArgs args)
             {
-                void EnemyPawn_Click(object o, EventArgs args)
+                pawn.MoveTo(enemyKnight.CurrentCoordinate);
+                this.UpdateChessBoard();
+                ChessPiece? mainEnemyPiece = this._mainEnemyPiece;
+                if (mainEnemyPiece != null)
                 {
-                    ChessBoard.ChessBoardMatrix[enemy.CurrentCoordinate.Column, enemy.CurrentCoordinate.Row]
-                        = pawn;
-                    ChessBoard.ChessBoardMatrix[pawn.CurrentCoordinate.Column, pawn.CurrentCoordinate.Row]
-                        = null;
-                    this.tableLayoutPanel1.Controls.Remove(enemy);
-                    pawn.CurrentCoordinate = enemy.CurrentCoordinate;
-                    this.tableLayoutPanel1.Controls.Add(pawn, pawn.CurrentCoordinate.Column,
-                                                        pawn.CurrentCoordinate.Row);
-                    this.UpdateChessBoard();
-                    ChessPiece? mainEnemyPiece = this._mainEnemyPiece;
-                    if (mainEnemyPiece != null)
-                    {
-                        this.NextBlackPawnMove(mainEnemyPiece);
-                    }
+                    this.NextBlackPawnMove(mainEnemyPiece);
                 }
-
-                if (!(this.tableLayoutPanel1.GetControlFromPosition(pawn.CurrentCoordinate.Column - 1, 1) is
-                          ChessPiece piece))
-                {
-                    return;
-                }
-
-                enemy           =  piece;
-                enemy.BackColor =  Color.Red;
-                enemy.Click     -= EnemyPawn_Click;
-                enemy.Click     += EnemyPawn_Click;
             }
         }
 
@@ -1440,8 +1418,8 @@ namespace ChessLearnProgram
                 return;
             }
 
-            var         move        = (ChessPiece)sender;
-            Coordinate? moveCoord   = move.CurrentCoordinate;
+            var         move      = (ChessPiece)sender;
+            Coordinate? moveCoord = move.CurrentCoordinate;
             whiteBishop.ToggleShowValidMoves();
             whiteBishop.MoveTo(moveCoord);
             this.UpdateChessBoard();
@@ -1498,8 +1476,8 @@ namespace ChessLearnProgram
                 return;
             }
 
-            var         move        = (ChessPiece)sender;
-            Coordinate? moveCoord   = move.CurrentCoordinate;
+            var         move      = (ChessPiece)sender;
+            Coordinate? moveCoord = move.CurrentCoordinate;
             whiteKnight.ToggleShowValidMoves();
             whiteKnight.MoveTo(moveCoord);
             this.UpdateChessBoard();
