@@ -1435,12 +1435,11 @@ namespace ChessLearnProgram
 
         private void ValidBishopMoveInKnightLesson_Click(object sender, EventArgs e)
         {
-            if (this._lastClickedPiece == null)
+            if (!(this._lastClickedPiece is Bishop whiteBishop))
             {
                 return;
             }
 
-            var         whiteBishop = (Bishop)this._lastClickedPiece;
             var         move        = (ChessPiece)sender;
             Coordinate? moveCoord   = move.CurrentCoordinate;
             whiteBishop.ToggleShowValidMoves();
