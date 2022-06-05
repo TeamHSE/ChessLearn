@@ -943,7 +943,7 @@ namespace ChessLearnProgram
         private void LoadBishopPracticeScene()
         {
             var whiteBishop  = new Bishop(new Coordinate(4, 7), "White");
-            var whiteBishop1 = new Bishop(new Coordinate(4, 2), "White");
+            var whiteBishop1 = new Bishop(new Coordinate(5, 1), "White");
             whiteBishop.Click  += this.Bishop_Click;
             whiteBishop1.Click += this.Bishop_Click;
             var whiteRook      = new Rook(new Coordinate(0, 5), "White");
