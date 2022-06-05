@@ -42,8 +42,10 @@ namespace ChessLearnProgram
             this.BoardSizeSliderLabel         = new System.Windows.Forms.Label();
             this.PlayButton                   = new System.Windows.Forms.Button();
             this.PracticeButton               = new System.Windows.Forms.Button();
+            this.panel1                       = new System.Windows.Forms.Panel();
             this.miniToolStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SizeTrackBar)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // miniToolStrip
@@ -103,72 +105,97 @@ namespace ChessLearnProgram
             // 
             this.MessageTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                                                                              | System.Windows.Forms.AnchorStyles.Right)));
+            this.MessageTextBox.BackColor    = System.Drawing.Color.White;
+            this.MessageTextBox.BorderStyle  = System.Windows.Forms.BorderStyle.None;
             this.MessageTextBox.BulletIndent = 3;
             this.MessageTextBox.Font         = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.MessageTextBox.Location     = new System.Drawing.Point(602, 32);
+            this.MessageTextBox.Location     = new System.Drawing.Point(602, 66);
             this.MessageTextBox.Name         = "MessageTextBox";
             this.MessageTextBox.ReadOnly     = true;
-            this.MessageTextBox.Size         = new System.Drawing.Size(347, 592);
+            this.MessageTextBox.Size         = new System.Drawing.Size(347, 558);
             this.MessageTextBox.TabIndex     = 8;
             this.MessageTextBox.Text         = "";
             // 
             // SizeTrackBar
             // 
-            this.SizeTrackBar.Location =  new System.Drawing.Point(63, 37);
-            this.SizeTrackBar.Maximum  =  1000;
-            this.SizeTrackBar.Minimum  =  460;
-            this.SizeTrackBar.Name     =  "SizeTrackBar";
-            this.SizeTrackBar.Size     =  new System.Drawing.Size(154, 37);
-            this.SizeTrackBar.TabIndex =  9;
-            this.SizeTrackBar.Value    =  460;
-            this.SizeTrackBar.Scroll   += new System.EventHandler(this.SizeTrackBar_Scroll);
+            this.SizeTrackBar.BackColor =  System.Drawing.Color.Snow;
+            this.SizeTrackBar.Location  =  new System.Drawing.Point(190, 11);
+            this.SizeTrackBar.Maximum   =  1000;
+            this.SizeTrackBar.Minimum   =  460;
+            this.SizeTrackBar.Name      =  "SizeTrackBar";
+            this.SizeTrackBar.Size      =  new System.Drawing.Size(154, 37);
+            this.SizeTrackBar.TabIndex  =  9;
+            this.SizeTrackBar.Value     =  460;
+            this.SizeTrackBar.Scroll    += new System.EventHandler(this.SizeTrackBar_Scroll);
             // 
             // BoardSizeSliderLabel
             // 
-            this.BoardSizeSliderLabel.Font     = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.BoardSizeSliderLabel.Location = new System.Drawing.Point(63, 9);
-            this.BoardSizeSliderLabel.Name     = "BoardSizeSliderLabel";
-            this.BoardSizeSliderLabel.Size     = new System.Drawing.Size(127, 18);
-            this.BoardSizeSliderLabel.TabIndex = 10;
-            this.BoardSizeSliderLabel.Text     = "Размер доски";
+            this.BoardSizeSliderLabel.BackColor = System.Drawing.Color.Transparent;
+            this.BoardSizeSliderLabel.Font      = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.BoardSizeSliderLabel.Location  = new System.Drawing.Point(40, 19);
+            this.BoardSizeSliderLabel.Name      = "BoardSizeSliderLabel";
+            this.BoardSizeSliderLabel.Size      = new System.Drawing.Size(127, 18);
+            this.BoardSizeSliderLabel.TabIndex  = 10;
+            this.BoardSizeSliderLabel.Text      = "Размер доски";
             // 
             // PlayButton
             // 
+            this.PlayButton.BackColor               =  System.Drawing.Color.Transparent;
+            this.PlayButton.BackgroundImage         =  ((System.Drawing.Image)(resources.GetObject("PlayButton.BackgroundImage")));
+            this.PlayButton.BackgroundImageLayout   =  System.Windows.Forms.ImageLayout.Stretch;
+            this.PlayButton.Cursor                  =  System.Windows.Forms.Cursors.Hand;
+            this.PlayButton.FlatStyle               =  System.Windows.Forms.FlatStyle.Flat;
             this.PlayButton.Font                    =  new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.PlayButton.Location                =  new System.Drawing.Point(223, 12);
+            this.PlayButton.Location                =  new System.Drawing.Point(119, 12);
             this.PlayButton.Name                    =  "PlayButton";
-            this.PlayButton.Size                    =  new System.Drawing.Size(145, 56);
+            this.PlayButton.Size                    =  new System.Drawing.Size(189, 56);
             this.PlayButton.TabIndex                =  11;
             this.PlayButton.Text                    =  "Включить демонстрацию";
-            this.PlayButton.UseVisualStyleBackColor =  true;
+            this.PlayButton.UseVisualStyleBackColor =  false;
             this.PlayButton.Click                   += new System.EventHandler(this.PlayButton_Click);
             // 
             // PracticeButton
             // 
+            this.PracticeButton.BackColor               =  System.Drawing.Color.Transparent;
+            this.PracticeButton.BackgroundImage         =  ((System.Drawing.Image)(resources.GetObject("PracticeButton.BackgroundImage")));
+            this.PracticeButton.BackgroundImageLayout   =  System.Windows.Forms.ImageLayout.Stretch;
+            this.PracticeButton.Cursor                  =  System.Windows.Forms.Cursors.Hand;
+            this.PracticeButton.FlatStyle               =  System.Windows.Forms.FlatStyle.Flat;
             this.PracticeButton.Font                    =  new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.PracticeButton.Location                =  new System.Drawing.Point(378, 12);
+            this.PracticeButton.Location                =  new System.Drawing.Point(329, 12);
             this.PracticeButton.Name                    =  "PracticeButton";
             this.PracticeButton.Size                    =  new System.Drawing.Size(189, 56);
             this.PracticeButton.TabIndex                =  12;
             this.PracticeButton.Text                    =  "Перейти к практике";
-            this.PracticeButton.UseVisualStyleBackColor =  true;
+            this.PracticeButton.UseVisualStyleBackColor =  false;
             this.PracticeButton.Click                   += new System.EventHandler(this.PracticeButton_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor    = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.SizeTrackBar);
+            this.panel1.Controls.Add(this.BoardSizeSliderLabel);
+            this.panel1.Location = new System.Drawing.Point(602, 12);
+            this.panel1.Name     = "panel1";
+            this.panel1.Size     = new System.Drawing.Size(347, 56);
+            this.panel1.TabIndex = 13;
             // 
             // ChessBoardForm
             // 
-            this.AutoScaleDimensions   = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode         = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor             = System.Drawing.SystemColors.Control;
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ClientSize            = new System.Drawing.Size(961, 636);
-            this.Controls.Add(this.PracticeButton);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode       = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor           = System.Drawing.SystemColors.Control;
+            this.BackgroundImage     = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.ClientSize          = new System.Drawing.Size(961, 636);
             this.Controls.Add(this.PlayButton);
-            this.Controls.Add(this.BoardSizeSliderLabel);
-            this.Controls.Add(this.SizeTrackBar);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.PracticeButton);
             this.Controls.Add(this.MessageTextBox);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.miniToolStrip);
             this.DoubleBuffered =  true;
+            this.Icon           =  ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Location       =  new System.Drawing.Point(15, 15);
             this.Margin         =  new System.Windows.Forms.Padding(2);
             this.Name           =  "ChessBoardForm";
@@ -176,9 +203,12 @@ namespace ChessLearnProgram
             this.miniToolStrip.ResumeLayout(false);
             this.miniToolStrip.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SizeTrackBar)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
         }
+
+        private System.Windows.Forms.Panel panel1;
 
         private System.Windows.Forms.Button PracticeButton;
 
@@ -193,7 +223,7 @@ namespace ChessLearnProgram
         #endregion
         private MenuStrip                             miniToolStrip;
         private ToolStripMenuItem                     главноеМенюToolStripMenuItem;
-        private TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private PrintDialog                           printDialog1;
     }
 }

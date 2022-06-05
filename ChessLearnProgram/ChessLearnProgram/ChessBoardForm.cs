@@ -795,7 +795,6 @@ namespace ChessLearnProgram
             var whitePawn = new Pawn(new Coordinate(2, 2), "White");
             new King(new Coordinate(0, 1), "White");
             whiteRook.Click += this.Rook_Click;
-            whitePawn.Click += this.WhitePawn_Click;
 
             // Black pieces.
             new Rook(new Coordinate(5, 2), "Black");
