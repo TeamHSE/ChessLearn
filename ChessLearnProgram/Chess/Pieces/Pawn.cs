@@ -94,19 +94,19 @@ namespace Chess.Pieces
         private void PawnCutMoves(ICoordinate currentCoordinate, ref List<Coordinate> validMoves)
         {
             bool isLeftPieceExists = ChessBoard
-                                        .GetPieceOrNull(currentCoordinate.Column + this.OneStep,
-                                                        currentCoordinate.Row    + this.OneStep)
+                                        .GetPieceOrNull(currentCoordinate.Row    + this.OneStep,
+                                                        currentCoordinate.Column + this.OneStep)
                                   != null;
             bool isRightPieceExists = ChessBoard
-                                         .GetPieceOrNull(currentCoordinate.Column - this.OneStep,
-                                                         currentCoordinate.Row    + this.OneStep)
+                                         .GetPieceOrNull(currentCoordinate.Row    + this.OneStep,
+                                                         currentCoordinate.Column - this.OneStep)
                                    != null;
             var isLeftPieceColorDiffers = false;
             if (isLeftPieceExists)
             {
                 isLeftPieceColorDiffers = ChessBoard
-                                         .GetPieceOrNull(currentCoordinate.Column + this.OneStep,
-                                                         currentCoordinate.Row    + this.OneStep)
+                                         .GetPieceOrNull(currentCoordinate.Row    + this.OneStep,
+                                                         currentCoordinate.Column + this.OneStep)
                                          .Color
                                        != this.Color;
             }
@@ -115,8 +115,8 @@ namespace Chess.Pieces
             if (isRightPieceExists)
             {
                 isRightPieceColorDiffers = ChessBoard
-                                          .GetPieceOrNull(currentCoordinate.Column - this.OneStep,
-                                                          currentCoordinate.Row    + this.OneStep)
+                                          .GetPieceOrNull(currentCoordinate.Row    + this.OneStep,
+                                                          currentCoordinate.Column - this.OneStep)
                                           .Color
                                         != this.Color;
             }
@@ -125,16 +125,12 @@ namespace Chess.Pieces
             {
                 validMoves.Add(new Coordinate(currentCoordinate.Row    + this.OneStep,
                                               currentCoordinate.Column + this.OneStep));
-                ChessBoard
-                   .GetPieceOrNull(currentCoordinate.Column + this.OneStep, currentCoordinate.Row + this.OneStep);
             }
 
             if (isRightPieceExists && isRightPieceColorDiffers)
             {
                 validMoves.Add(new Coordinate(currentCoordinate.Row    + this.OneStep,
                                               currentCoordinate.Column - this.OneStep));
-                ChessBoard
-                   .GetPieceOrNull(currentCoordinate.Column - this.OneStep, currentCoordinate.Row + this.OneStep);
             }
         }
     }
