@@ -15,8 +15,13 @@ namespace Chess.Pieces
 
         public ChessPiece(Coordinate coordinate, string color)
         {
-            this.CurrentCoordinate                                         = coordinate;
-            this.Color                                                     = color;
+            this.CurrentCoordinate = coordinate;
+            this.Color             = color;
+            if (this.Color == "Black")
+            {
+                this.Enabled = false;
+            }
+
             ChessBoard.ChessBoardMatrix[coordinate.Column, coordinate.Row] = this;
         }
 
@@ -105,14 +110,22 @@ namespace Chess.Pieces
                         break;
                     default:
                         ChessPiece enemy = ChessBoard.ChessBoardMatrix[coordinate.Column, coordinate.Row];
-                        ChessBoard.ChessBoardMatrix[coordinate.Column, coordinate.Row].BackColor
-                            = enemy.BackColor == System.Drawing.Color.Transparent
-                                  ? System.Drawing.Color.Red
-                                  : System.Drawing.Color.Transparent;
+                        if (enemy.BackColor == System.Drawing.Color.Transparent)
+                        {
+                            enemy.Enabled = true;
+                            enemy.BackColor = System.Drawing.Color.Red;
+                        }
+                        else
+                        {
+                            enemy.Enabled = false;
+                            enemy.BackColor = System.Drawing.Color.Transparent;
+                        }
+
                         break;
                 }
             }
         }
+
         public static bool IsCorrectCoordinates(int col, int row)
         {
             return (col >= 0) && (col < 8) && (row >= 0) && (row < 8);
@@ -132,6 +145,7 @@ namespace Chess.Pieces
             this.FlatStyle = FlatStyle.Flat;
             this.UseVisualStyleBackColor = true;
             ChessBoard.ChessBoardMatrix[coordinate.Column, coordinate.Row] = this;
+            this.Color = "White";
         }
 
         public Coordinate Coordinate
