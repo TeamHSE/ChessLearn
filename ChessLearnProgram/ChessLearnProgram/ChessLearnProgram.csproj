@@ -52,11 +52,6 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ChessBoardForm.Designer.cs" />
-    <Compile Include="ChessBoardForm2.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ChessBoardForm.resx</DependentUpon>
-    </Compile>
     <Compile Include="HowToFiguresLesson.cs">
       <SubType>Form</SubType>
     </Compile>
