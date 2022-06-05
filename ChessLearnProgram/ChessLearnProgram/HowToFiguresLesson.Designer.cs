@@ -170,6 +170,7 @@ namespace ChessLearnProgram
             this.Controls.Add(this.HowToBishopButton);
             this.Controls.Add(this.HowToPawnButton);
             this.Controls.Add(this.HowToFiguresLessonsLabel);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "HowToFiguresLesson";
             this.Text = "Каталог уроков";

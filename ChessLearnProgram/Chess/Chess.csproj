@@ -101,6 +101,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Knight %281%29.ico" />
     <None Include="Resources\Фон для текста.png" />
     <None Include="Resources\Фон для кнопки.jpg" />
     <None Include="Resources\Фон для кнопки.png" />
