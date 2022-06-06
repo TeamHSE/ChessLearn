@@ -1,75 +1,96 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="Chess.ChessBoard">
-    <Position X="2.25" Y="2" Width="1.5" />
+    <Position X="6" Y="2.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAgAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAgAABAAAA=</HashCode>
       <FileName>ChessBoard.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Chess.Coordinate" BaseTypeListCollapsed="true">
-    <Position X="0.5" Y="0.5" Width="1.5" />
+    <Position X="1" Y="0.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAEAAAAAAIAAAABAAAAAAAACAgAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAEAAAAAAIAEgABAAAAAAAACAoAAAAAAAAAAAAA=</HashCode>
       <FileName>Coordinate.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="Chess.ResourceBlack">
-    <Position X="11.75" Y="0.5" Width="1.5" />
+    <Position X="14.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>gAAAAAAAAAEggAAAAEABEAQAAQAAAAAAAAAAAAAAAIA=</HashCode>
     </TypeIdentifier>
   </Class>
   <Class Name="Chess.ResourceWhite">
-    <Position X="10" Y="0.5" Width="1.5" />
+    <Position X="12.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>gAAAAAAAAAEggAAAAEABEAQAAQAAAAAAAAAAAAAAAIA=</HashCode>
     </TypeIdentifier>
   </Class>
   <Class Name="Chess.Pieces.Bishop">
-    <Position X="2.5" Y="4.5" Width="1.5" />
+    <Position X="2.5" Y="4.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AQAAAAAAAAAAAAAAAgAgAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Pieces\Bishop.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Chess.Pieces.ChessPiece">
-    <Position X="4.25" Y="0.5" Width="1.5" />
+    <Position X="3.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAIEAAAAAAAAAAAAABIAAAAAAAAgAAAgAA=</HashCode>
+      <HashCode>AQAAAAAAAAAIAAAAAAAAAAAAAABIAAQAAAAAgAAAggA=</HashCode>
       <FileName>Pieces\ChessPiece.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Chess.Pieces.ValidMove">
-    <Position X="6.5" Y="4.5" Width="1.5" />
+    <Position X="4.5" Y="4.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Pieces\ChessPiece.cs</FileName>
+      <HashCode>AQAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Pieces\ValidMove.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Chess.Pieces.King">
-    <Position X="0.5" Y="4.5" Width="1.5" />
+    <Position X="0.5" Y="4.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <HashCode>AQAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Pieces\King.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Chess.Pieces.Pawn">
-    <Position X="4.5" Y="4.5" Width="1.5" />
+    <Position X="2.5" Y="6.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AQAAEAAAAAAAEAAAAAAACAAACBAAAAAAAAAAAAAAAgA=</HashCode>
+      <HashCode>AQAAEAAAAAAAAAAAAAAACAAACBAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Pieces\Pawn.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Chess.Properties.Resources">
-    <Position X="10.75" Y="4.25" Width="1.5" />
+    <Position X="16.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAABAAAAAAAAAAAIA=</HashCode>
+      <HashCode>AAAAEAAAAAAAAAAAAAABEAAAARAAABAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Chess.Pieces.Knight">
+    <Position X="4.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Pieces\Knight.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Chess.Pieces.Queen">
+    <Position X="6.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAAAAgAgAAAAAAAAEAAAAgAAAAAAAAA=</HashCode>
+      <FileName>Pieces\Queen.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Chess.Pieces.Rook">
+    <Position X="0.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAgAAAAAAAAA=</HashCode>
+      <FileName>Pieces\Rook.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Interface Name="Chess.ICoordinate">
-    <Position X="2.25" Y="0.5" Width="1.5" />
+    <Position X="6" Y="0.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAgAAAAAAAAAAAAA=</HashCode>
       <FileName>ICoordinate.cs</FileName>

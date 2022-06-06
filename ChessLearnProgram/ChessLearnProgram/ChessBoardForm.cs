@@ -53,6 +53,9 @@ namespace ChessLearnProgram
         public ChessBoardForm()
         {
             this.InitializeComponent();
+            ValidMove.ValidMoveColor = SettingsForm.IsShowMoves
+                                           ? Color.Chartreuse
+                                           : Color.Transparent;
         }
 
         private void UpdateChessBoard()
@@ -1343,6 +1346,8 @@ namespace ChessLearnProgram
 
         #endregion Queen
 
+        #region Knight
+
         private void LoadKnightPracticeScene()
         {
             // White
@@ -1350,13 +1355,13 @@ namespace ChessLearnProgram
             whiteKnightRight.Click += this.Knight_Click;
             var whiteKnightLeft = new Knight(new Coordinate(5, 2), "White");
             whiteKnightLeft.Click += this.Knight_Click;
-            new Rook(new Coordinate(7, 7), "White");
-            new Rook(new Coordinate(7, 0), "White");
+            _ = new Rook(new Coordinate(7, 7), "White");
+            _ = new Rook(new Coordinate(7, 0), "White");
             var bishop = new Bishop(new Coordinate(4, 2), "White");
             bishop.Click += this.BishopInknightLesson_Click;
-            new Bishop(new Coordinate(7, 2), "White");
-            new Queen(new Coordinate(7,  3), "White");
-            new King(new Coordinate(7,   4), "White");
+            _ = new Bishop(new Coordinate(7, 2), "White");
+            _ = new Queen(new Coordinate(7,  3), "White");
+            _ = new King(new Coordinate(7,   4), "White");
             for (var i = 0; i < 8; i++)
             {
                 _ = new Pawn(new Coordinate(6, i), "White");
@@ -1509,5 +1514,7 @@ namespace ChessLearnProgram
                 this.UpdateChessBoard();
             }
         }
+
+        #endregion Knight
     }
 }

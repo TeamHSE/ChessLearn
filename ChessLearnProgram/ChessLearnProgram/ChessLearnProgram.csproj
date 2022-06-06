@@ -121,12 +121,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Chess\Chess.csproj">
-      <Project>{af323f8b-9098-485d-b236-ec9e19bd6aa8}</Project>
-      <Name>Chess</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Properties\pawn_train.wav">
       <DependentUpon>Resources.resx</DependentUpon>
     </Content>
@@ -141,6 +135,11 @@
     <None Include="Resources\Фон для кнопки.png" />
     <None Include="Resources\Фон.jpg" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Chess\Chess.csproj">
+      <Project>{af323f8b-9098-485d-b236-ec9e19bd6aa8}</Project>
+      <Name>Chess</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

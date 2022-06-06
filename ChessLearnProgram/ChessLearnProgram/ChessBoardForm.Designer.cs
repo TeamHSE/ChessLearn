@@ -106,7 +106,6 @@ namespace ChessLearnProgram
             this.MessageTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                                                                              | System.Windows.Forms.AnchorStyles.Right)));
             this.MessageTextBox.BackColor    = System.Drawing.Color.White;
-            this.MessageTextBox.BorderStyle  = System.Windows.Forms.BorderStyle.None;
             this.MessageTextBox.BulletIndent = 3;
             this.MessageTextBox.Font         = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.MessageTextBox.Location     = new System.Drawing.Point(602, 66);
@@ -172,8 +171,9 @@ namespace ChessLearnProgram
             // 
             // panel1
             // 
-            this.panel1.Anchor    = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Anchor      = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.BackColor   = System.Drawing.Color.White;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel1.Controls.Add(this.SizeTrackBar);
             this.panel1.Controls.Add(this.BoardSizeSliderLabel);
             this.panel1.Location = new System.Drawing.Point(602, 12);
