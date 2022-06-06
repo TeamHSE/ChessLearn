@@ -32,9 +32,9 @@ namespace ChessLearnProgram
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingsForm));
-            this.SettingsLabel           = new System.Windows.Forms.Label();
-            this.ValidMovesCheckBox      = new System.Windows.Forms.CheckBox();
-            this.HilightLastMoveCheckBox = new System.Windows.Forms.CheckBox();
+            this.SettingsLabel      = new System.Windows.Forms.Label();
+            this.ValidMovesCheckBox = new System.Windows.Forms.CheckBox();
+            this.MoveSoundsCheckBox = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // SettingsLabel
@@ -66,21 +66,21 @@ namespace ChessLearnProgram
             this.ValidMovesCheckBox.UseVisualStyleBackColor =  false;
             this.ValidMovesCheckBox.CheckedChanged          += new System.EventHandler(this.ValidMovesCheckBox_CheckedChanged);
             // 
-            // HilightLastMoveCheckBox
+            // MoveSoundsCheckBox
             // 
-            this.HilightLastMoveCheckBox.BackColor               =  System.Drawing.Color.BurlyWood;
-            this.HilightLastMoveCheckBox.BackgroundImage         =  ((System.Drawing.Image)(resources.GetObject("HilightLastMoveCheckBox.BackgroundImage")));
-            this.HilightLastMoveCheckBox.BackgroundImageLayout   =  System.Windows.Forms.ImageLayout.Stretch;
-            this.HilightLastMoveCheckBox.CheckAlign              =  System.Drawing.ContentAlignment.MiddleRight;
-            this.HilightLastMoveCheckBox.Font                    =  new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.HilightLastMoveCheckBox.Location                =  new System.Drawing.Point(294, 294);
-            this.HilightLastMoveCheckBox.Name                    =  "HilightLastMoveCheckBox";
-            this.HilightLastMoveCheckBox.Size                    =  new System.Drawing.Size(239, 81);
-            this.HilightLastMoveCheckBox.TabIndex                =  18;
-            this.HilightLastMoveCheckBox.Text                    =  "Подсветка последнего хода соперника";
-            this.HilightLastMoveCheckBox.TextAlign               =  System.Drawing.ContentAlignment.MiddleCenter;
-            this.HilightLastMoveCheckBox.UseVisualStyleBackColor =  false;
-            this.HilightLastMoveCheckBox.CheckedChanged          += new System.EventHandler(this.HilightLastMoveCheckBox_CheckedChanged);
+            this.MoveSoundsCheckBox.BackColor               =  System.Drawing.Color.BurlyWood;
+            this.MoveSoundsCheckBox.BackgroundImage         =  ((System.Drawing.Image)(resources.GetObject("MoveSoundsCheckBox.BackgroundImage")));
+            this.MoveSoundsCheckBox.BackgroundImageLayout   =  System.Windows.Forms.ImageLayout.Stretch;
+            this.MoveSoundsCheckBox.CheckAlign              =  System.Drawing.ContentAlignment.MiddleRight;
+            this.MoveSoundsCheckBox.Font                    =  new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.MoveSoundsCheckBox.Location                =  new System.Drawing.Point(294, 294);
+            this.MoveSoundsCheckBox.Name                    =  "MoveSoundsCheckBox";
+            this.MoveSoundsCheckBox.Size                    =  new System.Drawing.Size(239, 81);
+            this.MoveSoundsCheckBox.TabIndex                =  18;
+            this.MoveSoundsCheckBox.Text                    =  "Включить звук хода";
+            this.MoveSoundsCheckBox.TextAlign               =  System.Drawing.ContentAlignment.MiddleCenter;
+            this.MoveSoundsCheckBox.UseVisualStyleBackColor =  false;
+            this.MoveSoundsCheckBox.CheckedChanged          += new System.EventHandler(this.MoveSoundsCheckBox_CheckedChanged);
             // 
             // SettingsForm
             // 
@@ -88,7 +88,7 @@ namespace ChessLearnProgram
             this.AutoScaleMode       = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage     = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize          = new System.Drawing.Size(821, 559);
-            this.Controls.Add(this.HilightLastMoveCheckBox);
+            this.Controls.Add(this.MoveSoundsCheckBox);
             this.Controls.Add(this.ValidMovesCheckBox);
             this.Controls.Add(this.SettingsLabel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
@@ -105,6 +105,6 @@ namespace ChessLearnProgram
 
         private System.Windows.Forms.Label    SettingsLabel;
         private System.Windows.Forms.CheckBox ValidMovesCheckBox;
-        private System.Windows.Forms.CheckBox HilightLastMoveCheckBox;
+        private System.Windows.Forms.CheckBox MoveSoundsCheckBox;
     }
 }

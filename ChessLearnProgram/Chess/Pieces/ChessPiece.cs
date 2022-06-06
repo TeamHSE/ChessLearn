@@ -1,5 +1,8 @@
-﻿using System;
+﻿#nullable enable
+using System;
 using System.Collections.Generic;
+using System.Media;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace Chess.Pieces
@@ -10,8 +13,9 @@ namespace Chess.Pieces
     /// </summary>
     public abstract class ChessPiece : Button
     {
-        private string     _color;
-        private Coordinate _currentCoordinate;
+        private       string      _color;
+        private       Coordinate  _currentCoordinate;
+        public static SoundPlayer? MoveSound;
 
         public ChessPiece(Coordinate coordinate, string color)
         {
@@ -90,6 +94,7 @@ namespace Chess.Pieces
             this.CurrentCoordinate = new Coordinate(newCoordinate.Row, newCoordinate.Column);
             this.Clicks            = 0;
             this.BackColor = System.Drawing.Color.Transparent;
+            MoveSound?.Play();
         }
 
         public abstract List<Coordinate> GetValidMoves();

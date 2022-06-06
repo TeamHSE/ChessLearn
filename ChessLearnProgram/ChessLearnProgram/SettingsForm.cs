@@ -11,6 +11,7 @@ namespace ChessLearnProgram
         {
             this.InitializeComponent();
             this.ValidMovesCheckBox.Checked = true;
+            this.MoveSoundsCheckBox.Checked = true;
         }
 
         private void ValidMovesCheckBox_CheckedChanged(object sender, EventArgs e)
@@ -18,9 +19,9 @@ namespace ChessLearnProgram
             IsShowMoves = this.ValidMovesCheckBox.Checked;
         }
 
-        private void HilightLastMoveCheckBox_CheckedChanged(object sender, EventArgs e)
+        private void MoveSoundsCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            throw new System.NotImplementedException();
+            IsHilightLastMove = this.MoveSoundsCheckBox.Checked;
         }
     }
 }

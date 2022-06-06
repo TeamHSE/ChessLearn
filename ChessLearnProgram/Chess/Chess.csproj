@@ -104,6 +104,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\move_sound.wav" />
     <None Include="Resources\Фон для текста.png" />
     <None Include="Resources\Фон для кнопки.jpg" />
     <None Include="Resources\Фон для кнопки.png" />

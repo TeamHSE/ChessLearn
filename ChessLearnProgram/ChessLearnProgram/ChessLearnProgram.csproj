@@ -127,6 +127,7 @@
     <Content Include="Resources\bishop_train.wav" />
     <Content Include="Resources\king_train.wav" />
     <Content Include="Resources\knight_train.wav" />
+    <Content Include="Resources\move_sound.wav" />
     <Content Include="Resources\pawn_train.wav" />
     <Content Include="Resources\queen_train.wav" />
     <Content Include="Resources\rook_train.wav" />
