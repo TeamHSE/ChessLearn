@@ -8,16 +8,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System.CodeDom.Compiler;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
-using System.Globalization;
-using System.IO;
-using System.Resources;
-using System.Runtime.CompilerServices;
-
 namespace ChessLearnProgram {
+    using System;
+    
+    
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -25,27 +19,27 @@ namespace ChessLearnProgram {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [GeneratedCode("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
-    [DebuggerNonUserCode()]
-    [CompilerGenerated()]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resource {
         
-        private static ResourceManager resourceMan;
+        private static global::System.Resources.ResourceManager resourceMan;
         
-        private static CultureInfo resourceCulture;
+        private static global::System.Globalization.CultureInfo resourceCulture;
         
-        [SuppressMessage("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
         internal Resource() {
         }
         
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
-        [EditorBrowsable(EditorBrowsableState.Advanced)]
-        internal static ResourceManager ResourceManager {
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Resources.ResourceManager ResourceManager {
             get {
-                if (ReferenceEquals(resourceMan, null)) {
-                    ResourceManager temp = new ResourceManager("ChessLearnProgram.Resource", typeof(Resource).Assembly);
+                if (object.ReferenceEquals(resourceMan, null)) {
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ChessLearnProgram.Resource", typeof(Resource).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -56,8 +50,8 @@ namespace ChessLearnProgram {
         ///   Overrides the current thread's CurrentUICulture property for all
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
-        [EditorBrowsable(EditorBrowsableState.Advanced)]
-        internal static CultureInfo Culture {
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -69,7 +63,7 @@ namespace ChessLearnProgram {
         /// <summary>
         ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         /// </summary>
-        internal static UnmanagedMemoryStream bishop_train {
+        internal static System.IO.UnmanagedMemoryStream bishop_train {
             get {
                 return ResourceManager.GetStream("bishop_train", resourceCulture);
             }
@@ -89,7 +83,7 @@ namespace ChessLearnProgram {
         /// <summary>
         ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         /// </summary>
-        internal static UnmanagedMemoryStream king_train {
+        internal static System.IO.UnmanagedMemoryStream king_train {
             get {
                 return ResourceManager.GetStream("king_train", resourceCulture);
             }
@@ -108,7 +102,7 @@ namespace ChessLearnProgram {
         /// <summary>
         ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         /// </summary>
-        internal static UnmanagedMemoryStream knight_train {
+        internal static System.IO.UnmanagedMemoryStream knight_train {
             get {
                 return ResourceManager.GetStream("knight_train", resourceCulture);
             }
@@ -128,7 +122,16 @@ namespace ChessLearnProgram {
         /// <summary>
         ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         /// </summary>
-        internal static UnmanagedMemoryStream pawn_train {
+        internal static System.IO.UnmanagedMemoryStream move_sound {
+            get {
+                return ResourceManager.GetStream("move_sound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream pawn_train {
             get {
                 return ResourceManager.GetStream("pawn_train", resourceCulture);
             }
@@ -150,7 +153,7 @@ namespace ChessLearnProgram {
         /// <summary>
         ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         /// </summary>
-        internal static UnmanagedMemoryStream queen_train {
+        internal static System.IO.UnmanagedMemoryStream queen_train {
             get {
                 return ResourceManager.GetStream("queen_train", resourceCulture);
             }
@@ -170,7 +173,7 @@ namespace ChessLearnProgram {
         /// <summary>
         ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         /// </summary>
-        internal static UnmanagedMemoryStream rook_train {
+        internal static System.IO.UnmanagedMemoryStream rook_train {
             get {
                 return ResourceManager.GetStream("rook_train", resourceCulture);
             }

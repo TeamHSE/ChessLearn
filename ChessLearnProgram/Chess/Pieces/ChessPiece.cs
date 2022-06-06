@@ -1,5 +1,8 @@
-﻿using System;
+﻿#nullable enable
+using System;
 using System.Collections.Generic;
+using System.Media;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace Chess.Pieces
@@ -10,8 +13,9 @@ namespace Chess.Pieces
     /// </summary>
     public abstract class ChessPiece : Button
     {
-        private string     _color;
-        private Coordinate _currentCoordinate;
+        private       string      _color;
+        private       Coordinate  _currentCoordinate;
+        public static SoundPlayer? MoveSound;
 
         public ChessPiece(Coordinate coordinate, string color)
         {
@@ -89,6 +93,8 @@ namespace Chess.Pieces
 
             this.CurrentCoordinate = new Coordinate(newCoordinate.Row, newCoordinate.Column);
             this.Clicks            = 0;
+            this.BackColor = System.Drawing.Color.Transparent;
+            MoveSound?.Play();
         }
 
         public abstract List<Coordinate> GetValidMoves();
@@ -111,7 +117,7 @@ namespace Chess.Pieces
                         if (enemy.BackColor == System.Drawing.Color.Transparent)
                         {
                             enemy.Enabled   = true;
-                            enemy.BackColor = System.Drawing.Color.Red;
+                            enemy.BackColor = ValidMove.ValidMoveColor;
                         }
                         else
                         {
@@ -138,8 +144,16 @@ namespace Chess.Pieces
                 {
                     chessPiece.Enabled = true;
                 }
+            }
 
-                this.Enabled = true;
+            this.Enabled   = true;
+            if (this.Clicks % 2 == 1)
+            {
+                this.BackColor = System.Drawing.Color.Bisque;
+            }
+            else
+            {
+                this.BackColor = System.Drawing.Color.Transparent;
             }
         }
 

@@ -191,4 +191,9 @@
   За один ход конь преодолевает несколько полей. Он проходит на два поля в одном направлении и далее на одно поле под углом 90 градусов. Например, на два поля вперёд и на одно вправо, или на два поля влево и на одно назад. Можно запомнить, что конь ходит буквой Г в любые стороны.
 </value>
   </data>
+    <data name="move_sound" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>Resources\move_sound.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral,
+            PublicKeyToken=b77a5c561934e089
+        </value>
+    </data>
 </root>

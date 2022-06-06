@@ -5,12 +5,14 @@ namespace Chess.Pieces
 {
     public sealed class ValidMove : ChessPiece
     {
+        public static System.Drawing.Color ValidMoveColor { get; set; }
+
         public ValidMove(Coordinate coordinate, string color) : base(coordinate, color)
         {
             this.AllowDrop = true;
             this.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             this.AutoSize = true;
-            this.BackColor = System.Drawing.Color.Chartreuse;
+            this.BackColor = ValidMoveColor;
             this.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.FlatAppearance.BorderSize = 0;
             this.FlatStyle = FlatStyle.Flat;

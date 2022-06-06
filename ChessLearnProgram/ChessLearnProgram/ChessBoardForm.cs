@@ -49,10 +49,20 @@ namespace ChessLearnProgram
 
         private SoundPlayer? _soundPlayer;
         private Thread?      _theoryThread;
+        public  SoundPlayer? MoveSound;
 
         public ChessBoardForm()
         {
             this.InitializeComponent();
+            ValidMove.ValidMoveColor = SettingsForm.IsShowMoves
+                                           ? Color.Chartreuse
+                                           : Color.Transparent;
+            if (SettingsForm.IsHilightLastMove)
+            {
+                this.MoveSound = new SoundPlayer(Resource.move_sound);
+            }
+            
+            ChessPiece.MoveSound = this.MoveSound;
         }
 
         private void UpdateChessBoard()
@@ -73,6 +83,14 @@ namespace ChessLearnProgram
         private void SizeTrackBar_Scroll(object sender, EventArgs e)
         {
             this.tableLayoutPanel1.Size = new Size(this.SizeTrackBar.Value, this.SizeTrackBar.Value + 2);
+        }
+
+        private void DiableAllControls()
+        {
+            foreach (Control control in this.tableLayoutPanel1.Controls)
+            {
+                control.Enabled = false;
+            }
         }
 
         private void PracticeButton_Click(object sender, EventArgs e)
@@ -231,7 +249,7 @@ namespace ChessLearnProgram
                 Thread.Sleep(20000);
                 // Делается шах королю пешкой.
                 this.tableLayoutPanel1.Controls.Add(whitePawn, 1, 5);
-                blackKing.BackColor = Color.Red;
+                blackKing.BackColor = ValidMove.ValidMoveColor;
                 // Король рубит пешку.
                 Thread.Sleep(10000);
                 blackKing.BackColor = Color.Transparent;
@@ -505,21 +523,22 @@ namespace ChessLearnProgram
                                                                coordinate.Row])
                                                .OfType<ValidMove>();
                 foreach (ValidMove validMove in valids)
-                {
-                    validMove.Click -= this.ValidPawnMove_Click;
-                    validMove.Click += this.ValidPawnMove_Click;
-                }
+                    {
+                        validMove.Click -= this.ValidPawnMove_Click;
+                        validMove.Click += this.ValidPawnMove_Click;
+                    }
             }
 
-            if ((ChessBoard.ChessBoardMatrix[2, 1] is Knight enemyKnight) && (enemyKnight.BackColor == Color.Red))
+            if ((ChessBoard.ChessBoardMatrix[2, 1] is Knight enemyKnight)
+             && (enemyKnight.BackColor == ValidMove.ValidMoveColor))
             {
-                if (pawn.Clicks == 1)
+                if (pawn.Clicks == 1 && pawn.CurrentCoordinate.Row == 2)
                 {
-                    enemyKnight.Click += EnemyPawn_Click;
+                    enemyKnight.Click += EnemyKnight_Click;
                 }
             }
 
-            void EnemyPawn_Click(object o, EventArgs args)
+            void EnemyKnight_Click(object o, EventArgs args)
             {
                 pawn.MoveTo(enemyKnight.CurrentCoordinate);
                 this.UpdateChessBoard();
@@ -544,11 +563,10 @@ namespace ChessLearnProgram
                     chessPiece.Enabled = false;
                 }
 
-                var whiteking = this.tableLayoutPanel1.GetControlFromPosition(7, 7) as King;
-                if (whiteking != null)
+                if (this.tableLayoutPanel1.GetControlFromPosition(7, 7) is King whiteking)
                 {
                     whiteking.Enabled   = false;
-                    whiteking.BackColor = Color.Red;
+                    whiteking.BackColor = ValidMove.ValidMoveColor;
                 }
 
                 this.MessageTextBox.Text += @"
@@ -587,12 +605,13 @@ namespace ChessLearnProgram
                 if (this.tableLayoutPanel1.GetControlFromPosition(7, 0) is King blackKing)
                 {
                     blackKing.Enabled   = false;
-                    blackKing.BackColor = Color.Red;
+                    blackKing.BackColor = ValidMove.ValidMoveColor;
                     this.MessageTextBox.Text
                         += @"
   Поздравляем! Вы успешно смогли поставить мат королю соперника, тем самым выиграв партию!";
                     MessageBox.Show(@"Поздравляем! Вы успешно смогли поставить мат королю соперника, тем самым выиграв партию!",
                                     @"Поздравляем!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    DiableAllControls();
                     return;
                 }
             }
@@ -729,6 +748,7 @@ namespace ChessLearnProgram
             MessageBox.Show(@"Поздравляем! Вы смогли защитить короля, сделав рокировку! Этим ходом вы обеспечили не только безопасность своего короля,
 но и открыли для ладьи сразу два пути для развития, что позволит вам провести свои пешки и сделать их ферзями!",
                             @"Поздравляем!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            DiableAllControls();
         }
 
         private void RunBadKingMoveMate()
@@ -746,7 +766,7 @@ namespace ChessLearnProgram
             var blackRook = (Rook)ChessBoard.ChessBoardMatrix[0, 0];
             ChessBoard.ChessBoardMatrix[0, 7] = blackRook;
             ChessBoard.ChessBoardMatrix[0, 0] = null;
-            whiteKing.BackColor               = Color.Red;
+            whiteKing.BackColor               = ValidMove.ValidMoveColor;
             whiteKing.Enabled                 = false;
             this.UpdateChessBoard();
 
@@ -771,7 +791,7 @@ namespace ChessLearnProgram
             var blackRook = (Rook)ChessBoard.ChessBoardMatrix[0, 0];
             ChessBoard.ChessBoardMatrix[0, 7] = blackRook;
             ChessBoard.ChessBoardMatrix[0, 0] = null;
-            whiteKing.BackColor               = Color.Red;
+            whiteKing.BackColor               = ValidMove.ValidMoveColor;
             whiteKing.Enabled                 = false;
             this.UpdateChessBoard();
 
@@ -865,7 +885,7 @@ namespace ChessLearnProgram
                                                        coordinate.Row]);
             foreach (ChessPiece piece in validMoves)
             {
-                if ((piece != null) && (piece is ValidMove || (piece.BackColor == Color.Red)))
+                if ((piece != null) && (piece is ValidMove || (piece.BackColor == ValidMove.ValidMoveColor)))
                 {
                     piece.Click -= this.ValidRookMove_Click;
                     piece.Click += this.ValidRookMove_Click;
@@ -920,7 +940,7 @@ namespace ChessLearnProgram
                 this.UpdateChessBoard();
                 MessageBox.Show(@"Замечательно! Вы поставили шах его королю, который удерживал ладью от удара и следующим ходом своего короля вы с лёгкостью заберёте его ладью и проведёте пешку, выиграв партию! Поздравляем!",
                                 @"Победа!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                whiteRook.Enabled = false;
+                DiableAllControls();
             }
             else if (!moveCoord.Equals(new Coordinate(5, 3)) || (initialCoordinate.Column == 4))
             {
@@ -975,7 +995,7 @@ namespace ChessLearnProgram
                                                        coordinate.Row]);
             foreach (ChessPiece piece in validMoves)
             {
-                if ((piece != null) && (piece is ValidMove || (piece.BackColor == Color.Red)))
+                if ((piece != null) && (piece is ValidMove || (piece.BackColor == ValidMove.ValidMoveColor)))
                 {
                     piece.Click -= this.ValidRookMoveInBishopLesson_Click;
                     piece.Click += this.ValidRookMoveInBishopLesson_Click;
@@ -1001,14 +1021,11 @@ namespace ChessLearnProgram
             {
                 this.MessageTextBox.Text += @"
   Отлично! Вы поставили мат королю соперника, поздравляю!";
-                ChessBoard.ChessBoardMatrix[1, 0].BackColor = Color.Red;
+                ChessBoard.ChessBoardMatrix[1, 0].BackColor = ValidMove.ValidMoveColor;
                 this.UpdateChessBoard();
                 MessageBox.Show(@"Отлично! Вы поставили мат королю соперника, поздравляю!", @"Победа!",
                                 MessageBoxButtons.OK, MessageBoxIcon.Information);
-                foreach (Control control in this.tableLayoutPanel1.Controls)
-                {
-                    control.Enabled = false;
-                }
+                DiableAllControls();
             }
             else if ((initialCoord.Row == 7) && (moveCoord.Row == 0))
             {
@@ -1066,7 +1083,7 @@ namespace ChessLearnProgram
                                                        coordinate.Row]);
             foreach (ChessPiece piece in validMoves)
             {
-                if ((piece != null) && (piece is ValidMove || (piece.BackColor == Color.Red)))
+                if ((piece != null) && (piece is ValidMove || (piece.BackColor == ValidMove.ValidMoveColor)))
                 {
                     piece.Click -= this.ValidBishopMove_Click;
                     piece.Click += this.ValidBishopMove_Click;
@@ -1125,8 +1142,7 @@ namespace ChessLearnProgram
         private void LoadQueenPracticeScene()
         {
             var whiteKing = new King(new Coordinate(3, 7), "White");
-            whiteKing.Click   += this.King_Click;
-            whiteKing.Enabled =  false;
+            whiteKing.Click += this.King_Click;
             var whiteQueen = new Queen(new Coordinate(0, 0), "White");
             whiteQueen.Click += this.Queen_Click;
             _                =  new Pawn(new Coordinate(6, 0), "White");
@@ -1151,7 +1167,7 @@ namespace ChessLearnProgram
                                                        coordinate.Row]);
             foreach (ChessPiece piece in validMoves)
             {
-                if ((piece != null) && (piece is ValidMove || (piece.BackColor == Color.Red)))
+                if ((piece != null) && (piece is ValidMove || (piece.BackColor == ValidMove.ValidMoveColor)))
                 {
                     piece.Click -= this.ValidKingMoveInQueenLesson_Click;
                     piece.Click += this.ValidKingMoveInQueenLesson_Click;
@@ -1184,8 +1200,8 @@ namespace ChessLearnProgram
                 ChessBoard.ChessBoardMatrix[5, 0] = blackKing;
                 ChessBoard.ChessBoardMatrix[6, 0] = null;
                 this.UpdateChessBoard();
-                Control? control = this.tableLayoutPanel1.GetControlFromPosition(6, 2);
-                control.Enabled = false;
+                var king = (King)this.tableLayoutPanel1.GetControlFromPosition(6, 2);
+                king.ValidMoves = new List<Coordinate>();
             }
             else
             {
@@ -1215,7 +1231,7 @@ namespace ChessLearnProgram
                                                        coordinate.Row]);
             foreach (ChessPiece piece in validMoves)
             {
-                if ((piece != null) && (piece is ValidMove || (piece.BackColor == Color.Red)))
+                if ((piece != null) && (piece is ValidMove || (piece.BackColor == ValidMove.ValidMoveColor)))
                 {
                     piece.Click -= this.ValidQueenMove_Click;
                     piece.Click += this.ValidQueenMove_Click;
@@ -1254,6 +1270,7 @@ namespace ChessLearnProgram
   Вы справились с матом в 4 хода, поздравляю!";
                 MessageBox.Show(@"Вы справились с матом в 4 хода, поздравляю!",
                                 @"Победа!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                DiableAllControls();
                 return;
             }
 
@@ -1343,6 +1360,8 @@ namespace ChessLearnProgram
 
         #endregion Queen
 
+        #region Knight
+
         private void LoadKnightPracticeScene()
         {
             // White
@@ -1350,13 +1369,13 @@ namespace ChessLearnProgram
             whiteKnightRight.Click += this.Knight_Click;
             var whiteKnightLeft = new Knight(new Coordinate(5, 2), "White");
             whiteKnightLeft.Click += this.Knight_Click;
-            new Rook(new Coordinate(7, 7), "White");
-            new Rook(new Coordinate(7, 0), "White");
+            _                     =  new Rook(new Coordinate(7, 7), "White");
+            _                     =  new Rook(new Coordinate(7, 0), "White");
             var bishop = new Bishop(new Coordinate(4, 2), "White");
             bishop.Click += this.BishopInknightLesson_Click;
-            new Bishop(new Coordinate(7, 2), "White");
-            new Queen(new Coordinate(7,  3), "White");
-            new King(new Coordinate(7,   4), "White");
+            _            =  new Bishop(new Coordinate(7, 2), "White");
+            _            =  new Queen(new Coordinate(7,  3), "White");
+            _            =  new King(new Coordinate(7,   4), "White");
             for (var i = 0; i < 8; i++)
             {
                 _ = new Pawn(new Coordinate(6, i), "White");
@@ -1402,7 +1421,7 @@ namespace ChessLearnProgram
                                                        coordinate.Row]);
             foreach (ChessPiece piece in validMoves)
             {
-                if ((piece != null) && (piece is ValidMove || (piece.BackColor == Color.Red)))
+                if ((piece != null) && (piece is ValidMove || (piece.BackColor == ValidMove.ValidMoveColor)))
                 {
                     piece.Click -= this.ValidBishopMoveInKnightLesson_Click;
                     piece.Click += this.ValidBishopMoveInKnightLesson_Click;
@@ -1460,7 +1479,7 @@ namespace ChessLearnProgram
                                                        coordinate.Row]);
             foreach (ChessPiece piece in validMoves)
             {
-                if ((piece != null) && (piece is ValidMove || (piece.BackColor == Color.Red)))
+                if ((piece != null) && (piece is ValidMove || (piece.BackColor == ValidMove.ValidMoveColor)))
                 {
                     piece.Click -= this.ValidKnightMove_Click;
                     piece.Click += this.ValidKnightMove_Click;
@@ -1496,6 +1515,7 @@ namespace ChessLearnProgram
   Учитесь играть в шахматы играя!";
                 MessageBox.Show("Поздравляем! Вы смогли поставить \"мат Легаля\"! Надеемся, что навыки, полученные в ходе прохождения курса не пропадут зря! Учитесь играть в шахматы играя!",
                                 "Поздравляем!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                DiableAllControls();
             }
             else
             {
@@ -1509,5 +1529,7 @@ namespace ChessLearnProgram
                 this.UpdateChessBoard();
             }
         }
+
+        #endregion Knight
     }
 }

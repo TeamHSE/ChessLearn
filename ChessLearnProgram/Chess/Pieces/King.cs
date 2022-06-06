@@ -29,7 +29,7 @@ namespace Chess.Pieces
             this.UseVisualStyleBackColor    = true;
         }
 
-        public List<Coordinate> ValidMoves { get; } = new List<Coordinate>();
+        public List<Coordinate> ValidMoves { get; set; } = new List<Coordinate>();
 
         public override List<Coordinate> GetValidMoves()
         {
