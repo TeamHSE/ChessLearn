@@ -6,6 +6,7 @@ namespace ChessLearnProgram
     public sealed partial class SettingsForm : Form
     {
         public static bool IsShowMoves = true;
+        public static bool IsHilightLastMove = true;
         public SettingsForm()
         {
             this.InitializeComponent();
@@ -15,6 +16,11 @@ namespace ChessLearnProgram
         private void ValidMovesCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             IsShowMoves = this.ValidMovesCheckBox.Checked;
+        }
+
+        private void HilightLastMoveCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

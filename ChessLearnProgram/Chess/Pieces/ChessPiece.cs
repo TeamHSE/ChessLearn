@@ -89,6 +89,7 @@ namespace Chess.Pieces
 
             this.CurrentCoordinate = new Coordinate(newCoordinate.Row, newCoordinate.Column);
             this.Clicks            = 0;
+            this.BackColor = System.Drawing.Color.Transparent;
         }
 
         public abstract List<Coordinate> GetValidMoves();
@@ -111,7 +112,7 @@ namespace Chess.Pieces
                         if (enemy.BackColor == System.Drawing.Color.Transparent)
                         {
                             enemy.Enabled   = true;
-                            enemy.BackColor = System.Drawing.Color.Red;
+                            enemy.BackColor = ValidMove.ValidMoveColor;
                         }
                         else
                         {
@@ -138,8 +139,16 @@ namespace Chess.Pieces
                 {
                     chessPiece.Enabled = true;
                 }
+            }
 
-                this.Enabled = true;
+            this.Enabled   = true;
+            if (this.Clicks % 2 == 1)
+            {
+                this.BackColor = System.Drawing.Color.Bisque;
+            }
+            else
+            {
+                this.BackColor = System.Drawing.Color.Transparent;
             }
         }
 
